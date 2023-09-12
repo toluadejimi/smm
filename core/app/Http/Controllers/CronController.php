@@ -9,33 +9,31 @@ use App\Models\Order;
 
 class CronController extends Controller
 {
-	public function placeOrderToApi()
-	{
-		$apiOrders          = Order::pending()->with('provider')->where('api_provider_id', '!=', Status::API_ORDER_NOT_PLACE)->where('order_placed_to_api', Status::API_ORDER_NOT_PLACE)->get();
-		$general            = GeneralSetting::first();
-		$general->last_cron = now();
-		$general->save();
+	// public function placeOrderToApi()
+	// {
+	// 	$apiOrders          = Order::pending()->with('provider')->where('api_provider_id', '!=', Status::API_ORDER_NOT_PLACE)->where('order_placed_to_api', Status::API_ORDER_NOT_PLACE)->get();
+	// 	$general            = GeneralSetting::first();
+	// 	$general->last_cron = now();
+	// 	$general->save();
 
-		foreach ($apiOrders as $order) {
-			$response = CurlRequest::curlPostContent($order->provider->api_url, [
-				'key'      => $order->provider->api_key,
-				'action'   => "add",
-				'service'  => $order->api_service_id,
-				'link'     => $order->link,
-				'quantity' => $order->quantity,
-			]);
-			$response = json_decode($response);
+	// 	foreach ($apiOrders as $order) {
+	// 		$response = CurlRequest::curlPostContent($order->provider->api_url, [
+	// 			'key'      => $order->provider->api_key,
+	// 			'action'   => "add",
+	// 			'service'  => $order->api_service_id,
+	// 			'link'     => $order->link,
+	// 			'quantity' => $order->quantity,
+	// 		]);
+	// 		$response = json_decode($response);
 
-            dd($response);
-
-			if ($response->error) {
-				echo response()->json(['error' => $response->error]) . '<br>';
-				continue;
-			}
+	// 		if ($response->error) {
+	// 			echo response()->json(['error' => $response->error]) . '<br>';
+	// 			continue;
+	// 		}
 
 		
-		}
-	}
+	// 	}
+	// }
 
 	public function serviceUpdate()
 	{

@@ -286,7 +286,7 @@
             </div>
         </div>
 
-        <div class="modal fade" id="cronModal" role="dialog" aria-hidden="true" tabindex="-1">
+        {{-- <div class="modal fade" id="cronModal" role="dialog" aria-hidden="true" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -310,7 +310,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
     </div>
 @endsection

@@ -50,10 +50,6 @@ class CronController extends Controller
 			]);
 			$response = json_decode($response);
 
-			if ($response->error) {
-				echo response()->json(['error' => $response->error]) . '<br>';
-				continue;
-			}
 
 			$order->start_counter = $response->start_count;
 			$order->remain        = $response->remains;

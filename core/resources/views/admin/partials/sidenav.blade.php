@@ -361,17 +361,17 @@
 
                 <li class="sidebar__menu-header">@lang('Settings')</li>
                 <li class="sidebar-menu-item {{ menuActive('admin.setting.index') }}">
-                    {{-- <a href="{{ route('admin.setting.index') }}" class="nav-link">
+                    <a href="{{ route('admin.setting.index') }}" class="nav-link">
                         <i class="menu-icon las la-life-ring"></i>
                         <span class="menu-title">@lang('General Setting')</span>
-                    </a> --}}
+                    </a>
                 </li>
 
                 <li class="sidebar-menu-item {{ menuActive('admin.setting.system.configuration') }}">
-                    {{-- <a href="{{ route('admin.setting.system.configuration') }}" class="nav-link">
+                    <a href="{{ route('admin.setting.system.configuration') }}" class="nav-link">
                         <i class="menu-icon las la-cog"></i>
                         <span class="menu-title">@lang('System Configuration')</span>
-                    </a> --}}
+                    </a>
                 </li>
 
                 <li class="sidebar-menu-item {{ menuActive('admin.setting.logo.icon') }}">

@@ -353,11 +353,17 @@
 
                 <li class="sidebar__menu-header"><?php echo app('translator')->get('Settings'); ?></li>
                 <li class="sidebar-menu-item <?php echo e(menuActive('admin.setting.index')); ?>">
-                    
+                    <a href="<?php echo e(route('admin.setting.index')); ?>" class="nav-link">
+                        <i class="menu-icon las la-life-ring"></i>
+                        <span class="menu-title"><?php echo app('translator')->get('General Setting'); ?></span>
+                    </a>
                 </li>
 
                 <li class="sidebar-menu-item <?php echo e(menuActive('admin.setting.system.configuration')); ?>">
-                    
+                    <a href="<?php echo e(route('admin.setting.system.configuration')); ?>" class="nav-link">
+                        <i class="menu-icon las la-cog"></i>
+                        <span class="menu-title"><?php echo app('translator')->get('System Configuration'); ?></span>
+                    </a>
                 </li>
 
                 <li class="sidebar-menu-item <?php echo e(menuActive('admin.setting.logo.icon')); ?>">

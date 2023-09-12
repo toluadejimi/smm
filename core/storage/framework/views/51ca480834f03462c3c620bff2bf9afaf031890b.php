@@ -120,10 +120,7 @@
                     </a>
                 </li>
             </ul>
-            <div class="text-uppercase mb-3 text-center">
-                <span class="text--primary"><?php echo e(__(systemDetails()['name'])); ?></span>
-                <span class="text--success"><?php echo app('translator')->get('V'); ?><?php echo e(systemDetails()['version']); ?> </span>
-            </div>
+            
         </div>
     </div>
 </div>

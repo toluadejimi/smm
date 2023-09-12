@@ -16,120 +16,249 @@
 
 <div class="row">
 
+    <div class="row brand-cat-row">
+        <div class="col-lg-1">
+            <div class="card b-radius--10">
+                <div class="card-body">
+                    <a href="javascript:void(0);" class="media brand-category" data-id="facebook">
+                        <div class="center"><img class="center"
+                                src="https://yourpanelassets.com/projects/pak2p/img/svg/facebook.svg" width="50"
+                                height="50" alt=""></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-1 col-md-3 col-sm-4 col-6">
+            <div class="card b-radius--10">
+                <div class="card-body">
+                    <a href="javascript:void(0);" class="media brand-category" data-id="youtube">
+                        <div class="icon"><img class="img-responsive"
+                                src="https://yourpanelassets.com/projects/pak2p/img/svg/youtube.svg" width="50"
+                                height="50" alt=""></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-1 col-md-3 col-sm-4 col-6">
+            <div class="card b-radius--10">
+                <div class="card-body">
+                    <a href="javascript:void(0);" class="media brand-category" data-id="instagram">
+                        <div class="icon"><img class="img-responsive"
+                                src="https://yourpanelassets.com/projects/pak2p/img/svg/instagram.svg" alt=""></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-1 col-md-3 col-sm-4 col-6">
+            <div class="card b-radius--10">
+                <div class="card-body">
+                    <a href="javascript:void(0);" class="media brand-category" data-id="tiktok">
+                        <div class="icon"><img class="img-responsive"
+                                src="https://yourpanelassets.com/projects/pak2p/img/svg/tiktok.svg" alt=""></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-1 col-md-3 col-sm-4 col-6">
+            <div class="card b-radius--10">
+                <div class="card-body">
+                    <a href="javascript:void(0);" class="media brand-category" data-id="spotify">
+                        <div class="icon"><img class="img-responsive"
+                                src="https://yourpanelassets.com/projects/pak2p/img/svg/spotify.svg" alt=""></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-1 col-md-3 col-sm-4 col-6">
+            <div class="card b-radius--10">
+                <div class="card-body">
+                    <a href="javascript:void(0);" class="media brand-category" data-id="twitter">
+                        <div class="icon"><img class="img-responsive"
+                                src="https://yourpanelassets.com/projects/pak2p/img/svg/twitter.svg" alt=""></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-1 col-md-3 col-sm-4 col-6">
+            <div class="card b-radius--10">
+                <div class="card-body">
+                    <a href="javascript:void(0);" class="media brand-category" data-id="snapchat">
+                        <div class="icon"><img class="img-responsive"
+                                src="https://yourpanelassets.com/projects/pak2p/img/svg/snapchat.svg" alt=""></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-1 col-md-3 col-sm-4 col-6">
+            <div class="card b-radius--10">
+                <div class="card-body">
+                    <a href="javascript:void(0);" class="media brand-category" data-id="telegram">
+                        <div class="icon"><img class="img-responsive"
+                                src="https://yourpanelassets.com/projects/pak2p/img/svg/telegram.svg" alt=""></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-1 col-md-3 col-sm-4 col-6">
+            <div class="card b-radius--10">
+                <div class="card-body">
+                    <a href="javascript:void(0);" class="media brand-category" data-id="soundcloud">
+                        <div class="icon"><img class="img-responsive"
+                                src="https://yourpanelassets.com/projects/pak2p/img/svg/soundcloud.svg" alt=""></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-1 col-md-3 col-sm-4 col-6">
+            <div class="card b-radius--10">
+                <div class="card-body">
+                    <a href="javascript:void(0);" class="media brand-category" data-id="linkedin">
+                        <div class="icon"><img class="img-responsive"
+                                src="https://yourpanelassets.com/projects/pak2p/img/svg/linkedin.svg" alt=""></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-1 col-md-3 col-sm-4 col-6">
+            <div class="card b-radius--10">
+                <div class="card-body">
+                    <a href="javascript:void(0);" class="media brand-category" data-id="twitch">
+                        <div class="icon"><img class="img-responsive"
+                                src="https://yourpanelassets.com/projects/pak2p/img/svg/twitch.svg" alt=""></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-1 col-md-3 col-sm-4 col-6">
+            <div class="card b-radius--10">
+                <div class="card-body">
+                    <a href="javascript:void(0);" class="media brand-category" data-id="pintrest">
+                        <div class="icon"><img class="img-responsive"
+                                src="https://yourpanelassets.com/projects/pak2p/img/svg/pintrest.svg" alt=""></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="col-md-6 p-6">
 
-            <div class="card b-radius--10 mb-4 my-5">
-                <div class="card-body">
-                    <h5 class="p-2 mb-4">New Order</h5>
+        <div class="card b-radius--10 mb-4 my-5">
+            <div class="card-body">
+                <h5 class="p-2 mb-4">New Order</h5>
 
 
 
-                    <form action="order/create" method="post">
-                        @csrf
+                <form action="order/create" method="post">
+                    @csrf
 
-                        <div class="row">
+                    <div class="row">
 
-                            <div class="col-md-12">
-                                <div class="form-group mb-3">
+                        <div class="col-md-12">
+                            <div class="form-group mb-3">
 
-                                    <label>Choose Category</label>
+                                <label>Choose Category</label>
 
-                                    <select name="cat" class="form-control" id="country-dropdown">
-                                        @foreach($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}
-                                            @endforeach
+                                <select name="cat" class="form-control" id="country-dropdown">
+                                    @foreach($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}
+                                        @endforeach
 
-                                    </select>
+                                </select>
 
-
-                                </div>
 
                             </div>
-
-                            <div class="col-md-12">
-                                <div class="form-group mb-3">
-
-                                    <div class="form-group mb-3">
-                                        <label>Choose Service</label>
-                                        <select id="state-dropdown" required name="service" placeholder="Choose service" class="form-control">
-                                        </select>
-
-
-
-                                    </div>
-
-
-
-
-                                </div>
-
-                            </div>
-
-
-                            <div class="col-md-12">
-                                <div class="form-group mb-3">
-
-                                    <div class="form-group mb-3">
-                                        <label>Link</label>
-                                        <input type="text" placeholder="Enter Link" autofocus id="link" required name="link" class="form-control">
-                                    </input>
-                                    </div>
-                                </div>
-
-                            </div>
-
-
-                             <div class="col-md-12">
-                                <div class="form-group mb-3">
-
-                                    <div class="form-group mb-3">
-                                        <label>Quantity</label>
-                                        <input type="number" autofocus id="num1" required name="qty" placeholder="Enter quantity" class="form-control">
-                                    </input>
-                                    <span class="text-muted" id="min">Min:</span> | <span class="text-muted" id="max">Max:</span>
-                                    </div>
-
-                                    <input type="number"  hidden  id="min2" name="min">
-
-
-                                    
-                                </div>
-
-                            </div>
-
-
-                            <div class="col-md-12">
-                                <div class="form-group mb-3">
-
-                                    <div class="form-group mb-3">
-                                        <label>Charge</label>
-                                        <input type="number" disabled id="result2"  name="charge"  class="form-control">
-
-
-                                    </input>
-                                    </div>
-                                </div>
-
-                            </div>
-
-
-
-                            <div class="col-6 col-md-12">
-                                <button type="submit" class="btn btn-primary btn-lg mb-5" role="button">Order</button>
-                              </div>
-                  
-
-
 
                         </div>
 
-                    </form>
+                        <div class="col-md-12">
+                            <div class="form-group mb-3">
+
+                                <div class="form-group mb-3">
+                                    <label>Choose Service</label>
+                                    <select id="state-dropdown" required name="service" placeholder="Choose service"
+                                        class="form-control">
+                                    </select>
+
+
+
+                                </div>
+
+
+
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-12">
+                            <div class="form-group mb-3">
+
+                                <div class="form-group mb-3">
+                                    <label>Link</label>
+                                    <input type="text" placeholder="Enter Link" autofocus id="link" required name="link"
+                                        class="form-control">
+                                    </input>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-12">
+                            <div class="form-group mb-3">
+
+                                <div class="form-group mb-3">
+                                    <label>Quantity</label>
+                                    <input type="number" autofocus id="num1" required name="qty"
+                                        placeholder="Enter quantity" class="form-control">
+                                    </input>
+                                    <span class="text-muted" id="min">Min:</span> | <span class="text-muted"
+                                        id="max">Max:</span>
+                                </div>
+
+                                <input type="number" hidden id="min2" name="min">
+
+
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-12">
+                            <div class="form-group mb-3">
+
+                                <div class="form-group mb-3">
+                                    <label>Charge</label>
+                                    <input type="number" disabled id="result2" name="charge" class="form-control">
+
+
+                                    </input>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="col-6 col-md-12">
+                            <button type="submit" class="btn btn-primary btn-lg mb-5" role="button">Order</button>
+                        </div>
+
+
+
+
+                    </div>
+
+                </form>
 
 
 
 
 
-                </div>
+            </div>
         </div>
     </div>
 
@@ -145,7 +274,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Amount</label>
-                            <h5 class="" value=" "  id="price"> </h5>
+                            <h5 class="" value=" " id="price"> </h5>
                         </div>
 
                     </div>
@@ -157,22 +286,22 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Details</label>
-                            <p class=""  id="details"> </p>
+                            <p class="" id="details"> </p>
                         </div>
 
                     </div>
-                
-                </div>
-
-                   
-
 
                 </div>
+
+
 
 
             </div>
+
+
         </div>
     </div>
+</div>
 
 </div>
 

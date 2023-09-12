@@ -74,12 +74,12 @@ class RegisterController extends Controller
         $validate = Validator::make($data, [
             'email' => 'required|string|email|unique:users',
             'mobile' => 'required|regex:/^([0-9]*)$/',
-            'password' => ['required', 'confirmed', $passwordValidation],
+            // 'password' => ['required', 'confirmed', $passwordValidation],
             'username' => 'required|unique:users|min:6',
             'captcha' => 'sometimes|required',
-            'mobile_code' => 'required|in:' . $mobileCodes,
-            'country_code' => 'required|in:' . $countryCodes,
-            'country' => 'required|in:' . $countries,
+            // 'mobile_code' => 'required|in:' . $mobileCodes,
+            // 'country_code' => 'required|in:' . $countryCodes,
+            // 'country' => 'required|in:' . $countries,
             'agree' => $agree
         ]);
         return $validate;
@@ -112,6 +112,7 @@ class RegisterController extends Controller
         }
 
         event(new Registered($user = $this->create($request->all())));
+        
 
         $this->guard()->login($user);
 

@@ -375,10 +375,10 @@
                 </li>
 
                 <li class="sidebar-menu-item {{ menuActive('admin.setting.logo.icon') }}">
-                    {{-- <a href="{{ route('admin.setting.logo.icon') }}" class="nav-link">
+                    <a href="{{ route('admin.setting.logo.icon') }}" class="nav-link">
                         <i class="menu-icon las la-images"></i>
                         <span class="menu-title">@lang('Logo & Favicon')</span>
-                    </a> --}}
+                    </a>
                 </li>
 
                 <li class="sidebar-menu-item {{ menuActive('admin.extensions.index') }}">

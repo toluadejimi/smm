@@ -75,7 +75,7 @@ class RegisterController extends Controller
             'email' => 'required|string|email|unique:users',
             'mobile' => 'required|regex:/^([0-9]*)$/',
             // 'password' => ['required', 'confirmed', $passwordValidation],
-            'username' => 'required|unique:users|min:6',
+            'username' => 'required|unique:users|min:4',
             'captcha' => 'sometimes|required',
             // 'mobile_code' => 'required|in:' . $mobileCodes,
             // 'country_code' => 'required|in:' . $countryCodes,
@@ -105,11 +105,11 @@ class RegisterController extends Controller
         }
 
 
-        $exist = User::where('mobile', $request->mobile_code . $request->mobile)->first();
-        if ($exist) {
-            $notify[] = ['error', 'The mobile number already exists'];
-            return back()->withNotify($notify)->withInput();
-        }
+        // $exist = User::where('mobile', $request->mobile_code . $request->mobile)->first();
+        // if ($exist) {
+        //     $notify[] = ['error', 'The mobile number already exists'];
+        //     return back()->withNotify($notify)->withInput();
+        // }
 
         event(new Registered($user = $this->create($request->all())));
         

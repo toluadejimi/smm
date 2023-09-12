@@ -14,12 +14,7 @@
                         <span class="menu-title"><?php echo app('translator')->get('Dashboard'); ?></span>
                     </a>
                 </li>
-                <li class="sidebar-menu-item <?php echo e(menuActive('admin.api.provider.index')); ?>">
-                    <a href="<?php echo e(route('admin.api.provider.index')); ?>" class="nav-link">
-                        <i class="menu-icon las la-cloud-download-alt"></i>
-                        <span class="menu-title"><?php echo app('translator')->get('Api Providers'); ?></span>
-                    </a>
-                </li>
+                
                 <li class="sidebar-menu-item <?php echo e(menuActive('admin.category.index')); ?>">
                     <a href="<?php echo e(route('admin.category.index')); ?>" class="nav-link ">
                         <i class="menu-icon las la-bars"></i>
@@ -181,10 +176,7 @@
                 </li>
 
                 <li class="sidebar-menu-item sidebar-dropdown">
-                    <a href="javascript:void(0)" class="<?php echo e(menuActive('admin.gateway*', 3)); ?>">
-                        <i class="menu-icon las la-credit-card"></i>
-                        <span class="menu-title"><?php echo app('translator')->get('Payment Gateways'); ?></span>
-                    </a>
+                    
                     <div class="sidebar-submenu <?php echo e(menuActive('admin.gateway*', 2)); ?> ">
                         <ul>
 
@@ -361,46 +353,27 @@
 
                 <li class="sidebar__menu-header"><?php echo app('translator')->get('Settings'); ?></li>
                 <li class="sidebar-menu-item <?php echo e(menuActive('admin.setting.index')); ?>">
-                    <a href="<?php echo e(route('admin.setting.index')); ?>" class="nav-link">
-                        <i class="menu-icon las la-life-ring"></i>
-                        <span class="menu-title"><?php echo app('translator')->get('General Setting'); ?></span>
-                    </a>
+                    
                 </li>
 
                 <li class="sidebar-menu-item <?php echo e(menuActive('admin.setting.system.configuration')); ?>">
-                    <a href="<?php echo e(route('admin.setting.system.configuration')); ?>" class="nav-link">
-                        <i class="menu-icon las la-cog"></i>
-                        <span class="menu-title"><?php echo app('translator')->get('System Configuration'); ?></span>
-                    </a>
+                    
                 </li>
 
                 <li class="sidebar-menu-item <?php echo e(menuActive('admin.setting.logo.icon')); ?>">
-                    <a href="<?php echo e(route('admin.setting.logo.icon')); ?>" class="nav-link">
-                        <i class="menu-icon las la-images"></i>
-                        <span class="menu-title"><?php echo app('translator')->get('Logo & Favicon'); ?></span>
-                    </a>
+                    
                 </li>
 
                 <li class="sidebar-menu-item <?php echo e(menuActive('admin.extensions.index')); ?>">
-                    <a href="<?php echo e(route('admin.extensions.index')); ?>" class="nav-link">
-                        <i class="menu-icon las la-cogs"></i>
-                        <span class="menu-title"><?php echo app('translator')->get('Extensions'); ?></span>
-                    </a>
+                    
                 </li>
 
                 <li class="sidebar-menu-item  <?php echo e(menuActive(['admin.language.manage', 'admin.language.key'])); ?>">
-                    <a href="<?php echo e(route('admin.language.manage')); ?>" class="nav-link"
-                        data-default-url="<?php echo e(route('admin.language.manage')); ?>">
-                        <i class="menu-icon las la-language"></i>
-                        <span class="menu-title"><?php echo app('translator')->get('Language'); ?> </span>
-                    </a>
+                    
                 </li>
 
                 <li class="sidebar-menu-item <?php echo e(menuActive('admin.seo')); ?>">
-                    <a href="<?php echo e(route('admin.seo')); ?>" class="nav-link">
-                        <i class="menu-icon las la-globe"></i>
-                        <span class="menu-title"><?php echo app('translator')->get('SEO Manager'); ?></span>
-                    </a>
+                    
                 </li>
 
 
@@ -442,10 +415,7 @@
                 <li class="sidebar__menu-header"><?php echo app('translator')->get('Frontend Manager'); ?></li>
 
                 <li class="sidebar-menu-item <?php echo e(menuActive('admin.frontend.templates')); ?>">
-                    <a href="<?php echo e(route('admin.frontend.templates')); ?>" class="nav-link ">
-                        <i class="menu-icon la la-html5"></i>
-                        <span class="menu-title"><?php echo app('translator')->get('Manage Templates'); ?></span>
-                    </a>
+                    
                 </li>
 
                 <li class="sidebar-menu-item <?php echo e(menuActive('admin.frontend.manage.*')); ?>">
@@ -526,18 +496,11 @@
                 </li>
 
                 <li class="sidebar-menu-item <?php echo e(menuActive('admin.setting.custom.css')); ?>">
-                    <a href="<?php echo e(route('admin.setting.custom.css')); ?>" class="nav-link">
-                        <i class="menu-icon lab la-css3-alt"></i>
-                        <span class="menu-title"><?php echo app('translator')->get('Custom CSS'); ?></span>
-                    </a>
+                    
                 </li>
 
                 <li class="sidebar-menu-item  <?php echo e(menuActive('admin.request.report')); ?>">
-                    <a href="<?php echo e(route('admin.request.report')); ?>" class="nav-link"
-                        data-default-url="<?php echo e(route('admin.request.report')); ?>">
-                        <i class="menu-icon las la-bug"></i>
-                        <span class="menu-title"><?php echo app('translator')->get('Report & Request'); ?> </span>
-                    </a>
+                    
                 </li>
             </ul>
             <div class="text-center mb-3 text-uppercase">

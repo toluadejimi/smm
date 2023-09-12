@@ -284,31 +284,7 @@
             </div>
         </div>
 
-        <div class="modal fade" id="cronModal" role="dialog" aria-hidden="true" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle"><?php echo app('translator')->get('Cron Job Setting Instruction'); ?></h5>
-                        <button class="close" data-bs-dismiss="modal" type="button" aria-label="Close">
-                            <i class="las la-times"></i>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <h3 class="text--danger text-center"><?php echo app('translator')->get('Please Set Cron Job Now'); ?></h3>
-                        <p class="lead">
-                            <?php echo app('translator')->get('To automate the api order placement, we need to set the cron job and make sure the cron job is running properly. Set the Cron time as minimum as possible. Once per 5-15 minutes is ideal while once every minute is the best option.'); ?> </p>
-                        <label class="font-weight-bold"><?php echo app('translator')->get('Cron Command'); ?></label>
-
-                        <div class="input-group">
-                            <input class="form-control" id="referralURL" name="text" type="text" value="curl -s <?php echo e(route('cron')); ?>" readonly>
-                            <span class="input-group-text copytext btn btn--primary copyBoard pt-2" id="copyBoard">
-                                <?php echo app('translator')->get('Copy'); ?>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
 
     </div>
 <?php $__env->stopSection(); ?>

@@ -14,12 +14,12 @@
                         <span class="menu-title">@lang('Dashboard')</span>
                     </a>
                 </li>
-                <li class="sidebar-menu-item {{ menuActive('admin.api.provider.index') }}">
+                {{-- <li class="sidebar-menu-item {{ menuActive('admin.api.provider.index') }}">
                     <a href="{{ route('admin.api.provider.index') }}" class="nav-link">
                         <i class="menu-icon las la-cloud-download-alt"></i>
                         <span class="menu-title">@lang('Api Providers')</span>
                     </a>
-                </li>
+                </li> --}}
                 <li class="sidebar-menu-item {{ menuActive('admin.category.index') }}">
                     <a href="{{ route('admin.category.index') }}" class="nav-link ">
                         <i class="menu-icon las la-bars"></i>
@@ -181,10 +181,10 @@
                 </li>
 
                 <li class="sidebar-menu-item sidebar-dropdown">
-                    <a href="javascript:void(0)" class="{{ menuActive('admin.gateway*', 3) }}">
+                    {{-- <a href="javascript:void(0)" class="{{ menuActive('admin.gateway*', 3) }}">
                         <i class="menu-icon las la-credit-card"></i>
                         <span class="menu-title">@lang('Payment Gateways')</span>
-                    </a>
+                    </a> --}}
                     <div class="sidebar-submenu {{ menuActive('admin.gateway*', 2) }} ">
                         <ul>
 
@@ -361,46 +361,46 @@
 
                 <li class="sidebar__menu-header">@lang('Settings')</li>
                 <li class="sidebar-menu-item {{ menuActive('admin.setting.index') }}">
-                    <a href="{{ route('admin.setting.index') }}" class="nav-link">
+                    {{-- <a href="{{ route('admin.setting.index') }}" class="nav-link">
                         <i class="menu-icon las la-life-ring"></i>
                         <span class="menu-title">@lang('General Setting')</span>
-                    </a>
+                    </a> --}}
                 </li>
 
                 <li class="sidebar-menu-item {{ menuActive('admin.setting.system.configuration') }}">
-                    <a href="{{ route('admin.setting.system.configuration') }}" class="nav-link">
+                    {{-- <a href="{{ route('admin.setting.system.configuration') }}" class="nav-link">
                         <i class="menu-icon las la-cog"></i>
                         <span class="menu-title">@lang('System Configuration')</span>
-                    </a>
+                    </a> --}}
                 </li>
 
                 <li class="sidebar-menu-item {{ menuActive('admin.setting.logo.icon') }}">
-                    <a href="{{ route('admin.setting.logo.icon') }}" class="nav-link">
+                    {{-- <a href="{{ route('admin.setting.logo.icon') }}" class="nav-link">
                         <i class="menu-icon las la-images"></i>
                         <span class="menu-title">@lang('Logo & Favicon')</span>
-                    </a>
+                    </a> --}}
                 </li>
 
                 <li class="sidebar-menu-item {{ menuActive('admin.extensions.index') }}">
-                    <a href="{{ route('admin.extensions.index') }}" class="nav-link">
+                    {{-- <a href="{{ route('admin.extensions.index') }}" class="nav-link">
                         <i class="menu-icon las la-cogs"></i>
                         <span class="menu-title">@lang('Extensions')</span>
-                    </a>
+                    </a> --}}
                 </li>
 
                 <li class="sidebar-menu-item  {{ menuActive(['admin.language.manage', 'admin.language.key']) }}">
-                    <a href="{{ route('admin.language.manage') }}" class="nav-link"
+                    {{-- <a href="{{ route('admin.language.manage') }}" class="nav-link"
                         data-default-url="{{ route('admin.language.manage') }}">
                         <i class="menu-icon las la-language"></i>
                         <span class="menu-title">@lang('Language') </span>
-                    </a>
+                    </a> --}}
                 </li>
 
                 <li class="sidebar-menu-item {{ menuActive('admin.seo') }}">
-                    <a href="{{ route('admin.seo') }}" class="nav-link">
+                    {{-- <a href="{{ route('admin.seo') }}" class="nav-link">
                         <i class="menu-icon las la-globe"></i>
                         <span class="menu-title">@lang('SEO Manager')</span>
-                    </a>
+                    </a> --}}
                 </li>
 
 
@@ -442,10 +442,10 @@
                 <li class="sidebar__menu-header">@lang('Frontend Manager')</li>
 
                 <li class="sidebar-menu-item {{ menuActive('admin.frontend.templates') }}">
-                    <a href="{{ route('admin.frontend.templates') }}" class="nav-link ">
+                    {{-- <a href="{{ route('admin.frontend.templates') }}" class="nav-link ">
                         <i class="menu-icon la la-html5"></i>
                         <span class="menu-title">@lang('Manage Templates')</span>
-                    </a>
+                    </a> --}}
                 </li>
 
                 <li class="sidebar-menu-item {{ menuActive('admin.frontend.manage.*') }}">
@@ -526,18 +526,18 @@
                 </li>
 
                 <li class="sidebar-menu-item {{ menuActive('admin.setting.custom.css') }}">
-                    <a href="{{ route('admin.setting.custom.css') }}" class="nav-link">
+                    {{-- <a href="{{ route('admin.setting.custom.css') }}" class="nav-link">
                         <i class="menu-icon lab la-css3-alt"></i>
                         <span class="menu-title">@lang('Custom CSS')</span>
-                    </a>
+                    </a> --}}
                 </li>
 
                 <li class="sidebar-menu-item  {{ menuActive('admin.request.report') }}">
-                    <a href="{{ route('admin.request.report') }}" class="nav-link"
+                    {{-- <a href="{{ route('admin.request.report') }}" class="nav-link"
                         data-default-url="{{ route('admin.request.report') }}">
                         <i class="menu-icon las la-bug"></i>
                         <span class="menu-title">@lang('Report & Request') </span>
-                    </a>
+                    </a> --}}
                 </li>
             </ul>
             <div class="text-center mb-3 text-uppercase">

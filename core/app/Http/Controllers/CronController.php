@@ -26,17 +26,13 @@ class CronController extends Controller
 			]);
 			$response = json_decode($response);
 
+            dd($response);
+
 			if ($response->error) {
 				echo response()->json(['error' => $response->error]) . '<br>';
 				continue;
 			}
 
-			//Order placed
-            Order::where('order_placed_to_api', 0)->update([
-                'order_placed_to_api'=> 1,
-                'api_order_id' => $response->order,
-                'status' => 1,
-            ]);
 		
 		}
 	}

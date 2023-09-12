@@ -4,7 +4,9 @@ namespace App\Http\Controllers\User;
 
 use App\Constants\Status;
 use App\Http\Controllers\Controller;
+use App\Lib\CurlRequest;
 use App\Models\AdminNotification;
+use App\Models\ApiProvider;
 use App\Models\Order;
 use App\Models\Service;
 use App\Models\Transaction;
@@ -17,8 +19,6 @@ class OrderController extends Controller
 	{
 
 
-
-
 		$user    = auth()->user();
 
 		$service = Service::with('category')->active()->findOrFail($request->service);
@@ -27,12 +27,22 @@ class OrderController extends Controller
 		]);
 
 
+           if ($request->min > $request->qty) {
+			$notify[] = ["error", 'Quantity must be higher than the minimum order'];
+			return back()->withNotify($notify);
+		    }
+
+
 		$price = $service->price_per_k * $request->qty;
+
 
 		if ($user->balance < $price) {
 			$notify[] = ["error", 'Insufficient balance. Please deposit and try again'];
 			return to_route('user.deposit.index')->withNotify($notify);
 		}
+
+     
+
 
 		$user->balance -= $price;
 		$user->save();
@@ -49,7 +59,29 @@ class OrderController extends Controller
 		$transaction->remark       = 'order';
 		$transaction->save();
 
-		//Make order
+
+     
+
+        $url = ApiProvider::where('id', 1)->first()->api_url;
+        $api_key = ApiProvider::where('id', 1)->first()->api_key;
+
+        $response = CurlRequest::curlPostContent($url, [
+            'key'      => $api_key,
+            'action'   => "add",
+            'service'  => $service->api_service_id,
+            'link'     => $request->link,
+            'quantity' => $request->qty,
+        ]);
+        $response = json_decode($response);
+
+        $res = $response->order ?? null;
+        $err = $response->error ?? null;
+
+
+        
+
+        if($res > 0){
+        //Make order
 		$order                  = new Order();
 		$order->user_id         = $user->id;
 		$order->category_id     = $service->category->id;
@@ -58,10 +90,24 @@ class OrderController extends Controller
 		$order->api_provider_id = $service->api_provider_id ?? Status::NO;
 		$order->link            = $request->link;
 		$order->quantity        = $request->qty;
+        $order->api_order_id    = $response->order;
 		$order->price           = $price;
 		$order->remain          = $request->qty;
-		$order->api_order       = $service->api_service_id ? Status::YES : Status::NO;
+        $order->status          = 1;
+        $order->order_placed_to_api  = 1;
+		$order->api_order       = 1;
 		$order->save();
+        }else{
+                $notify[] = ["error", "$err"];
+                return back()->withNotify($notify);
+        }
+
+
+
+
+
+
+
 
 		//Create admin notification
 		$adminNotification            = new AdminNotification();

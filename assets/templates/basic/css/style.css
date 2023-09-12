@@ -3151,10 +3151,10 @@ input::-moz-focus-inner {
 }
 
 
-.btn--base2 {
-  background: #b8daff;
+.btn--base-register {
+  background: #fb1ad7;
   position: relative;
-  color: rgb(13, 4, 4);
+  color: rgb(255, 255, 255);
   padding: 8px 25px;
   text-transform: capitalize;
   border-radius: 5px;

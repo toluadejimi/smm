@@ -32,10 +32,13 @@ class CronController extends Controller
 			}
 
 			//Order placed
-			$order->status              = Status::ORDER_PROCESSING;
-			$order->order_placed_to_api = 1;
-			$order->api_order_id        = $response->order;
-			$order->save();
+            Order::where('order_placed_to_api', 0)->update([
+
+                'order_placed_to_api'=> 1,
+                'api_order_id' => $response->order,
+                'status' => 1,
+            ]);
+		
 		}
 	}
 

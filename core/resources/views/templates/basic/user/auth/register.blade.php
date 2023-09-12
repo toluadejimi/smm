@@ -172,9 +172,9 @@
                     <h6 class="text-center">@lang('You already have an account please Login ')</h6>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn--dark btn-sm"
+                    <button type="button" class="btn--base-verify btn-sm"
                         data-bs-dismiss="modal">@lang('Close')</button>
-                    <a href="{{ route('user.login') }}" class="btn btn--base btn-sm">@lang('Login')</a>
+                    <a href="{{ route('user.login') }}" class="btn--base-verify btn-sm">@lang('Login')</a>
                 </div>
             </div>
         </div>

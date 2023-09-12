@@ -3150,9 +3150,16 @@ input::-moz-focus-inner {
   box-shadow: 0px 10px 26px 0px rgba(77, 91, 237, 0.5);
 }
 
+
+.btn--base {
+  background: #b8daff;
+}
+
+
+
 .btn--base {
   position: relative;
-  background: #4d5bed;
+  background: #e6e8ff;
   color: white;
   padding: 8px 25px;
   text-transform: capitalize;

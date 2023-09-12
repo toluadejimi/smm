@@ -33,7 +33,7 @@
                                 @include($activeTemplate . 'partials.verification_code')
 
                                 <div class="mb-3">
-                                    <button type="submit" class="btn--base-register w-100">@lang('verify')</button>
+                                    <button type="submit" class="btn--base-verify w-100">@lang('verify')</button>
                                 </div>
 
                                 <div class="mb-3">

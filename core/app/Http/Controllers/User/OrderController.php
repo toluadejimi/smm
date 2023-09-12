@@ -22,9 +22,9 @@ class OrderController extends Controller
 		$user    = auth()->user();
 
 		$service = Service::with('category')->active()->findOrFail($request->service);
-		// $request->validate([
-		// 	'link'     => 'required|url',
-		// ]);
+		$request->validate([
+			'link'     => 'required|url',
+		]);
 
 
 		$price = $service->price_per_k * $request->qty;

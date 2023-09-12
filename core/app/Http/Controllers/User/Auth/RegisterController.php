@@ -73,7 +73,7 @@ class RegisterController extends Controller
         $countries = implode(',', array_column($countryData, 'country'));
         $validate = Validator::make($data, [
             'email' => 'required|string|email|unique:users',
-            'mobile' => 'required|regex:/^([0-9]*)$/',
+            // 'mobile' => 'required|regex:/^([0-9]*)$/',
             // 'password' => ['required', 'confirmed', $passwordValidation],
             'username' => 'required|unique:users|min:4',
             'captcha' => 'sometimes|required',

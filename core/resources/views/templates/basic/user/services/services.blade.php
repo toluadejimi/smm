@@ -16,8 +16,8 @@
 
 <div class="row">
 
-    <div class="row brand-cat-row">
-        <div class="col-lg-1">
+    <div class="row">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-3">
             <div class="card b-radius--10">
                 <div class="card-body">
                     <a href="javascript:void(0);" class="media brand-category" data-id="facebook">
@@ -28,7 +28,11 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-1 col-md-3 col-sm-4 col-6">
+
+
+
+
+        <div class="col-lg-1 col-md-1 col-sm-1 col-3 mb-1">
             <div class="card b-radius--10">
                 <div class="card-body">
                     <a href="javascript:void(0);" class="media brand-category" data-id="youtube">
@@ -39,7 +43,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-1 col-md-3 col-sm-4 col-6">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-3">
             <div class="card b-radius--10">
                 <div class="card-body">
                     <a href="javascript:void(0);" class="media brand-category" data-id="instagram">
@@ -49,7 +53,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-1 col-md-3 col-sm-4 col-6">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-3">
             <div class="card b-radius--10">
                 <div class="card-body">
                     <a href="javascript:void(0);" class="media brand-category" data-id="tiktok">
@@ -59,7 +63,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-1 col-md-3 col-sm-4 col-6">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-3">
             <div class="card b-radius--10">
                 <div class="card-body">
                     <a href="javascript:void(0);" class="media brand-category" data-id="spotify">
@@ -69,7 +73,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-1 col-md-3 col-sm-4 col-6">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-3 mb-1">
             <div class="card b-radius--10">
                 <div class="card-body">
                     <a href="javascript:void(0);" class="media brand-category" data-id="twitter">
@@ -79,7 +83,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-1 col-md-3 col-sm-4 col-6">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-3">
             <div class="card b-radius--10">
                 <div class="card-body">
                     <a href="javascript:void(0);" class="media brand-category" data-id="snapchat">
@@ -89,7 +93,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-1 col-md-3 col-sm-4 col-6">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-3">
             <div class="card b-radius--10">
                 <div class="card-body">
                     <a href="javascript:void(0);" class="media brand-category" data-id="telegram">
@@ -99,7 +103,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-1 col-md-3 col-sm-4 col-6">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-3">
             <div class="card b-radius--10">
                 <div class="card-body">
                     <a href="javascript:void(0);" class="media brand-category" data-id="soundcloud">
@@ -109,7 +113,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-1 col-md-3 col-sm-4 col-6">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-3">
             <div class="card b-radius--10">
                 <div class="card-body">
                     <a href="javascript:void(0);" class="media brand-category" data-id="linkedin">
@@ -119,7 +123,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-1 col-md-3 col-sm-4 col-6">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-3">
             <div class="card b-radius--10">
                 <div class="card-body">
                     <a href="javascript:void(0);" class="media brand-category" data-id="twitch">
@@ -129,7 +133,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-1 col-md-3 col-sm-4 col-6">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-3">
             <div class="card b-radius--10">
                 <div class="card-body">
                     <a href="javascript:void(0);" class="media brand-category" data-id="pintrest">

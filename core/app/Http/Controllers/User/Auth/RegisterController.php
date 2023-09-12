@@ -136,8 +136,8 @@ class RegisterController extends Controller
         $user->email = strtolower(trim($data['email']));
         $user->password = Hash::make($data['password']);
         $user->username = trim($data['username']);
-        $user->country_code = $data['country_code'];
-        $user->mobile = $data['mobile_code'] . $data['mobile'];
+        $user->country_code = 234;
+        $user->mobile = 0;
         $user->address = [
             'address' => '',
             'state' => '',

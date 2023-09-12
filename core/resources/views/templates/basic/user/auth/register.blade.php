@@ -142,7 +142,7 @@
                                         </div>
                                     @endif
                                     <div class="form-group mt-3">
-                                        <button type="submit" id="recaptcha" class="btn .btn--base-register w-100">
+                                        <button type="submit" id="recaptcha" class="btn btn--base-register w-100">
                                             @lang('Register')</button>
                                     </div>
                                     <p class="mt-3">@lang('Already have an account?')

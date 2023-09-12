@@ -63,35 +63,9 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6">
-                                            <div class="form-group mb-3">
-                                                <label class="form-label"><?php echo app('translator')->get('Country'); ?></label>
-                                                <select name="country" class="form-control form--control">
-                                                    <?php $__currentLoopData = $countries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $country): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                        <option data-mobile_code="<?php echo e($country->dial_code); ?>"
-                                                            value="<?php echo e($country->country); ?>" data-code="<?php echo e($key); ?>">
-                                                            <?php echo e(__($country->country)); ?></option>
-                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                </select>
-                                            </div>
-                                        </div>
+                                        
 
-                                        <div class="col-md-6">
-                                            <div class="form-group mb-3">
-                                                <label class="form-label"><?php echo app('translator')->get('Mobile'); ?></label>
-                                                <div class="input-group ">
-                                                    <span class="input-group-text mobile-code">
-
-                                                    </span>
-                                                    <input type="hidden" name="mobile_code">
-                                                    <input type="hidden" name="country_code">
-                                                    <input type="number" name="mobile" value="<?php echo e(old('mobile')); ?>"
-                                                        class="form-control form--control checkUser"
-                                                        placeholder="<?php echo app('translator')->get('Your Phone Number'); ?>" required>
-                                                </div>
-                                                <small class="text--danger mobileExist"></small>
-                                            </div>
-                                        </div>
+                                        
 
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
@@ -155,7 +129,7 @@
                                         </div>
                                     <?php endif; ?>
                                     <div class="form-group mt-3">
-                                        <button type="submit" id="recaptcha" class="btn btn--base w-100">
+                                        <button type="submit" id="recaptcha" class="btn btn--base--more w-100">
                                             <?php echo app('translator')->get('Register'); ?></button>
                                     </div>
                                     <p class="mt-3"><?php echo app('translator')->get('Already have an account?'); ?>

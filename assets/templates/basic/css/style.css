@@ -3151,8 +3151,21 @@ input::-moz-focus-inner {
 }
 
 
-.btn--base {
+.btn--base2 {
   background: #b8daff;
+  position: relative;
+  color: rgb(13, 4, 4);
+  padding: 8px 25px;
+  text-transform: capitalize;
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 2;
+  overflow: hidden;
+  -webkit-transition: all ease 0.5s;
+  -moz-transition: all ease 0.5s;
+  transition: all ease 0.5s;
 }
 
 

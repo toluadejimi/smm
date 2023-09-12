@@ -20,7 +20,7 @@
                                     <li><a href="<?php echo e(route('pages', [$data->slug])); ?>"><?php echo e(__($data->name)); ?></a>
                                     </li>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                <li><a href="<?php echo e(route('blog')); ?>"> <?php echo app('translator')->get('Blog'); ?></a> </li>
+                                
 
                                 <li><a href="<?php echo e(route('contact')); ?>"><?php echo app('translator')->get('Contact'); ?></a></li>
 

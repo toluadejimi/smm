@@ -64,7 +64,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6">
+                                        {{-- <div class="col-md-6">
                                             <div class="form-group mb-3">
                                                 <label class="form-label">@lang('Country')</label>
                                                 <select name="country" class="form-control form--control">
@@ -75,9 +75,9 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
-                                        <div class="col-md-6">
+                                        {{-- <div class="col-md-6">
                                             <div class="form-group mb-3">
                                                 <label class="form-label">@lang('Mobile')</label>
                                                 <div class="input-group ">
@@ -92,7 +92,7 @@
                                                 </div>
                                                 <small class="text--danger mobileExist"></small>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
@@ -142,7 +142,7 @@
                                         </div>
                                     @endif
                                     <div class="form-group mt-3">
-                                        <button type="submit" id="recaptcha" class="btn btn--base w-100">
+                                        <button type="submit" id="recaptcha" class="btn btn--base2 w-100">
                                             @lang('Register')</button>
                                     </div>
                                     <p class="mt-3">@lang('Already have an account?')

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Lib\CurlRequest;
 use App\Models\AdminNotification;
 use App\Models\Deposit;
+use App\Models\GeneralSetting;
 use App\Models\Order;
 use App\Models\Transaction;
 use App\Models\User;
@@ -23,6 +24,43 @@ class AdminController extends Controller
     {
 
         $pageTitle = 'Dashboard';
+
+
+
+
+        $orders = Order::where('status', Status::ORDER_PROCESSING)->with('provider')->where('api_provider_id', '!=', 0)->where('order_placed_to_api', 1)->get();
+		foreach ($orders as $order) {
+			$response = CurlRequest::curlPostContent($order->provider->api_url, [
+				'key'    => $order->provider->api_key,
+				'action' => "status",
+				'order'  => $order->api_order_id,
+			]);
+			$response = json_decode($response);
+
+			if ($response->error) {
+				echo response()->json(['error' => $response->error]) . '<br>';
+				continue;
+			}
+
+			$order->start_counter = $response->start_count;
+			$order->remain        = $response->remains;
+
+			if ($response->status == 'Completed') {
+				$order->status = Status::ORDER_COMPLETED;
+			}
+
+			if ($response->status == 'Cancelled') {
+				$order->status = Status::ORDER_CANCELLED;
+			}
+
+			if ($response->status == 'Refunded') {
+				$order->status = Status::ORDER_REFUNDED;
+			}
+
+			$order->save();
+		}
+
+        
 
         // User Info
         $widget['total_users'] = User::count();

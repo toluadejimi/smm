@@ -37,6 +37,8 @@ class AdminController extends Controller
 			]);
 			$response = json_decode($response);
 
+            dd($response);
+
 			if ($response->error) {
 				echo response()->json(['error' => $response->error]) . '<br>';
 				continue;
@@ -60,7 +62,7 @@ class AdminController extends Controller
 			$order->save();
 		}
 
-        
+
 
         // User Info
         $widget['total_users'] = User::count();

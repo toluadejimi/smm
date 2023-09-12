@@ -45,7 +45,7 @@ Route::middleware('auth')->name('user.')->group(function () {
         Route::get('user-data', 'UserController@userData')->name('data');
         Route::post('user-data-submit', 'UserController@userDataSubmit')->name('data.submit');
 
-        Route::middleware('registration.complete')->group(function () {
+        //Route::middleware('registration.complete')->group(function () {
 
             Route::controller('UserController')->group(function () {
                 Route::get('dashboard', 'home')->name('home');
@@ -92,7 +92,7 @@ Route::middleware('auth')->name('user.')->group(function () {
                 Route::get('change-password', 'changePassword')->name('change.password');
                 Route::post('change-password', 'submitPassword');
             });
-        });
+        //});
     });
     // Payment
     Route::controller('Gateway\PaymentController')->prefix('deposit')->name('deposit.')->group(function () {

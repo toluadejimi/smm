@@ -30,6 +30,8 @@
                                 <p class="verification-text">@lang('A 6 digit verification code sent to your email address'):
                                     {{ showEmailAddress(auth()->user()->email) }}</p>
 
+                                <p class="verification-text">@lang('If verification code not found in Inbox, Check your spam folder.')</p>
+
                                 @include($activeTemplate . 'partials.verification_code')
 
                                 <div class="mb-3">

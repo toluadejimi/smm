@@ -367,7 +367,10 @@
                 </li>
 
                 <li class="sidebar-menu-item <?php echo e(menuActive('admin.setting.logo.icon')); ?>">
-                    
+                    <a href="<?php echo e(route('admin.setting.logo.icon')); ?>" class="nav-link">
+                        <i class="menu-icon las la-images"></i>
+                        <span class="menu-title"><?php echo app('translator')->get('Logo & Favicon'); ?></span>
+                    </a>
                 </li>
 
                 <li class="sidebar-menu-item <?php echo e(menuActive('admin.extensions.index')); ?>">
@@ -379,7 +382,10 @@
                 </li>
 
                 <li class="sidebar-menu-item <?php echo e(menuActive('admin.seo')); ?>">
-                    
+                    <a href="<?php echo e(route('admin.seo')); ?>" class="nav-link">
+                        <i class="menu-icon las la-globe"></i>
+                        <span class="menu-title"><?php echo app('translator')->get('SEO Manager'); ?></span>
+                    </a>
                 </li>
 
 

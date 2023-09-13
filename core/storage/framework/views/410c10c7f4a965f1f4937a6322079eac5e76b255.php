@@ -1,4 +1,31 @@
 <?php $__env->startSection('panel'); ?>
+
+
+
+<style>
+
+    .float{
+        position:fixed;
+        width:60px;
+        height:60px;
+        bottom:50px;
+        right:40px;
+        background-color:#25d366;
+        color:#FFF;
+        border-radius:50px;
+        text-align:center;
+      font-size:40px;
+        box-shadow: 2px 2px 3px #999;
+      z-index:100;
+    }
+
+</style>
+
+
+
+
+
+
     <div class="row gy-4">
         <div class="col-xxl-4 col-sm-6">
             <div class="card bg--primary has-link box--shadow2 overflow-hidden">
@@ -189,6 +216,12 @@
             </div>
         </div><!-- dashboard-w1 end -->
     </div><!-- row end-->
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<a href="<?php echo e($whatsapp_link); ?>" class="float" target="_blank">
+<i class="fa fa-whatsapp my-float"></i>
+</a>
+
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make($activeTemplate . 'layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/project/smm/core/resources/views/templates/basic/user/dashboard.blade.php ENDPATH**/ ?>

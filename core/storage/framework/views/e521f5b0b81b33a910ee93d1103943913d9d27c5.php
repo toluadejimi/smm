@@ -23,7 +23,29 @@
 
 
 
+ 
+    
+
+
+
     <style>
+
+        .float{
+            position:fixed;
+            width:60px;
+            height:60px;
+            bottom:50px;
+            right:40px;
+            background-color:#25d366;
+            color:#FFF;
+            border-radius:50px;
+            text-align:center;
+          font-size:40px;
+            box-shadow: 2px 2px 3px #999;
+          z-index:100;
+        }
+
+        
         .integration-fixed {
             position: fixed;
             z-index: 10000000

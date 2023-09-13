@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Lib\GoogleAuthenticator;
 use App\Models\Category;
 use App\Models\Deposit;
+use App\Models\GeneralSetting;
 use App\Models\Order;
 use App\Models\Service;
 use App\Models\SupportTicket;
@@ -31,7 +32,9 @@ class UserController extends Controller
         $widget['deposit']           = Deposit::successful()->where('user_id', $user->id)->sum('amount');
         $widget['total_service']     = Service::active()->count();
         $widget['total_ticket']      = SupportTicket::where('user_id', $user->id)->count();
-        return view($this->activeTemplate . 'user.dashboard', compact('pageTitle', 'widget'));
+
+        $whatsapp_link = GeneralSetting::where('id', 1)->first()->whatsapp_link;
+        return view($this->activeTemplate . 'user.dashboard', compact('pageTitle', 'widget', 'whatsapp_link'));
     }
 
     public function depositHistory(Request $request)
@@ -161,7 +164,9 @@ class UserController extends Controller
         $categories = Category::active()->whereHas('services', function ($services) {
             return $services->active();
         })->orderBy('name')->get();
-        return view($this->activeTemplate . 'user.services.services', compact('pageTitle', 'categories'));
+
+        $whatsapp_link = GeneralSetting::where('id', 1)->first()->whatsapp_link;
+        return view($this->activeTemplate . 'user.services.services', compact('pageTitle', 'categories', 'whatsapp_link'));
     }
 
     public function serviceCategory($id)

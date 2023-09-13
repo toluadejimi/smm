@@ -1,4 +1,26 @@
 <?php $__env->startSection('panel'); ?>
+
+<style>
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:30px;
+	box-shadow: 2px 2px 3px #999;
+  z-index:100;
+}
+
+.my-float{
+	margin-top:16px;
+}
+
+</style>
 <div class="row gy-4">
 
     <div class="card bg--primary has-link box--shadow2 overflow-hidden">
@@ -342,6 +364,15 @@
 
 
 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<a href="<?php echo e($whatsapp_link); ?>" class="float" target="_blank">
+<i class="fa fa-whatsapp my-float"></i>
+</a>
+
+
+
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startPush('script'); ?>
@@ -352,7 +383,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     $(document).ready(function () {
-                     
+
                                /*------------------------------------------
                                --------------------------------------------
                                Country Dropdown Change Event
@@ -371,7 +402,7 @@
                                        dataType: 'json',
                                        success: function (result) {
                                           console.log(result)
-                                        
+
 
                                           $('#state-dropdown').html('<option value="">-- Select Service --</option>');
                                           $.each(result.services, function (key, value) {
@@ -383,7 +414,7 @@
                                        }
                                    });
                                });
-                        
+
 
                               /*------------------------------------------
                                --------------------------------------------
@@ -415,7 +446,7 @@
 
 
                                         });
-                                     
+
 
                                     }
                                 });
@@ -424,7 +455,7 @@
                         });
 
 
-                    
+
 
 
 
@@ -500,4 +531,5 @@
         })(jQuery);
 </script>
 <?php $__env->stopPush(); ?>
+
 <?php echo $__env->make($activeTemplate . 'layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/project/smm/core/resources/views/templates/basic/user/services/services.blade.php ENDPATH**/ ?>

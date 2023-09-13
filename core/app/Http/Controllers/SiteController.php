@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Constants\Status;
 use App\Models\AdminNotification;
 use App\Models\Frontend;
+use App\Models\GeneralSetting;
 use App\Models\Language;
 use App\Models\Page;
 use App\Models\Subscriber;
@@ -20,7 +21,9 @@ class SiteController extends Controller
     {
         $pageTitle = 'Home';
         $sections  = Page::where('tempname', $this->activeTemplate)->where('slug', '/')->first();
-        return view($this->activeTemplate . 'home', compact('pageTitle', 'sections'));
+        $whatsapp_link = GeneralSetting::where('id', 1)->first()->whatsapp_link;
+
+        return view($this->activeTemplate . 'home', compact('pageTitle', 'sections', 'whatsapp_link'));
     }
 
     public function pages($slug)

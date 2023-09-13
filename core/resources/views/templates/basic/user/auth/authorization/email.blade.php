@@ -45,6 +45,10 @@
                                             @lang('Try again')</a>
                                     </p>
 
+
+                                    <p class="text--base">@lang('If verification code not found in Inbox, Check your spam folder.')</p>
+
+
                                     @if ($errors->has('resend'))
                                         <small class="text-danger d-block">{{ $errors->first('resend') }}</small>
                                     @endif

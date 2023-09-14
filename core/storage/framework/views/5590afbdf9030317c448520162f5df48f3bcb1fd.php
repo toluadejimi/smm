@@ -129,7 +129,7 @@
                                         </div>
                                     <?php endif; ?>
                                     <div class="form-group mt-3">
-                                        <button type="submit" id="recaptcha" class="btn btn--base--more w-100">
+                                        <button type="submit" id="recaptcha" class="btn--base-register w-100">
                                             <?php echo app('translator')->get('Register'); ?></button>
                                     </div>
                                     <p class="mt-3"><?php echo app('translator')->get('Already have an account?'); ?>
@@ -159,9 +159,9 @@
                     <h6 class="text-center"><?php echo app('translator')->get('You already have an account please Login '); ?></h6>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn--dark btn-sm"
+                    <button type="button" class="btn--base-verify btn-sm"
                         data-bs-dismiss="modal"><?php echo app('translator')->get('Close'); ?></button>
-                    <a href="<?php echo e(route('user.login')); ?>" class="btn btn--base btn-sm"><?php echo app('translator')->get('Login'); ?></a>
+                    <a href="<?php echo e(route('user.login')); ?>" class="btn--base-verify btn-sm"><?php echo app('translator')->get('Login'); ?></a>
                 </div>
             </div>
         </div>

@@ -14,7 +14,7 @@
             @endif
             @if (session()->has('message'))
             <div class="alert alert-success">
-                {{ session()->get('message') }} 
+                {{ session()->get('message') }}
             </div>
             @endif
             @if (session()->has('error'))
@@ -60,7 +60,7 @@
                                                 {{ __($general->cur_text) }}
                                             </strong>
                                         </td>
-                                        
+
                                         <td class="text-center">
                                             @php echo $deposit->statusBadge @endphp
                                         </td>
@@ -111,6 +111,7 @@
     </div>
 @endsection
 
+
 @push('breadcrumb-plugins')
     <x-search-form placeholder="Search by Trx" />
     <a href="{{ route('user.deposit.index') }}" class="btn btn-outline--primary">
@@ -118,6 +119,18 @@
         @lang('Deposit Now')
     </a>
 @endpush
+
+@push('breadcrumb-plugins')
+    <a href="https://streamable.com/9lv2o4" class="btn btn-warning">
+        <i class="las la-cloud"></i>
+        @lang('How to deposit')
+    </a>
+@endpush
+
+
+
+
+
 @push('script')
     <script>
         (function($) {

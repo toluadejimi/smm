@@ -13,7 +13,8 @@
             <?php endif; ?>
             <?php if(session()->has('message')): ?>
             <div class="alert alert-success">
-                <?php echo e(session()->get('message')); ?> 
+                <?php echo e(session()->get('message')); ?>
+
             </div>
             <?php endif; ?>
             <?php if(session()->has('error')): ?>
@@ -63,7 +64,7 @@
 
                                             </strong>
                                         </td>
-                                        
+
                                         <td class="text-center">
                                             <?php echo $deposit->statusBadge ?>
                                         </td>
@@ -115,6 +116,7 @@
     </div>
 <?php $__env->stopSection(); ?>
 
+
 <?php $__env->startPush('breadcrumb-plugins'); ?>
     <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.search-form','data' => ['placeholder' => 'Search by Trx']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
@@ -136,6 +138,18 @@
         <?php echo app('translator')->get('Deposit Now'); ?>
     </a>
 <?php $__env->stopPush(); ?>
+
+<?php $__env->startPush('breadcrumb-plugins'); ?>
+    <a href="https://streamable.com/9lv2o4" class="btn btn-warning">
+        <i class="las la-cloud"></i>
+        <?php echo app('translator')->get('How to deposit'); ?>
+    </a>
+<?php $__env->stopPush(); ?>
+
+
+
+
+
 <?php $__env->startPush('script'); ?>
     <script>
         (function($) {

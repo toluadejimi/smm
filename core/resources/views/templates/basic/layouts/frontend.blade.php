@@ -23,8 +23,8 @@
 
 
 
- 
-    
+
+
 
 
 
@@ -45,7 +45,7 @@
           z-index:100;
         }
 
-        
+
         .integration-fixed {
             position: fixed;
             z-index: 10000000
@@ -123,10 +123,10 @@
     </div>
     <!-- footer-section end -->
 
-    @php
+    {{-- @php
         $cookie = App\Models\Frontend::where('data_keys', 'cookie.data')->first();
-    @endphp
-    @if ($cookie->data_values->status == Status::ENABLE && !\Cookie::get('gdpr_cookie'))
+    @endphp --}}
+    {{-- @if ($cookie->data_values->status == Status::ENABLE && !\Cookie::get('gdpr_cookie'))
         <!-- cookies dark version start -->
         <div class="cookies-card hide text-center">
             <div class="cookies-card__icon bg--base">
@@ -138,7 +138,7 @@
                 <button class="btn submit-btn w-100 policy" type="button">@lang('Allow')</button>
             </div>
         </div>
-    @endif
+    @endif --}}
     <script src="{{ asset('assets/global/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('assets/global/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset($activeTemplateTrue . 'js/jquery.magnific-popup.js') }}"></script>

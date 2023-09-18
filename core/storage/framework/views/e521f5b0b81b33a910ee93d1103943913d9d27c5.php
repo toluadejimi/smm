@@ -23,8 +23,8 @@
 
 
 
- 
-    
+
+
 
 
 
@@ -45,7 +45,7 @@
           z-index:100;
         }
 
-        
+
         .integration-fixed {
             position: fixed;
             z-index: 10000000
@@ -123,22 +123,8 @@
     </div>
     <!-- footer-section end -->
 
-    <?php
-        $cookie = App\Models\Frontend::where('data_keys', 'cookie.data')->first();
-    ?>
-    <?php if($cookie->data_values->status == Status::ENABLE && !\Cookie::get('gdpr_cookie')): ?>
-        <!-- cookies dark version start -->
-        <div class="cookies-card hide text-center">
-            <div class="cookies-card__icon bg--base">
-                <i class="las la-cookie-bite"></i>
-            </div>
-            <p class="cookies-card__content mt-4"><?php echo e($cookie->data_values->short_desc); ?> <a
-                    class="link-text" href="<?php echo e(route('cookie.policy')); ?>" target="_blank"><?php echo app('translator')->get('learn more'); ?></a></p>
-            <div class="cookies-card__btn mt-4">
-                <button class="btn submit-btn w-100 policy" type="button"><?php echo app('translator')->get('Allow'); ?></button>
-            </div>
-        </div>
-    <?php endif; ?>
+    
+    
     <script src="<?php echo e(asset('assets/global/js/jquery-3.6.0.min.js')); ?>"></script>
     <script src="<?php echo e(asset('assets/global/js/bootstrap.bundle.min.js')); ?>"></script>
     <script src="<?php echo e(asset($activeTemplateTrue . 'js/jquery.magnific-popup.js')); ?>"></script>

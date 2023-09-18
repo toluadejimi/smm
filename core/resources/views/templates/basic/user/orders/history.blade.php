@@ -24,16 +24,16 @@
                                 @forelse ($orders as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td class="break_line">{{ __($item->category->name) }}</td>
+                                        <td class="break_line">{{ __($item->category->name ) ?? "service" }}</td>
                                         <td class="break_line">
-                                            {{ __($item->service->name) }}</td>
+                                            {{ __($item->service->name) ?? "service" }}</td>
                                         <td class="break_line"><a
                                                 href="{{ empty(parse_url($item->link, PHP_URL_SCHEME)) ? 'https://' : null }}{{ $item->link }}"
                                                 target="_blank">{{ $item->link }}</a></td>
-                                        <td>{{ $item->quantity }}</td>
-                                        <td>{{ $item->start_counter }}</td>
-                                        <td>{{ $item->remain }}</td>
-                                        <td>{{ showDateTime($item->created_at) }}</td>
+                                        <td>{{ $item->quantity ?? "0" }}</td>
+                                        <td>{{ $item->start_counter ?? "0" }}</td>
+                                        <td>{{ $item->remain ?? "0" }}</td>
+                                        <td>{{ showDateTime($item->created_at) ?? "date" }}</td>
                                         <td>
                                             @if ($item->status == 0)
                                                 <span

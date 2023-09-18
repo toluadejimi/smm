@@ -26,7 +26,7 @@
                                         <td>{{ $item->id }}</td>
                                         <td class="break_line">{{ __($item->category->name ) ?? "service" }}</td>
                                         <td class="break_line">
-                                            {{ __($item->service->name) ?? "service" }}</td>
+                                            {{ __($item->service->name ?? "service" )  }}</td>
                                         <td class="break_line"><a
                                                 href="{{ empty(parse_url($item->link, PHP_URL_SCHEME)) ? 'https://' : null }}{{ $item->link }}"
                                                 target="_blank">{{ $item->link }}</a></td>

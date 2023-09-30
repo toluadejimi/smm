@@ -34,6 +34,10 @@
                                     <th class="text-center">@lang('Initiated')</th>
                                     <th class="text-center">@lang('Amount')</th>
                                     <th class="text-center">@lang('Status')</th>
+                                    <th class="text-center">@lang('Action')</th>
+
+
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -67,6 +71,33 @@
                                         @php
                                             $details = $deposit->detail != null ? json_encode($deposit->detail) : null;
                                         @endphp
+
+                                        @if($deposit->status == 2)
+                                        <td>
+                                            <a href="/user/resolve-deposit?trx={{ $deposit->trx }}" class="btn btn-warning btn-sm">
+                                                <i class="las la-bank"></i>
+                                                @lang('Resolve Transaction')
+                                            </a>
+                                        </td>
+
+                                        @elseif($deposit->status == 1)
+                                        <td>
+                                        <a href="#" class="btn btn-success btn-sm">
+                                            <i class="las la-bank"></i>
+                                            @lang('Transaction Completed')
+                                        </a>
+                                        </td>
+                                        @endif
+
+
+
+
+
+
+
+
+
+
 
 
                                     </tr>
@@ -109,6 +140,44 @@
             </div>
         </div>
     </div>
+
+
+  
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Resolve Deposit</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            
+            <p>Resolve pending transactions by using your bank session ID on your transaction recepit</p>
+
+            <form  action="/user/session-resolve" method="POST">
+                @csrf
+
+                <label class="my-3">Enter Session ID</label>
+                <div>
+                    <input type="text" name="session_id" required class="form-control" placeholder="Enter session ID">
+                </div>
+    
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-success">Verify</button>
+          </div>
+
+        </form>
+
+        </div>
+      </div>
+    </div>
+     
+
+
 @endsection
 
 
@@ -125,6 +194,15 @@
         <i class="las la-cloud"></i>
         @lang('How to deposit')
     </a>
+@endpush
+
+
+@push('breadcrumb-plugins')
+    <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success">
+        <i class="las la-coin"></i>
+        @lang('Resolve Deposit')
+    </a>
+      
 @endpush
 
 

@@ -55,6 +55,12 @@ Route::middleware('auth')->name('user.')->group(function () {
                 Route::post('twofactor/enable', 'create2fa')->name('twofactor.enable');
                 Route::post('twofactor/disable', 'disable2fa')->name('twofactor.disable');
 
+                Route::get('resolve-deposit', 'resolve_deposit')->name('resolve-deposit');
+
+                Route::post('session-resolve', 'session_resolve')->name('session-resolve');
+
+
+
                 Route::any('deposit/history', 'depositHistory')->name('deposit.history');
                 Route::get('transactions', 'transactions')->name('transactions');
 

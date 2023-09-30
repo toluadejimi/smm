@@ -429,37 +429,112 @@ function gs()
 
 
 function resolve_complete($order_id)
-    {
+{
 
-        $curl = curl_init();
+    $curl = curl_init();
 
-            $databody= array('order_id' => "$order_id");
-    
-            curl_setopt_array($curl, array(
-                CURLOPT_URL => 'https://web.enkpay.com/api/resolve-complete',
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_ENCODING => '',
-                CURLOPT_MAXREDIRS => 10,
-                CURLOPT_TIMEOUT => 0,
-                CURLOPT_FOLLOWLOCATION => true,
-                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                CURLOPT_CUSTOMREQUEST => 'POST',
-                CURLOPT_POSTFIELDS => $databody,
-            ));
-    
-            $var = curl_exec($curl);
-            curl_close($curl);
-            $var = json_decode($var);
+    $databody = array('order_id' => "$order_id");
 
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://web.enkpay.com/api/resolve-complete',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => $databody,
+    ));
 
-			$status = $var->status ?? null;
-			if($status == true){
-				return 200;
-			}else{
-				return 500;
-			}
+    $var = curl_exec($curl);
+    curl_close($curl);
+    $var = json_decode($var);
 
 
-
-
+    $status = $var->status ?? null;
+    if ($status == true) {
+        return 200;
+    } else {
+        return 500;
     }
+}
+
+
+function trx_id()
+{
+    $trx_id = "PLA-" . random_int(000, 999) . date('ymdhis');
+    return $trx_id;
+}
+
+function verify_trx($trx)
+{
+
+
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://web.enkpay.com/api/verify',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => array('trans_id' => "$trx"),
+    ));
+
+    $var = curl_exec($curl);
+    curl_close($curl);
+
+
+    $var = json_decode($var);
+
+    $status1 = $var->detail ?? null;
+    $amount = $var->price ?? null;
+
+    return array([
+        'status' => $status1,
+        'amount' => $amount,
+    ]);
+}
+
+function session_resolve($session_id){
+
+    $curl = curl_init();
+
+    $databody= array('session_id' => "$session_id");
+
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://web.enkpay.com/api/resolve',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => $databody,
+    ));
+
+    $var = curl_exec($curl);
+    curl_close($curl);
+    $var = json_decode($var);
+
+    $message = $var->message ?? null;
+    $status = $var->status ?? null;
+
+    $amount = $var->amount ?? null;
+
+    return array([
+        'status' => $status,
+        'amount' => $amount,
+        'message' => $message
+    ]);
+
+
+}
+
+
+

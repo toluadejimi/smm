@@ -28,7 +28,7 @@ class PaymentController extends Controller
 
     public function depositInsert(Request $request)
     {
-    
+
 
         $request->validate([
             'amount'      => 'required|numeric|gt:0',
@@ -36,7 +36,7 @@ class PaymentController extends Controller
 
 
         $key = env('WEBKEY');
-        $ref = getTrx();
+        $ref = trx_id();
         $email = Auth::user()->email;
 
         $url = "https://web.enkpay.com/pay?amount=$request->amount&key=$key&ref=$ref&email=$email";
@@ -53,6 +53,8 @@ class PaymentController extends Controller
         $data->btc_amo         = 0;
         $data->btc_wallet      = "";
         $data->trx             = $ref;
+        $data->status          = 2;
+
         $data->save();
         return Redirect::to($url);
     }
@@ -119,7 +121,7 @@ class PaymentController extends Controller
 
             Deposit::where('trx', $trx_id)->update(['status' => 1]);
             User::where('id', Auth::id())->increment('balance', $amount);
-            $order_id = $trx_id; 
+            $order_id = $trx_id;
             resolve_complete($order_id);
 
             // $message =  Auth::user()->name . "| funding successful |" . number_format($amount, 2) . "\n\n IP ====> $ip". "\n\n OrderID ====> $trx_id";

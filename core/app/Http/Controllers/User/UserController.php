@@ -12,7 +12,9 @@ use App\Models\Order;
 use App\Models\Service;
 use App\Models\SupportTicket;
 use App\Models\Transaction;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -176,4 +178,60 @@ class UserController extends Controller
         $services  = Service::active()->where('category_id', $id)->paginate(getPaginate());
         return view($this->activeTemplate . 'user.services.category', compact('pageTitle', 'services'));
     }
+
+
+    public function resolve_deposit(request $request)
+    {
+
+        $verify = verify_trx($request->trx);
+
+        $status = $verify[0]['status'];
+        $amount = $verify[0]['amount'];
+
+        if($status == 'success'){
+
+            User::where('id', Auth::id())->increment('balance', $amount);
+            Deposit::where('trx', $request->trx)->update(['status' => 1]);
+
+            return back()->with('message', 'Wallet has been successfully funded');
+        }
+
+        if($status == 'failed'){
+            return back()->with('error', 'Transaction not found, Please make use of resolve deposit');
+        }
+
+
+    }
+
+
+
+    public function session_resolve(request $request)
+    {
+
+
+       $resolve = session_resolve($request->session_id);
+
+       $status = $resolve[0]['status'];
+       $amount = $resolve[0]['amount'];
+       $message = $resolve[0]['message'];
+
+
+        if($status == true){
+            User::where('id', Auth::id())->increment('balance', $amount);
+            return back()->with('message', "Transaction successfully Resolved, NGN $amount added to ur wallet");
+        }
+    
+        if($status == false){
+            return back()->with('error', "$message");
+        }
+
+
+    }
+
+
+
+
+
+
+
 }

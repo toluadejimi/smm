@@ -6,6 +6,14 @@ Route::get('/clear', function () {
     \Illuminate\Support\Facades\Artisan::call('optimize:clear');
 });
 
+
+
+
+
+
+
+
+
 //Cron Controller
 Route::get('cron', 'CronController@placeOrderToApi')->name('cron');
 // User Support Ticket

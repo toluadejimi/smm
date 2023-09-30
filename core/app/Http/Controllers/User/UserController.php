@@ -197,8 +197,11 @@ class UserController extends Controller
         }
 
         if($status == 'failed'){
-            return back()->with('error', 'Transaction not found, Please make use of resolve deposit');
+            return back()->with('error', 'Transaction not found,  Please wait few minutes and try again with resolve deposit');
         }
+
+
+        return back()->with('error', 'Transaction not found, Please wait few minutes and try again with resolve deposit');
 
 
     }

@@ -153,7 +153,7 @@
           </div>
           <div class="modal-body">
             
-            <p>Resolve pending transactions by using your bank session ID on your transaction recepit</p>
+            <p>Resolve pending transactions by using your bank session ID / Refrence No on your transaction recepit</p>
 
             <form  action="/user/session-resolve" method="POST">
                 @csrf

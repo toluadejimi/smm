@@ -11,16 +11,19 @@ class MollieLaravelHttpClientAdapter implements MollieHttpAdapterInterface
 {
     private const HTTP_NO_CONTENT = 204;
 
-    public function send($httpMethod, $url, $headers, $httpBody): object
+    public function send($httpMethod, $url, $headers, $httpBody): ?object
     {
-        $response = Http::withHeaders($headers)
-            ->withBody($httpBody, 'application/json')
+        $contentType = $headers['Content-Type'] ?? 'application/json';
+        unset($headers['Content-Type']);
+
+        $response = Http::withBody($httpBody, $contentType)
+            ->withHeaders($headers)
             ->send($httpMethod, $url);
 
         return $this->parseResponseBody($response);
     }
 
-    private function parseResponseBody(Response $response)
+    private function parseResponseBody(Response $response): ?object
     {
         $body = $response->body();
         if (empty($body)) {

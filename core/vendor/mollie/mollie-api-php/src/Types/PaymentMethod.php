@@ -25,6 +25,11 @@ class PaymentMethod
     public const BELFIUS = "belfius";
 
     /**
+     * @link https://www.mollie.com/en/payments/billie
+     */
+    public const BILLIE = "billie";
+
+    /**
      * @deprecated 2019-05-01
      */
     public const BITCOIN = "bitcoin";
@@ -124,4 +129,9 @@ class PaymentMethod
      * @link https://www.mollie.com/en/payments/in3
      */
     public const IN3 = "in3";
+
+    /**
+     * @link https://docs.mollie.com/point-of-sale/overview
+     */
+    public const POINT_OF_SALE = "pointofsale";
 }

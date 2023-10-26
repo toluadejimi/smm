@@ -37,8 +37,6 @@
                                     <th class="text-center"><?php echo app('translator')->get('Status'); ?></th>
                                     <th class="text-center"><?php echo app('translator')->get('Action'); ?></th>
 
-
-
                                 </tr>
                             </thead>
                             <tbody>
@@ -78,11 +76,13 @@
 
                                         <?php if($deposit->status == 2): ?>
                                         <td>
-                                            <a href="/user/resolve-deposit?trx=<?php echo e($deposit->trx); ?>" class="btn btn-warning btn-sm">
-                                                <i class="las la-bank"></i>
-                                                <?php echo app('translator')->get('Resolve Transaction'); ?>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo e($deposit->id); ?>" class="btn btn-warning">
+                                                <i class="las la-coin"></i>
+                                                <?php echo app('translator')->get('Resolve Deposit'); ?>
                                             </a>
                                         </td>
+
+
 
                                         <?php elseif($deposit->status == 1): ?>
                                         <td>
@@ -94,14 +94,53 @@
                                         <?php endif; ?>
 
 
+                                        <div class="modal fade" id="exampleModal<?php echo e($deposit->id); ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="exampleModalLabel">Resolve Deposit</h5>
+                                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+
+
+                                                <div class="modal-body">
 
 
 
+                                                  <p>Resolve pending transactions by using your bank session ID / Refrence No on your transaction recepit</p>
+
+                                                  <form  action="/user/session-resolve" method="POST">
+                                                      <?php echo csrf_field(); ?>
+
+                                                      <label class="">Transaction ID</label>
+
+                                                      <div>
+                                                        <?php echo e($deposit->trx); ?>
 
 
+                                                    </div>
 
 
+                                                      <label class="my-3">Enter Session ID</label>
+                                                      <div>
+                                                          <input type="text" name="session_id" required class="form-control" placeholder="Enter session ID">
 
+                                                          <input type="text" hidden name="order_id"  value="<?php echo e($deposit->trx); ?>">
+
+                                                      </div>
+
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                  <button type="submit" class="btn btn-success">Verify</button>
+                                                </div>
+
+                                              </form>
+
+                                              </div>
+                                            </div>
+                                          </div>
 
 
                                     </tr>
@@ -147,40 +186,10 @@
     </div>
 
 
-  
+
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Resolve Deposit</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            
-            <p>Resolve pending transactions by using your bank session ID on your transaction recepit</p>
 
-            <form  action="/user/session-resolve" method="POST">
-                <?php echo csrf_field(); ?>
 
-                <label class="my-3">Enter Session ID</label>
-                <div>
-                    <input type="text" name="session_id" required class="form-control" placeholder="Enter session ID">
-                </div>
-    
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-success">Verify</button>
-          </div>
-
-        </form>
-
-        </div>
-      </div>
-    </div>
-     
 
 
 <?php $__env->stopSection(); ?>
@@ -216,13 +225,7 @@
 <?php $__env->stopPush(); ?>
 
 
-<?php $__env->startPush('breadcrumb-plugins'); ?>
-    <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success">
-        <i class="las la-coin"></i>
-        <?php echo app('translator')->get('Resolve Deposit'); ?>
-    </a>
-      
-<?php $__env->stopPush(); ?>
+
 
 
 

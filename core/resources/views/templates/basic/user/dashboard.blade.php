@@ -27,6 +27,15 @@
 
 
 
+<div class"card">
+    <div class="card-body">
+      Hi  <span class="text-muted">{{ Auth::user()->username }}</span>
+      <p class="text-dark">What would  you like to do today?</p>
+    </div>
+
+
+</div>
+
     <div class="row gy-4">
         <div class="col-xxl-4 col-sm-6">
             <div class="card bg--primary has-link box--shadow2 overflow-hidden">

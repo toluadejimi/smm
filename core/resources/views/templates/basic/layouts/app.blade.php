@@ -24,4 +24,11 @@
             border-radius: 0.2rem;
         }
     </style>
+
+    <style>
+        .modal-backdrop {
+            z-index: -1;
+          }
+
+    </style>
 @endpush

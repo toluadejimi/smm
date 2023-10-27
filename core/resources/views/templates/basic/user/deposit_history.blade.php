@@ -44,7 +44,7 @@
 
 
                                 <div class="modal fade" id="exampleModal{{ $deposit->id }}" tabindex=""
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    aria-labelledby="exampleModalLabel" data-backdrop="false" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">

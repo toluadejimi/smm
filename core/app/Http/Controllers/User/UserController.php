@@ -235,7 +235,6 @@ class UserController extends Controller
             $message = Auth::user()->email. "| just resolved with $request->session_id | NGN ".number_format($amount)." on PALASH";
             send_notification($message);
 
-
             return back()->with('message', 'Wallet has been successfully funded');
         }
 

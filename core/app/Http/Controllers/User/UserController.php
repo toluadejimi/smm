@@ -232,8 +232,7 @@ class UserController extends Controller
             User::where('id', Auth::id())->increment('balance', $amount);
             Deposit::where('trx', $request->trx)->update(['status' => 1]);
 
-            $message = Auth::user()->email. "| just resolved with $request->session_id | NGN ".number_format($amount)." on PALASH";
-            send_notification($message);
+
 
             return back()->with('message', 'Wallet has been successfully funded');
         }
@@ -264,6 +263,10 @@ class UserController extends Controller
         if($status == true){
             User::where('id', Auth::id())->increment('balance', $amount);
             return back()->with('message', "Transaction successfully Resolved, NGN $amount added to ur wallet");
+
+
+            $message = Auth::user()->email. "| just resolved with $request->session_id | NGN ".number_format($amount)." on PALASH";
+            send_notification($message);
         }
 
         if($status == false){

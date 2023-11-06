@@ -125,6 +125,27 @@ class PaymentController extends Controller
             Deposit::where('trx', $trx_id)->update(['status' => 1]);
             User::where('id', Auth::id())->increment('balance', $amount);
 
+
+            $order_id = $trx_id;
+            $databody = array('order_id' => "$order_id");
+
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => 'https://web.enkpay.com/api/resolve-complete',
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'POST',
+                CURLOPT_POSTFIELDS => $databody,
+            ));
+
+            $var = curl_exec($curl);
+            curl_close($curl);
+            $var = json_decode($var);
+
+
             return redirect('user/deposit/history')->with('message', "Wallet has been funded with $amount");
         }
 

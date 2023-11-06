@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('content'); ?>
     <!-- page-wrapper start -->
     <div class="page-wrapper default-version">
@@ -23,6 +21,13 @@
             font-size: .875rem !important;
             border-radius: 0.2rem;
         }
+    </style>
+
+    <style>
+        .modal-backdrop {
+            z-index: -1;
+          }
+
     </style>
 <?php $__env->stopPush(); ?>
 

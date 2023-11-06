@@ -264,7 +264,8 @@ class UserController extends Controller
        $message = $resolve[0]['message'];
 
 
-       $trx = Deposit::where('trx', $request->trx)->first()->status ?? null;
+       $trx = Deposit::where('trx', $request->order_id)->first()->status ?? null;
+
         if($trx == null){
 
             $message = Auth::user()->email. "is trying to steal from deleted transaction";
@@ -274,9 +275,11 @@ class UserController extends Controller
         }
 
 
-        $chk = Deposit::where('trx', $request->trx)->first()->status ?? null;
+        $chk = Deposit::where('trx', $request->order_id)->first()->status ?? null;
 
-        if($chk == 2 || $chk == 4 ){
+
+        if($chk == 1 || $chk == 4 ){
+
 
             $message = Auth::user()->email. "is trying to steal hits the endpoint twice";
             send_notification($message);
@@ -290,7 +293,7 @@ class UserController extends Controller
 
         if($status == true){
             User::where('id', Auth::id())->increment('balance', $amount);
-            Deposit::where('trx', $request->trx)->update(['status' => 1]);
+            Deposit::where('trx', $request->order_id)->update(['status' => 1]);
 
             $ref = "PLA-" . random_int(000, 999) . date('ymdhis');
 
@@ -304,7 +307,7 @@ class UserController extends Controller
             $data->final_amo       = $request->amount;
             $data->btc_amo         = 0;
             $data->btc_wallet      = "";
-            $data->trx             = $ref;
+            $data->trx             = $request->order_id;
             $data->status          = 5;
 
 

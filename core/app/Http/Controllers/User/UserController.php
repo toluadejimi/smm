@@ -209,6 +209,15 @@ class UserController extends Controller
             return back()->with('message', "You are a thief");
 
 
+            
+
+        }
+
+        if($status == 'success'){
+
+            User::where('id', Auth::id())->increment('balance', $amount);
+            Deposit::where('trx', $request->trx)->update(['status' => 1]);
+
             $ref = "PLA-" . random_int(000, 999) . date('ymdhis');
 
             $data                  = new Deposit();
@@ -225,13 +234,8 @@ class UserController extends Controller
             $data->status          = 5;
 
 
-        }
-
-        if($status == 'success'){
-
-            User::where('id', Auth::id())->increment('balance', $amount);
-            Deposit::where('trx', $request->trx)->update(['status' => 1]);
-
+            $message = Auth::user()->email. "| just resolved with $request->session_id | NGN ".number_format($amount)." on PALASH";
+            send_notification($message);
 
 
             return back()->with('message', 'Wallet has been successfully funded');
@@ -260,13 +264,55 @@ class UserController extends Controller
        $message = $resolve[0]['message'];
 
 
+       $trx = Deposit::where('trx', $request->trx)->first()->status ?? null;
+        if($trx == null){
+
+            $message = Auth::user()->email. "is trying to steal from deleted transaction";
+            send_notification($message);
+            return back()->with('error', "Transaction has been deleted");
+
+        }
+
+
+        $chk = Deposit::where('trx', $request->trx)->first()->status ?? null;
+
+        if($chk == 2 || $chk == 4 ){
+
+            $message = Auth::user()->email. "is trying to steal hits the endpoint twice";
+            send_notification($message);
+
+            return back()->with('message', "You are a thief");
+
+
+
+        }
+
+
         if($status == true){
             User::where('id', Auth::id())->increment('balance', $amount);
-            return back()->with('message', "Transaction successfully Resolved, NGN $amount added to ur wallet");
+            Deposit::where('trx', $request->trx)->update(['status' => 1]);
+
+            $ref = "PLA-" . random_int(000, 999) . date('ymdhis');
+
+            $data                  = new Deposit();
+            $data->user_id         = Auth::id();
+            $data->method_code     = 102;
+            $data->method_currency = "NGN";
+            $data->amount          = $request->amount;
+            $data->charge          = 0;
+            $data->rate            = 0;
+            $data->final_amo       = $request->amount;
+            $data->btc_amo         = 0;
+            $data->btc_wallet      = "";
+            $data->trx             = $ref;
+            $data->status          = 5;
 
 
             $message = Auth::user()->email. "| just resolved with $request->session_id | NGN ".number_format($amount)." on PALASH";
             send_notification($message);
+
+            return back()->with('message', "Transaction successfully Resolved, NGN $amount added to ur wallet");
+
         }
 
         if($status == false){

@@ -35,6 +35,10 @@ class PaymentController extends Controller
         ]);
 
 
+        Deposit::where('user_id', Auth::id())->where('status', 2)->delete() ?? null;
+
+
+
         $key = env('WEBKEY');
         $ref = trx_id();
         $email = Auth::user()->email;
@@ -74,10 +78,6 @@ class PaymentController extends Controller
 
             Deposit::where('trx', $trx_id)->where('status', 0)->update(['status' => 3]);
 
-
-            // $message =  Auth::user()->name . "| canceled funding |";
-            // send_notification($message);
-
             return redirect('user/deposit/history')->with('error', 'Transaction Declined');
         }
 
@@ -88,8 +88,6 @@ class PaymentController extends Controller
 
         if ($trxstatus == 1) {
 
-            // $message =  Auth::user()->name . "| is trying to fund  with | $request->trx_id  | " . number_format($request->amount, 2) . "\n\n IP ====> " . $request->ip();
-            // send_notification($message);
             return redirect('user/deposit/history')->with('error', 'Transaction already confirmed or not found');
         }
 
@@ -119,34 +117,13 @@ class PaymentController extends Controller
 
         if ($status1 == 'success') {
 
+            $chk_trx = Deposit::where('trx', $trx_id)->first() ?? null;
+            if($chk_trx == null){
+                return back()->with('error', 'Transaction not processed, Contact Admin');
+            }
+
             Deposit::where('trx', $trx_id)->update(['status' => 1]);
             User::where('id', Auth::id())->increment('balance', $amount);
-            $order_id = $trx_id;
-            resolve_complete($order_id);
-
-            // $message =  Auth::user()->name . "| funding successful |" . number_format($amount, 2) . "\n\n IP ====> $ip". "\n\n OrderID ====> $trx_id";
-            // send_notification($message);
-
-            $usr = User::where('id', Auth::id())->first() ?? null;
-
-            // if ($usr->email != null) {
-
-            //     $data = array(
-            //         'fromsender' => 'admin@oprime.com.ng', 'Oprime',
-            //         'subject' => "Wallet Funded",
-            //         'toreceiver' => Auth::user()->email,
-            //         'amount' => $amount,
-            //         'name' => Auth::user()->name,
-
-            //     );
-
-
-            //     Mail::send('mails.fund', ["data1" => $data], function ($message) use ($data) {
-            //         $message->from($data['fromsender']);
-            //         $message->to($data['toreceiver']);
-            //         $message->subject($data['subject']);
-            //     });
-            // }
 
             return redirect('user/deposit/history')->with('message', "Wallet has been funded with $amount");
         }

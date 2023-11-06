@@ -60,7 +60,6 @@
                                             <div class="modal-body">
 
 
-
                                                 <p>Resolve pending transactions by using your bank session ID / Refrence
                                                     No on your transaction recepit</p>
 
@@ -98,10 +97,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
-
-
 
 
 
@@ -154,6 +149,14 @@
                                     <a href="#" class="btn btn-success btn-sm">
                                         <i class="las la-bank"></i>
                                         @lang('Transaction Completed')
+                                    </a>
+                                </td>
+
+                                @elseif($deposit->status == 5)
+                                <td>
+                                    <a href="#" class="btn btn-success btn-sm">
+                                        <i class="las la-bank"></i>
+                                        @lang('Reslove Completed')
                                     </a>
                                 </td>
                                 @endif

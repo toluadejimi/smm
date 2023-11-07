@@ -5581,3 +5581,19 @@ _token=0I3fAuCaY82t6pVn19NggOujPqak4kWlKSFM9ZxI&cat=21&service=125&link=https%3A
 #36 /Applications/XAMPP/xamppfiles/htdocs/project/smm/core/artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #37 {main}
 "} 
+[2023-11-07 22:28:32] local.ERROR: The "--columns" option does not exist. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\RuntimeException(code: 0): The \"--columns\" option does not exist. at /Applications/XAMPP/xamppfiles/htdocs/project/smm/core/vendor/symfony/console/Input/ArgvInput.php:223)
+[stacktrace]
+#0 /Applications/XAMPP/xamppfiles/htdocs/project/smm/core/vendor/symfony/console/Input/ArgvInput.php(150): Symfony\\Component\\Console\\Input\\ArgvInput->addLongOption('columns', 'name,action')
+#1 /Applications/XAMPP/xamppfiles/htdocs/project/smm/core/vendor/symfony/console/Input/ArgvInput.php(85): Symfony\\Component\\Console\\Input\\ArgvInput->parseLongOption('--columns=name,...')
+#2 /Applications/XAMPP/xamppfiles/htdocs/project/smm/core/vendor/symfony/console/Input/ArgvInput.php(74): Symfony\\Component\\Console\\Input\\ArgvInput->parseToken('--columns=name,...', true)
+#3 /Applications/XAMPP/xamppfiles/htdocs/project/smm/core/vendor/symfony/console/Input/Input.php(55): Symfony\\Component\\Console\\Input\\ArgvInput->parse()
+#4 /Applications/XAMPP/xamppfiles/htdocs/project/smm/core/vendor/symfony/console/Command/Command.php(285): Symfony\\Component\\Console\\Input\\Input->bind(Object(Symfony\\Component\\Console\\Input\\InputDefinition))
+#5 /Applications/XAMPP/xamppfiles/htdocs/project/smm/core/vendor/laravel/framework/src/Illuminate/Console/Command.php(152): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#6 /Applications/XAMPP/xamppfiles/htdocs/project/smm/core/vendor/symfony/console/Application.php(1063): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#7 /Applications/XAMPP/xamppfiles/htdocs/project/smm/core/vendor/symfony/console/Application.php(320): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Foundation\\Console\\RouteListCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#8 /Applications/XAMPP/xamppfiles/htdocs/project/smm/core/vendor/symfony/console/Application.php(174): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#9 /Applications/XAMPP/xamppfiles/htdocs/project/smm/core/vendor/laravel/framework/src/Illuminate/Console/Application.php(102): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#10 /Applications/XAMPP/xamppfiles/htdocs/project/smm/core/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(155): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#11 /Applications/XAMPP/xamppfiles/htdocs/project/smm/core/artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#12 {main}
+"} 

@@ -43,7 +43,6 @@ class ServiceController extends Controller
             'price_per_k'    => 'required|numeric|gt:0',
             'min'            => 'required|integer|gt:0|lte:' . $request->max,
             'max'            => 'required|integer|gte:' . $request->min,
-            'details'        => 'required',
             'api_service_id' => 'nullable|integer|gt:0|unique:services,api_service_id,' . $id,
         ]);
 

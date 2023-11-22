@@ -24,32 +24,49 @@
                         </div>
 
                         <div class="row">
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-3">
                                 <label>@lang('Price Per 1k') </label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" name="price_per_k" required>
                                     <div class="input-group-text">{{ $general->cur_text }}</div>
                                 </div>
                             </div>
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-3">
                                 <div class="form-group">
                                     <label>@lang('Min')</label>
                                     <input type="number" name="min" class="form-control" required>
                                 </div>
                             </div>
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-3">
                                 <div class="form-group">
                                     <label>@lang('Max')</label>
                                     <input type="number" name="max" class="form-control" required>
                                 </div>
                             </div>
+
+
+                            <div class="form-group col-md-3">
+
+                                <div class="form-group">
+                                    <label>@lang('Service ID')</label>
+                                    <input type="number" name="api_service_id" class="form-control" required>
+                                </div>
+
+
+                            </div>
+
+
+                            
+
+
+
+
                         </div>
                         <div class="form-group">
                             <label>@lang('Details')</label>
                             <textarea class="form-control" rows="5" name="details"></textarea>
                         </div>
-                        <div class="form-group api_service_id">
-                        </div>
+
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn--primary h-45 w-100">@lang('Submit')</button>

@@ -1,18 +1,3 @@
-<div class="mb-3">
-    <label><?php echo app('translator')->get('Verification Code'); ?></label>
-    <div class="verification-code">
-        <input type="text" name="code" id="verification-code" class="form-control" required
-            autocomplete="off">
-        <div class="boxes">
-            <span>-</span>
-            <span>-</span>
-            <span>-</span>
-            <span>-</span>
-            <span>-</span>
-            <span>-</span>
-        </div>
-    </div>
-</div>
 
 <?php $__env->startPush('style'); ?>
     <link rel="stylesheet" href="<?php echo e(asset('assets/global/css/verification-code.css')); ?>">

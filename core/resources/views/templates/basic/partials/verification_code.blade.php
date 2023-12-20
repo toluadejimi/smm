@@ -1,18 +1,3 @@
-<div class="mb-3">
-    <label>@lang('Verification Code')</label>
-    <div class="verification-code">
-        <input type="text" name="code" id="verification-code" class="form-control overflow-hidden" required
-            autocomplete="off">
-        <div class="boxes">
-            <span>-</span>
-            <span>-</span>
-            <span>-</span>
-            <span>-</span>
-            <span>-</span>
-            <span>-</span>
-        </div>
-    </div>
-</div>
 
 @push('style')
     <link rel="stylesheet" href="{{ asset('assets/global/css/verification-code.css') }}">

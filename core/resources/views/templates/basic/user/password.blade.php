@@ -1,5 +1,18 @@
-@extends($activeTemplate . 'layouts.app')
-@section('panel')
+@extends($activeTemplate . 'layouts.mainuser')
+@section('content')
+
+
+<div class="content-body default-height">
+    <div class="container-fluid">
+
+    <div class="row page-titles">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="user/dashboard">Dashboard</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Change Password</a></li>
+        </ol>
+    </div>
+
+
     <div class="row mb-none-30">
         <div class="col-lg-3 col-md-3 mb-30">
             <div class="card b-radius--5 overflow-hidden">
@@ -59,6 +72,9 @@
             </div>
         </div>
     </div>
+</div>
+</div>
+
 @endsection
 
 @push('breadcrumb-plugins')

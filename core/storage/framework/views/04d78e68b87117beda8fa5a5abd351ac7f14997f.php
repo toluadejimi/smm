@@ -1,63 +1,87 @@
-<?php $__env->startSection('panel'); ?>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="show-filter mb-3 text-end">
-                <button class="btn btn-outline--primary showFilterBtn btn-sm" type="button"><i class="las la-filter"></i>
-                    <?php echo app('translator')->get('Filter'); ?></button>
-            </div>
-            <div class="card responsive-filter-card mb-4">
-                <div class="card-body">
-                    <form action="">
-                        <div class="d-flex flex-wrap gap-4">
-                            <div class="flex-grow-1">
-                                <label><?php echo app('translator')->get('TRX'); ?></label>
-                                <input class="form-control" name="search" type="text" value="<?php echo e(request()->search); ?>">
-                            </div>
-                            <div class="flex-grow-1">
-                                <label><?php echo app('translator')->get('Type'); ?></label>
-                                <select class="form-control" name="trx_type">
-                                    <option value=""><?php echo app('translator')->get('All'); ?></option>
-                                    <option value="+" <?php if(request()->trx_type == '+'): echo 'selected'; endif; ?>><?php echo app('translator')->get('Plus'); ?></option>
-                                    <option value="-" <?php if(request()->trx_type == '-'): echo 'selected'; endif; ?>><?php echo app('translator')->get('Minus'); ?></option>
-                                </select>
-                            </div>
-                            <div class="flex-grow-1">
-                                <label><?php echo app('translator')->get('Remark'); ?></label>
-                                <select class="form-control" name="remark">
-                                    <option value=""><?php echo app('translator')->get('Any'); ?></option>
-                                    <?php $__currentLoopData = $remarks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $remark): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <option value="<?php echo e($remark->remark); ?>" <?php if(request()->remark == $remark->remark): echo 'selected'; endif; ?>>
-                                            <?php echo e(__(keyToTitle($remark->remark))); ?></option>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                </select>
-                            </div>
-                            <div class="flex-grow-1">
-                                <label><?php echo app('translator')->get('Date'); ?></label>
-                                <input class="datepicker-here form-control" name="date" data-range="true" data-multiple-dates-separator=" - " data-language="en" data-position='bottom right' type="text" value="<?php echo e(request()->date); ?>" placeholder="<?php echo app('translator')->get('Start date - End date'); ?>" autocomplete="off">
-                            </div>
-                            <div class="flex-grow-1 align-self-end">
-                                <button class="btn btn--primary w-100 h-45"><i class="fas fa-filter"></i>
-                                    <?php echo app('translator')->get('Filter'); ?></button>
-                            </div>
-                        </div>
-                    </form>
+<?php $__env->startSection('content'); ?>
+
+
+<div class="content-body default-height">
+    <div class="container-fluid">
+
+        <div class="row page-titles">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="user/dashboard">Dashboard</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Transactions</a></li>
+            </ol>
+        </div>
+
+        <div class="row">
+
+
+            <div class="col-md-12">
+                <div class="show-filter mb-3 text-end">
+                    <button class="btn btn-outline-primary showFilterBtn btn-sm" type="button"><i
+                            class="las la-filter"></i>
+                        <?php echo app('translator')->get('Filter'); ?></button>
                 </div>
-            </div>
-            <div class="card b-radius--10">
-                <div class="card-body p-0">
-                    <div class="table-responsive--sm table-responsive">
-                        <table class="table--light style--two table">
-                            <thead>
-                                <tr>
-                                    <th><?php echo app('translator')->get('Trx'); ?></th>
-                                    <th><?php echo app('translator')->get('Transacted'); ?></th>
-                                    <th><?php echo app('translator')->get('Amount'); ?></th>
-                                    <th><?php echo app('translator')->get('Post Balance'); ?></th>
-                                    <th><?php echo app('translator')->get('Detail'); ?></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $__empty_1 = true; $__currentLoopData = $transactions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $trx): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+
+
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <form action="">
+                            <div class="d-flex flex-wrap gap-4">
+                                <div class="flex-grow-1">
+                                    <label><?php echo app('translator')->get('TRX'); ?></label>
+                                    <input class="form-control" name="search" type="text"
+                                        value="<?php echo e(request()->search); ?>">
+                                </div>
+                                <div class="flex-grow-1">
+                                    <label><?php echo app('translator')->get('Type'); ?></label>
+                                    <select class="form-control" name="trx_type">
+                                        <option value=""><?php echo app('translator')->get('All'); ?></option>
+                                        <option value="+" <?php if(request()->trx_type == '+'): echo 'selected'; endif; ?>><?php echo app('translator')->get('Plus'); ?></option>
+                                        <option value="-" <?php if(request()->trx_type == '-'): echo 'selected'; endif; ?>><?php echo app('translator')->get('Minus'); ?></option>
+                                    </select>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <label><?php echo app('translator')->get('Remark'); ?></label>
+                                    <select class="form-control" name="remark">
+                                        <option value=""><?php echo app('translator')->get('Any'); ?></option>
+                                        <?php $__currentLoopData = $remarks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $remark): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($remark->remark); ?>" <?php if(request()->remark ==
+                                            $remark->remark): echo 'selected'; endif; ?>>
+                                            <?php echo e(__(keyToTitle($remark->remark))); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </select>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <label><?php echo app('translator')->get('Date'); ?></label>
+                                    <input class="datepicker-here form-control" name="date" data-range="true"
+                                        data-multiple-dates-separator=" - " data-language="en"
+                                        data-position='bottom right' type="text" value="<?php echo e(request()->date); ?>"
+                                        placeholder="<?php echo app('translator')->get('Start date - End date'); ?>" autocomplete="off">
+                                </div>
+                                <div class="flex-grow-1 align-self-end">
+                                    <button class="btn btn-primary w-100 h-45"><i class="fas fa-filter"></i>
+                                        <?php echo app('translator')->get('Filter'); ?></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+                <div class="card b-radius--10">
+                    <div class="card-body p-0">
+                        <div class="table-responsive--sm table-responsive">
+                            <table class="table--light style--two table">
+                                <thead>
+                                    <tr>
+                                        <th><?php echo app('translator')->get('Trx'); ?></th>
+                                        <th><?php echo app('translator')->get('Transacted'); ?></th>
+                                        <th><?php echo app('translator')->get('Amount'); ?></th>
+                                        <th><?php echo app('translator')->get('Post Balance'); ?></th>
+                                        <th><?php echo app('translator')->get('Detail'); ?></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $__empty_1 = true; $__currentLoopData = $transactions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $trx): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                     <tr>
                                         <td>
                                             <strong><?php echo e($trx->trx); ?></strong>
@@ -85,44 +109,48 @@
 
                                         <td class="break_line"><?php echo e(__($trx->details)); ?></td>
                                     </tr>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                                     <tr>
                                         <td class="text-muted text-center" colspan="100%"><?php echo e(__($emptyMessage)); ?>
 
                                         </td>
                                     </tr>
-                                <?php endif; ?>
-                            </tbody>
-                        </table>
+                                    <?php endif; ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
-                <?php if($transactions->hasPages()): ?>
+                    <?php if($transactions->hasPages()): ?>
                     <div class="card-footer">
                         <?php echo e($transactions->links()); ?>
 
                     </div>
-                <?php endif; ?>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
     </div>
+</div>
+</div>
+
 <?php $__env->stopSection(); ?>
 <?php $__env->startPush('style-lib'); ?>
-    <link href="<?php echo e(asset('assets/viseradmin/css/vendor/datepicker.min.css')); ?>" rel="stylesheet">
+<link href="<?php echo e(asset('assets/viseradmin/css/vendor/datepicker.min.css')); ?>" rel="stylesheet">
 <?php $__env->stopPush(); ?>
 
 <?php $__env->startPush('script-lib'); ?>
-    <script src="<?php echo e(asset('assets/viseradmin/js/vendor/datepicker.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('assets/viseradmin/js/vendor/datepicker.en.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/viseradmin/js/vendor/datepicker.min.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/viseradmin/js/vendor/datepicker.en.js')); ?>"></script>
 <?php $__env->stopPush(); ?>
 <?php $__env->startPush('script'); ?>
-    <script>
-        (function($) {
+<script>
+    (function($) {
             "use strict";
             if (!$('.datepicker-here').val()) {
                 $('.datepicker-here').datepicker();
             }
         })(jQuery)
-    </script>
+</script>
 <?php $__env->stopPush(); ?>
 
-<?php echo $__env->make($activeTemplate . 'layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/project/smm/core/resources/views/templates/basic/user/transactions.blade.php ENDPATH**/ ?>
+<?php echo $__env->make($activeTemplate . 'layouts.mainuser', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/project/smm/core/resources/views/templates/basic/user/transactions.blade.php ENDPATH**/ ?>

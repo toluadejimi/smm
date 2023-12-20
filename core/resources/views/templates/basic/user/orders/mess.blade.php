@@ -1,5 +1,18 @@
-@extends($activeTemplate . 'layouts.app')
-@section('panel')
+@extends($activeTemplate . 'layouts.mainuser')
+@section('content')
+
+
+<div class="content-body default-height">
+    <!-- row -->
+    <div class="container-fluid">
+
+        <div class="row page-titles">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="user/dashboard">Dashboard</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Mass Order</a></li>
+            </ol>
+        </div>
+
     <div class="row mb-none-30">
         <div class="col-xl-12">
             <div class="card">
@@ -20,7 +33,7 @@ service_id|link|quantity" cols="30" rows="10">{{ old('mess_order') }}</textarea>
                     <div class="card-footer">
 
                         <div class="form-group col-md-12 text-center">
-                            <button class="btn btn--primary w-100 h-45 mr-2" type="submit">@lang('Submit')</button>
+                            <button class="btn btn-primary btn-block " type="submit">@lang('Submit')</button>
                         </div>
 
                     </div>
@@ -29,4 +42,6 @@ service_id|link|quantity" cols="30" rows="10">{{ old('mess_order') }}</textarea>
             </div>
         </div>
     </div>
+</div>
+</div>
 @endsection

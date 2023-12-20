@@ -1,22 +1,50 @@
-@extends($activeTemplate . 'layouts.app')
-@section('panel')
-    <div class="row ">
-        <div class="col-md-12">
-            <div class="card b-radius--10">
-                <div class="card-body p-0">
-                    <div class="table-responsive--sm table-responsive">
-                        <table class="table table--light style--two">
-                            <thead>
-                                <tr>
-                                    <th>@lang('Subject')</th>
-                                    <th>@lang('Status')</th>
-                                    <th>@lang('Priority')</th>
-                                    <th>@lang('Last Reply')</th>
-                                    <th>@lang('Action')</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse($supports as $support)
+@extends($activeTemplate . 'layouts.mainuser')
+@section('content')
+
+
+<div class="content-body default-height">
+    <div class="container-fluid">
+
+
+        <div class="row page-titles">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="user/dashboard">Dashboard</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Support Ticket</a></li>
+            </ol>
+        </div>
+
+
+        <div class="card">
+            <div class="card-body">
+
+                <a href="{{ route('ticket.open') }}" class="btn btn-sm btn-outline-primary mb-2"> <i
+                    class="las la-plus"></i>
+                @lang('New Ticket')</a>
+
+            </div>
+        </div>
+
+        <div class="row ">
+
+
+
+
+            <div class="col-md-12">
+                <div class="card b-radius--10">
+                    <div class="card-body p-0">
+                        <div class="table-responsive--sm table-responsive">
+                            <table class="table table--light style--two">
+                                <thead>
+                                    <tr>
+                                        <th>@lang('Subject')</th>
+                                        <th>@lang('Status')</th>
+                                        <th>@lang('Priority')</th>
+                                        <th>@lang('Last Reply')</th>
+                                        <th>@lang('Action')</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse($supports as $support)
                                     <tr>
                                         <td class="break_line">
                                             <a href="{{ route('ticket.view', $support->ticket) }}" class="fw-bold">
@@ -28,11 +56,11 @@
                                         </td>
                                         <td>
                                             @if ($support->priority == Status::PRIORITY_LOW)
-                                                <span class="badge badge--dark">@lang('Low')</span>
+                                            <span class="badge badge--dark">@lang('Low')</span>
                                             @elseif($support->priority == Status::PRIORITY_MEDIUM)
-                                                <span class="badge badge--success">@lang('Medium')</span>
+                                            <span class="badge badge--success">@lang('Medium')</span>
                                             @elseif($support->priority == Status::PRIORITY_HIGH)
-                                                <span class="badge badge--primary">@lang('High')</span>
+                                            <span class="badge badge--primary">@lang('High')</span>
                                             @endif
                                         </td>
                                         <td>{{ \Carbon\Carbon::parse($support->last_reply)->diffForHumans() }} </td>
@@ -44,35 +72,37 @@
                                             </a>
                                         </td>
                                     </tr>
-                                @empty
+                                    @empty
                                     <tr>
                                         <td colspan="100%" class="text-center">{{ __($emptyMessage) }}</td>
                                     </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
-                @if ($supports->hasPages())
+                    @if ($supports->hasPages())
                     <div class="card-footer py-4">
                         @php echo paginateLinks($supports) @endphp
                     </div>
-                @endif
+                    @endif
+                </div>
             </div>
         </div>
     </div>
+</div>
 @endsection
 
 
 @push('breadcrumb-plugins')
-    <a href="{{ route('ticket.open') }}" class="btn btn-sm btn-outline--primary mb-2"> <i class="las la-plus"></i>
-        @lang('New Ticket')</a>
+<a href="{{ route('ticket.open') }}" class="btn btn-sm btn-outline--primary mb-2"> <i class="las la-plus"></i>
+    @lang('New Ticket')</a>
 @endpush
 
 @push('style')
-    <style>
-        .break_line {
-            white-space: initial !important;
-        }
-    </style>
+<style>
+    .break_line {
+        white-space: initial !important;
+    }
+</style>
 @endpush

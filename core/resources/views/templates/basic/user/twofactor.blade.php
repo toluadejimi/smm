@@ -1,5 +1,10 @@
-@extends($activeTemplate . 'layouts.app')
-@section('panel')
+@extends($activeTemplate . 'layouts.mainuser')
+@section('content')
+
+
+<div class="content-body default-height">
+    <div class="container-fluid">
+
     <div class="row mb-none-30">
 
         @if (!auth()->user()->ts)
@@ -52,7 +57,7 @@
                                 <label class="form-label">@lang('Google Authenticatior OTP')</label>
                                 <input type="text" class="form-control form--control" name="code" required>
                             </div>
-                            <button type="submit" class="btn btn--primary w-100">@lang('Submit')</button>
+                            <button type="submit" class="btn btn-primary w-100">@lang('Submit')</button>
                         </div>
                     </form>
                 </div>
@@ -69,13 +74,15 @@
                                 <label class="form-label">@lang('Google Authenticatior OTP')</label>
                                 <input type="text" class="form-control form--control" name="code" required>
                             </div>
-                            <button type="submit" class="btn btn--primary w-100">@lang('Submit')</button>
+                            <button type="submit" class="btn btn-primary w-100">@lang('Submit')</button>
                         </div>
                     </form>
                 </div>
             @endif
         </div>
     </div>
+</div>
+</div>
 @endsection
 @push('script')
     <script>

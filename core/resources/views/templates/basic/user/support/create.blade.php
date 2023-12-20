@@ -1,5 +1,18 @@
-@extends($activeTemplate . 'layouts.app')
-@section('panel')
+@extends($activeTemplate . 'layouts.mainuser')
+@section('content')
+
+
+<div class="content-body default-height">
+    <div class="container-fluid">
+
+
+        <div class="row page-titles">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="user/dashboard">Dashboard</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Create Ticket</a></a></li>
+            </ol>
+        </div>
+
     <div class="row">
         <div class="col-md-12">
             <div class="card custom--card">
@@ -40,7 +53,7 @@
 
                         <div class="form-group">
                             <div class="text-end">
-                                <button type="button" class="btn btn--primary btn-sm addFile">
+                                <button type="button" class="btn btn-primary btn-sm addFile">
                                     <i class="las la-plus"></i> @lang('Add New')
                                 </button>
                             </div>
@@ -60,13 +73,16 @@
                         </div>
 
                         <div class="form-group">
-                            <button class="btn btn--primary w-100" type="submit">@lang('Submit')</button>
+                            <button class="btn btn-primary w-100" type="submit">@lang('Submit')</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+</div>
+</div>
 @endsection
 
 @push('breadcrumb-plugins')

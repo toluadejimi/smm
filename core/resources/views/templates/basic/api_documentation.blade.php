@@ -1,5 +1,17 @@
-@extends($activeTemplate . 'layouts.frontend')
+@extends($activeTemplate . 'layouts.mainuser')
 @section('content')
+
+
+<div class="content-body default-height">
+
+        <div class="row page-titles">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="user/dashboard">Dashboard</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Transactions</a></li>
+            </ol>
+        </div>
+
+
     <section class="ptb-80">
         <div class="container">
             <div class="bodywrapper__inner">
@@ -102,7 +114,7 @@
                                             <b>@lang('Success response') :</b>
                                             <pre>
 {<em>
-  "order" : "1242"</em> 
+  "order" : "1242"</em>
 }
 </pre>
 
@@ -210,4 +222,5 @@
             </div>
         </div>
     </section>
+</div>
 @endsection

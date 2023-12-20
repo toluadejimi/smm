@@ -1,5 +1,19 @@
-@extends($activeTemplate . 'layouts.app')
-@section('panel')
+@extends($activeTemplate . 'layouts.mainuser')
+@section('content')
+
+
+<div class="content-body default-height">
+    <!-- row -->
+    <div class="container-fluid">
+
+        <div class="row page-titles">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="user/dashboard">Dashboard</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Order History</a></li>
+            </ol>
+        </div>
+
+
     <div class="row">
         <div class="col-lg-12">
 
@@ -72,6 +86,8 @@
 
         </div>
     </div>
+</div>
+</div>
 @endsection
 
 @push('breadcrumb-plugins')

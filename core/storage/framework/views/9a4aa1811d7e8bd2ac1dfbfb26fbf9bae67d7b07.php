@@ -1,4 +1,18 @@
-<?php $__env->startSection('panel'); ?>
+<?php $__env->startSection('content'); ?>
+
+
+<div class="content-body default-height">
+    <!-- row -->
+    <div class="container-fluid">
+
+        <div class="row page-titles">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="user/dashboard">Dashboard</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Order History</a></li>
+            </ol>
+        </div>
+
+
     <div class="row">
         <div class="col-lg-12">
 
@@ -23,16 +37,16 @@
                                 <?php $__empty_1 = true; $__currentLoopData = $orders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                     <tr>
                                         <td><?php echo e($item->id); ?></td>
-                                        <td class="break_line"><?php echo e(__($item->category->name)); ?></td>
+                                        <td class="break_line"><?php echo e(__($item->category->name ) ?? "service"); ?></td>
                                         <td class="break_line">
-                                            <?php echo e(__($item->service->name)); ?></td>
+                                            <?php echo e(__($item->service->name ?? "service" )); ?></td>
                                         <td class="break_line"><a
                                                 href="<?php echo e(empty(parse_url($item->link, PHP_URL_SCHEME)) ? 'https://' : null); ?><?php echo e($item->link); ?>"
                                                 target="_blank"><?php echo e($item->link); ?></a></td>
-                                        <td><?php echo e($item->quantity); ?></td>
-                                        <td><?php echo e($item->start_counter); ?></td>
-                                        <td><?php echo e($item->remain); ?></td>
-                                        <td><?php echo e(showDateTime($item->created_at)); ?></td>
+                                        <td><?php echo e($item->quantity ?? "0"); ?></td>
+                                        <td><?php echo e($item->start_counter ?? "0"); ?></td>
+                                        <td><?php echo e($item->remain ?? "0"); ?></td>
+                                        <td><?php echo e(showDateTime($item->created_at) ?? "date"); ?></td>
                                         <td>
                                             <?php if($item->status == 0): ?>
                                                 <span
@@ -72,6 +86,8 @@
 
         </div>
     </div>
+</div>
+</div>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startPush('breadcrumb-plugins'); ?>
@@ -103,4 +119,4 @@
     </style>
 <?php $__env->stopPush(); ?>
 
-<?php echo $__env->make($activeTemplate . 'layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/project/smm/core/resources/views/templates/basic/user/orders/history.blade.php ENDPATH**/ ?>
+<?php echo $__env->make($activeTemplate . 'layouts.mainuser', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/project/smm/core/resources/views/templates/basic/user/orders/history.blade.php ENDPATH**/ ?>

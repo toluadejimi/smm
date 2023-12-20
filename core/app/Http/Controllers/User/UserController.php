@@ -34,9 +34,10 @@ class UserController extends Controller
         $widget['deposit']           = Deposit::successful()->where('user_id', $user->id)->sum('amount');
         $widget['total_service']     = Service::active()->count();
         $widget['total_ticket']      = SupportTicket::where('user_id', $user->id)->count();
+        $pending           = Order::where('user_id', $user->id)->pending()->get();
 
         $whatsapp_link = GeneralSetting::where('id', 1)->first()->whatsapp_link;
-        return view($this->activeTemplate . 'user.dashboard', compact('pageTitle', 'widget', 'whatsapp_link'));
+        return view($this->activeTemplate . 'user.dashboard', compact('pageTitle', 'pending', 'widget', 'whatsapp_link'));
     }
 
     public function depositHistory(Request $request)
@@ -338,6 +339,10 @@ class UserController extends Controller
 
     }
 
+
+
+
+  
 
 
 

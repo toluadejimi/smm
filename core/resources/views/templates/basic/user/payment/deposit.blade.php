@@ -1,7 +1,19 @@
-@extends($activeTemplate . 'layouts.app')
+@extends($activeTemplate . 'layouts.mainuser')
+@section('content')
 
 
-@section('panel')
+<div class="content-body default-height">
+    <div class="container-fluid">
+
+
+        <div class="row page-titles">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="user/dashboard">Dashboard</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Fund wallet</a></li>
+            </ol>
+        </div>
+
+
     <div class="row justify-content-center">
 
         <div class="col-lg-8">
@@ -15,7 +27,7 @@
                         <h5 class="card-title">@lang('Fund Wallet')</h5>
                     </div>
                     <div class="card-body">
-                       
+
                         <div class="form-group">
                             <label class="form-label">@lang('Amount')</label>
                             <div class="input-group">
@@ -25,12 +37,15 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn--primary w-100 mt-3">@lang('Pay Now')</button>
+                        <button type="submit" class="btn btn-primary w-100 mt-3">@lang('Pay Now')</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
+
+</div>
+</div>
 @endsection
 
 @push('breadcrumb-plugins')

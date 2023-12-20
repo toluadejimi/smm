@@ -1,4 +1,18 @@
-<?php $__env->startSection('panel'); ?>
+<?php $__env->startSection('content'); ?>
+
+
+<div class="content-body default-height">
+    <div class="container-fluid">
+
+
+        <div class="row page-titles">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="user/dashboard">Dashboard</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Fund wallet</a></li>
+            </ol>
+        </div>
+
+
     <div class="row justify-content-center">
 
         <div class="col-lg-8">
@@ -12,7 +26,7 @@
                         <h5 class="card-title"><?php echo app('translator')->get('Fund Wallet'); ?></h5>
                     </div>
                     <div class="card-body">
-                       
+
                         <div class="form-group">
                             <label class="form-label"><?php echo app('translator')->get('Amount'); ?></label>
                             <div class="input-group">
@@ -22,12 +36,15 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn--primary w-100 mt-3"><?php echo app('translator')->get('Pay Now'); ?></button>
+                        <button type="submit" class="btn btn-primary w-100 mt-3"><?php echo app('translator')->get('Pay Now'); ?></button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
+
+</div>
+</div>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startPush('breadcrumb-plugins'); ?>
@@ -115,4 +132,4 @@
     </script>
 <?php $__env->stopPush(); ?>
 
-<?php echo $__env->make($activeTemplate . 'layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/project/smm/core/resources/views/templates/basic/user/payment/deposit.blade.php ENDPATH**/ ?>
+<?php echo $__env->make($activeTemplate . 'layouts.mainuser', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/project/smm/core/resources/views/templates/basic/user/payment/deposit.blade.php ENDPATH**/ ?>

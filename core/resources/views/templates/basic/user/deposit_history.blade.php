@@ -3,8 +3,6 @@
 
 
 
-
-
 <div class="content-body default-height">
     <div class="container-fluid">
 
@@ -89,7 +87,7 @@
                                         <div class="modal fade" id="exampleModal{{ $deposit->id }}" tabindex=""
                                             aria-labelledby="exampleModalLabel" data-backdrop="false"
                                             aria-hidden="true">
-                                            <div class="modal-dialog">
+                                            <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="exampleModalLabel">Resolve Deposit
@@ -231,31 +229,7 @@
         </div>
 
         {{-- APPROVE MODAL --}}
-        <div id="detailModal" class="modal fade" tabindex="-1" aria-labelledby="resolve-deposit38198" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">@lang('Details')</h5>
-                        <span type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                            <i class="las la-times"></i>
-                        </span>
-                    </div>
-                    <div class="modal-body">
-                        <ul class="list-group userData mb-2">
-                        </ul>
-                        <div class="feedback"></div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn--dark btn-sm"
-                            data-bs-dismiss="modal">@lang('Close')</button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-
-
-        <!-- Modal -->
 
 
 
@@ -309,13 +283,4 @@
             });
         })(jQuery);
 </script>
-
-<style>
-    .modal-backdrop {
-        z-index: -1;
-      }
-</style>
-
-
-
 @endpush

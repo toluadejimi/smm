@@ -2,6 +2,14 @@
 @section('content')
 
 
+
+    <style>
+        .modal-backdrop {
+            z-index: -1;
+        }
+    </style>
+
+
 <div class="content-body default-height">
     <div class="container-fluid">
 

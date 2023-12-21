@@ -45,6 +45,8 @@
 
     <link href="<?php echo e(url('')); ?>/assets/public/assets/css/style.css" rel="stylesheet" type="text/css" />
 
+
+
 </head>
 
 <body>
@@ -794,7 +796,7 @@
                                         </svg>
                                         <span class="ms-2">Profile </span>
                                     </a>
-                                  
+
 
 
                                     <a href="logout" class="dropdown-item ai-icon">

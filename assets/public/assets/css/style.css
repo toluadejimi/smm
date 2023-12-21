@@ -4745,17 +4745,7 @@ textarea.form-control-lg {
   overflow-x: hidden;
   overflow-y: auto;
   outline: 0; 
-
 }
-
-
-
-
-
-  
-  .modal-body { 
-      height: 60%; 
-  }
 
 .modal-dialog {
   position: relative;

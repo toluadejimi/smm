@@ -51,6 +51,15 @@
 
 <body>
 
+
+    <style>
+        .modal-backdrop {
+            z-index: -1;
+          }
+    </style>
+
+    
+
     <!--*******************
         Preloader start
     ********************-->

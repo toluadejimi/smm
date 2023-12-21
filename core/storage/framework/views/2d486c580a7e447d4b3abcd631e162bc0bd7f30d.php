@@ -134,7 +134,6 @@
 <script src="<?php echo e(url('')); ?>/assets/public/assets/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
 <script src="<?php echo e(url('')); ?>/assets/public/assets/js/dlabnav-init.js"></script>
 <script src="<?php echo e(url('')); ?>/assets/public/assets/js/demo.js"></script>
-<script src="<?php echo e(url('')); ?>/assets/public/assets/js/styleSwitcher.js"></script>
 </body>
 </html>
 

@@ -780,16 +780,12 @@
 
 
 
-
-
-
-
                             <li class="nav-item dropdown  header-profile">
                                 <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
                                     <img src="<?php echo e(url('')); ?>/assets/public/assets/images/avatar/1.png" width="56" alt="">
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
-                                    <a href="profile-setting" class="dropdown-item ai-icon">
+                                    <a href="<?php echo e(route('user.profile.setting')); ?>" class="dropdown-item ai-icon">
                                         <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" class="text-primary"
                                             width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -832,7 +828,7 @@
                             <span class="nav-text">Dashboard</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="dashboard">Home</a></li>
+                            <li><a href="<?php echo e(route('user.home')); ?>">Home</a></li>
                         </ul>
 
                     </li>

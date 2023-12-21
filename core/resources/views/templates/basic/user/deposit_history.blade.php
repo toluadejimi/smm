@@ -229,7 +229,7 @@
 
         {{-- APPROVE MODAL --}}
         <div id="detailModal" class="modal fade" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog" role="document" data-backdrop="false">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">@lang('Details')</h5>

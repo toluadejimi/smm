@@ -33,17 +33,17 @@ function getUrlParams(dParam)
     } */
 	
 	dlabSettingsOptions = {
-			typography: "poppins",
-			version: "light",
-			layout: "vertical",
-			primary: "color_1",
-			headerBg: "color_1",
-			navheaderBg: "color_1",
-			sidebarBg: "color_1",
-			sidebarStyle: "full",
-			sidebarPosition: "fixed",
-			headerPosition: "fixed",
-			containerLayout: "full",
+		typography: "poppins",
+		version: "light",
+		layout: "vertical",
+		primary: "color_13",
+		headerBg: "color_1",
+		navheaderBg: "color_13",
+		sidebarBg: "color_13",
+		sidebarStyle: "compact",
+		sidebarPosition: "fixed",
+		headerPosition: "fixed",
+		containerLayout: "full",
 		};
 
 	

@@ -39,11 +39,14 @@
                                         <th scope="row"><?php echo app('translator')->get('Your API key'); ?></th>
                                         <td><?php echo e(auth()->user()->api_key); ?></td>
                                         <td>
-                                            <button class="btn btn-sm btn-outline-primary confirmationBtn"
+                                        <form action="<?php echo e(route('user.api.generateKey')); ?>" method="POST">
+                                            <?php echo csrf_field(); ?>
+                                            <button class="btn btn-sm btn-outline-primary confirmationBtn" type="submit"
                                                 data-question="<?php echo app('translator')->get('Your current api key will removed. Are you sure to generate new api key?'); ?>"
                                                 data-action="<?php echo e(route('user.api.generateKey')); ?>">
                                                 <?php echo app('translator')->get('Generate New Key'); ?>
                                             </button>
+                                        </form>
                                         </td>
                                     </tr>
 

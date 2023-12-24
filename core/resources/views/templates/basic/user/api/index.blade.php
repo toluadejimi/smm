@@ -40,11 +40,14 @@
                                         <th scope="row">@lang('Your API key')</th>
                                         <td>{{ auth()->user()->api_key }}</td>
                                         <td>
-                                            <button class="btn btn-sm btn-outline-primary confirmationBtn"
+                                        <form action="{{ route('user.api.generateKey') }}" method="POST">
+                                            @csrf
+                                            <button class="btn btn-sm btn-outline-primary confirmationBtn" type="submit"
                                                 data-question="@lang('Your current api key will removed. Are you sure to generate new api key?')"
                                                 data-action="{{ route('user.api.generateKey') }}">
                                                 @lang('Generate New Key')
                                             </button>
+                                        </form>
                                         </td>
                                     </tr>
 

@@ -44,7 +44,7 @@ function getUrlParams(dParam)
 		sidebarPosition: "fixed",
 		headerPosition: "fixed",
 		containerLayout: "full",
-		};
+	};
 
 	
 	

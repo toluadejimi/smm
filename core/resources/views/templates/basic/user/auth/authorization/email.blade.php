@@ -80,7 +80,7 @@
                                         alt=""></a>
                             </div>
 
-                            <h4 class="text-center mb-4">Sign in your account</h4>
+                            <h4 class="text-center mb-4">Verify your email account</h4>
                             <form action="{{ route('user.verify.email') }}" method="POST" class="submit-form">
                                 @csrf
 
@@ -95,7 +95,7 @@
                                         <input type="text" name="code" id="verification-code" class="form-control"
                                             required autocomplete="off">
                                         <div class="boxes">
-                                           
+
                                         </div>
                                     </div>
                                 </div>

@@ -83,7 +83,7 @@
                             </div>
 
                             <h4 class="text-center mb-4">Sign in your account</h4>
-                            <form action="<?php echo e(route('user.register')); ?>" method="POST" class="verify-gcaptcha">
+                            <form action="<?php echo e(route('user.register')); ?>" method="POST">
                                 <?php echo csrf_field(); ?>
 
                                 <div class="form-group mb-4">
@@ -138,7 +138,7 @@
                     <?php endif; ?>
 
 
-            
+
 
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary btn-block">Register</button>
@@ -241,4 +241,5 @@
             });
         })(jQuery);
 </script>
-<?php $__env->stopPush(); ?><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/project/smm/core/resources/views/templates/basic/user/auth/register.blade.php ENDPATH**/ ?>
+<?php $__env->stopPush(); ?>
+<?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/project/smm/core/resources/views/templates/basic/user/auth/register.blade.php ENDPATH**/ ?>

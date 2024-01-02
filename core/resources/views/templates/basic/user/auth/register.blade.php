@@ -81,7 +81,7 @@
                             </div>
 
                             <h4 class="text-center mb-4">Sign in your account</h4>
-                            <form action="{{ route('user.register') }}" method="POST" class="verify-gcaptcha">
+                            <form action="{{ route('user.register') }}" method="POST">
                                 @csrf
 
                                 <div class="form-group mb-4">
@@ -136,7 +136,7 @@
                     @endif
 
 
-            
+
 
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary btn-block">Register</button>

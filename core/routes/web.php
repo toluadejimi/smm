@@ -10,10 +10,6 @@ Route::get('/clear', function () {
 
 
 
-
-
-
-
 //Cron Controller
 Route::get('cron', 'CronController@placeOrderToApi')->name('cron');
 // User Support Ticket

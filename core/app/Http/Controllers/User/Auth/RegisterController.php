@@ -59,29 +59,17 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         $general = gs();
-        $passwordValidation = Password::min(6);
-        if ($general->secure_password) {
-            $passwordValidation = $passwordValidation->mixedCase()->numbers()->symbols()->uncompromised();
-        }
         $agree = 'nullable';
         if ($general->agree) {
             $agree = 'required';
         }
-        $countryData = (array)json_decode(file_get_contents(resource_path('views/partials/country.json')));
-        $countryCodes = implode(',', array_keys($countryData));
-        $mobileCodes = implode(',', array_column($countryData, 'dial_code'));
-        $countries = implode(',', array_column($countryData, 'country'));
         $validate = Validator::make($data, [
             'email' => 'required|string|email|unique:users',
-            // 'mobile' => 'required|regex:/^([0-9]*)$/',
-            // 'password' => ['required', 'confirmed', $passwordValidation],
+            'password' => 'required', 'confirmed',
             'username' => 'required|unique:users|min:4',
-            'captcha' => 'sometimes|required',
-            // 'mobile_code' => 'required|in:' . $mobileCodes,
-            // 'country_code' => 'required|in:' . $countryCodes,
-            // 'country' => 'required|in:' . $countries,
             'agree' => $agree
         ]);
+        
         return $validate;
     }
 
@@ -89,7 +77,7 @@ class RegisterController extends Controller
     {
         $this->validator($request->all())->validate();
 
-        $request->session()->regenerateToken();
+        //$request->session()->regenerateToken();
 
         if (preg_match("/[^a-z0-9_]/",
             trim($request->username)
@@ -112,7 +100,7 @@ class RegisterController extends Controller
         // }
 
         event(new Registered($user = $this->create($request->all())));
-        
+
 
         $this->guard()->login($user);
 

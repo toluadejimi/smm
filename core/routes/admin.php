@@ -211,6 +211,7 @@ Route::middleware(['admin'])->group(function () {
         Route::post('service/store', 'apiServicesStore')->name('api.store');
         Route::post('add', 'addService')->name('add');
         Route::post('status/{id}', 'status')->name('status');
+        Route::post('delete/{id}', 'delete')->name('delete');
         Route::get('api-services/{id}', 'apiServices')->name('api');
     });
     //Order

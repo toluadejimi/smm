@@ -83,6 +83,15 @@ class ServiceController extends Controller
         return Service::changeStatus($id);
     }
 
+    public function delete($id)
+    {
+        Service::where('id',$id)->delete();
+        $message = "Service deleted successfully";
+
+        $notify[] = ['success', $message];
+        return back()->withNotify($notify);
+    }
+
     public function apiServicesStore(Request $request)
     {
         $request->validate([

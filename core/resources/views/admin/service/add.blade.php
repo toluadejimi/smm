@@ -46,20 +46,11 @@
 
 
                             <div class="form-group col-md-3">
-
                                 <div class="form-group">
                                     <label>@lang('Service ID')</label>
                                     <input type="number" name="api_service_id" class="form-control" required>
                                 </div>
-
-
                             </div>
-
-
-                            
-
-
-
 
                         </div>
                         <div class="form-group">

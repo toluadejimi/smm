@@ -39,6 +39,8 @@
                                                 class="btn btn-sm btn-outline--primary">
                                                 <i class="la la-pen"></i> @lang('Edit')
                                             </a>
+
+
                                             @if ($service->status == Status::DISABLE)
                                                 <button type="button"
                                                     class="btn btn-sm btn-outline--success confirmationBtn"
@@ -54,6 +56,15 @@
                                                     <i class="la la-eye-slash"></i> @lang('Disable')
                                                 </button>
                                             @endif
+
+                                            <button type="button"
+                                            class="btn btn-sm btn-outline--danger confirmationBtn"
+                                            data-action="{{ route('admin.service.delete', $service->id) }}"
+                                            data-question="@lang('Are you sure to delete this service?')">
+                                            <i class="la la-trash"></i> @lang('Delete')
+                                            </button>
+
+
                                         </td>
                                     </tr>
                                 @empty

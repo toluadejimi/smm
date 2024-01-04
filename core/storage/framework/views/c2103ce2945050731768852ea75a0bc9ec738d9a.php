@@ -40,6 +40,8 @@
                                                 class="btn btn-sm btn-outline--primary">
                                                 <i class="la la-pen"></i> <?php echo app('translator')->get('Edit'); ?>
                                             </a>
+
+
                                             <?php if($service->status == Status::DISABLE): ?>
                                                 <button type="button"
                                                     class="btn btn-sm btn-outline--success confirmationBtn"
@@ -55,6 +57,15 @@
                                                     <i class="la la-eye-slash"></i> <?php echo app('translator')->get('Disable'); ?>
                                                 </button>
                                             <?php endif; ?>
+
+                                            <button type="button"
+                                            class="btn btn-sm btn-outline--danger confirmationBtn"
+                                            data-action="<?php echo e(route('admin.service.delete', $service->id)); ?>"
+                                            data-question="<?php echo app('translator')->get('Are you sure to delete this service?'); ?>">
+                                            <i class="la la-trash"></i> <?php echo app('translator')->get('Delete'); ?>
+                                            </button>
+
+
                                         </td>
                                     </tr>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>

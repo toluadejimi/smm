@@ -56,6 +56,14 @@
                                 <input type="text" name="api_service_id" value="<?php echo e($service->api_service_id); ?>" disabled
                                     class="form-control">
                             </div>
+                        <?php else: ?>
+
+                        <div class="form-group">
+                            <label><?php echo app('translator')->get('Service Id (If order process through API)'); ?></label>
+                            <input type="text" name="api_service_id" value=""
+                                class="form-control">
+                        </div>
+
                         <?php endif; ?>
                         <div class="form-group">
                             <label><?php echo app('translator')->get('Details'); ?></label>

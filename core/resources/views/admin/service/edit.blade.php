@@ -57,6 +57,14 @@
                                 <input type="text" name="api_service_id" value="{{ $service->api_service_id }}" disabled
                                     class="form-control">
                             </div>
+                        @else
+
+                        <div class="form-group">
+                            <label>@lang('Service Id (If order process through API)')</label>
+                            <input type="text" name="api_service_id" value=""
+                                class="form-control">
+                        </div>
+
                         @endif
                         <div class="form-group">
                             <label>@lang('Details')</label>

@@ -69,7 +69,7 @@ class RegisterController extends Controller
             'username' => 'required|unique:users|min:4',
             'agree' => $agree
         ]);
-        
+
         return $validate;
     }
 
@@ -77,27 +77,7 @@ class RegisterController extends Controller
     {
         $this->validator($request->all())->validate();
 
-        //$request->session()->regenerateToken();
-
-        if (preg_match("/[^a-z0-9_]/",
-            trim($request->username)
-        )) {
-            $notify[] = ['info', 'Username can contain only small letters, numbers and underscore.'];
-            $notify[] = ['error', 'No special character, space or capital letters in username.'];
-            return back()->withNotify($notify)->withInput($request->all());
-        }
-
-        if (!verifyCaptcha()) {
-            $notify[] = ['error', 'Invalid captcha provided'];
-            return back()->withNotify($notify);
-        }
-
-
-        // $exist = User::where('mobile', $request->mobile_code . $request->mobile)->first();
-        // if ($exist) {
-        //     $notify[] = ['error', 'The mobile number already exists'];
-        //     return back()->withNotify($notify)->withInput();
-        // }
+    
 
         event(new Registered($user = $this->create($request->all())));
 

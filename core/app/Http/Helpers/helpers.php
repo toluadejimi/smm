@@ -500,11 +500,15 @@ function verify_trx($trx)
     ]);
 }
 
-function session_resolve($session_id){
+function session_resolve($ref, $session_id){
 
     $curl = curl_init();
 
-    $databody= array('session_id' => "$session_id");
+    $databody= array(
+        'session_id' => "$session_id",
+        'ref' => "$ref"
+
+    );
 
     curl_setopt_array($curl, array(
         CURLOPT_URL => 'https://web.enkpay.com/api/resolve',

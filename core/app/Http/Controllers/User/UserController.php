@@ -184,7 +184,10 @@ class UserController extends Controller
     public function resolve_deposit(request $request)
     {
 
-        $verify = verify_trx($request->trx);
+        $trx = $request->order_id;
+        $session_id = $request->session_id;
+
+        $verify = verify_trx($trx,  $session_id);
 
         $status = $verify[0]['status'];
         $amount = $verify[0]['amount'];
@@ -271,11 +274,14 @@ class UserController extends Controller
     {
 
 
-       $resolve = session_resolve($request->session_id);
+        $ref = $request->order_id;
+        $session_id = $request->session_id;
 
-       $status = $resolve[0]['status'];
-       $amount = $resolve[0]['amount'];
-       $message = $resolve[0]['message'];
+        $resolve = session_resolve($ref, $session_id);
+
+        $status = $resolve[0]['status'];
+        $amount = $resolve[0]['amount'];
+        $message = $resolve[0]['message'];
 
 
        $trx = Deposit::where('trx', $request->order_id)->first()->status ?? null;
@@ -342,7 +348,7 @@ class UserController extends Controller
 
 
 
-  
+
 
 
 

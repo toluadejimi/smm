@@ -14,14 +14,15 @@
 
         <div class="row">
 
-
             <div class="col-md-12">
                 <div class="show-filter mb-3 text-end">
                     <button class="btn btn-outline-primary showFilterBtn btn-sm" type="button"><i
                             class="las la-filter"></i>
                         @lang('Filter')</button>
                 </div>
+            </div>
 
+            <div class="col-md-12">
 
                 <div class="card mb-4">
                     <div class="card-body">
@@ -66,7 +67,6 @@
                         </form>
                     </div>
                 </div>
-
 
                 <div class="card b-radius--10">
                     <div class="card-body p-0">

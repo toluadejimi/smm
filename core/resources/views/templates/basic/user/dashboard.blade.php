@@ -116,72 +116,60 @@
                             </div>
 
 
-                            <div class="card-body">
-
-                                <div class="table-responsive">
-                                    <table class="table table-responsive-md">
-                                        <thead>
-                                            <tr>
-                                                <th>Order ID</th>
-                                                <th>Category</th>
-                                                <th>Service	Link</th>
-                                                <th>Quantity</th>
-                                                <th>Start Counter</th>
-                                                <th>Remains</th>
-                                                <th>Date</th>
-                                                <th>Status</th>
-
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @forelse($pending as $data)
-                                            <tr>
-                                                <td>{{ $item->id }}</td>
-                                                <td class="break_line">{{ __($item->category->name ) ?? "service" }}</td>
-                                                <td class="break_line">
-                                                    {{ __($item->service->name ?? "service" )  }}</td>
-                                                <td class="break_line"><a
-                                                        href="{{ empty(parse_url($item->link, PHP_URL_SCHEME)) ? 'https://' : null }}{{ $item->link }}"
-                                                        target="_blank">{{ $item->link }}</a></td>
-                                                <td>{{ $item->quantity ?? "0" }}</td>
-                                                <td>{{ $item->start_counter ?? "0" }}</td>
-                                                <td>{{ $item->remain ?? "0" }}</td>
-                                                <td>{{ showDateTime($item->created_at) ?? "date" }}</td>
-                                                <td>
-                                                    @if ($item->status == 0)
+                            <div class="card b-radius--10">
+                                <div class="card-body p-0">
+                                    <div class="table-responsive--sm table-responsive">
+                                        <table class="table--light style--two table">
+                                            <thead>
+                                                <tr>
+                                                    <th>@lang('Trx')</th>
+                                                    <th>@lang('Transacted')</th>
+                                                    <th>@lang('Amount')</th>
+                                                    <th>@lang('Post Balance')</th>
+                                                    <th>@lang('Detail')</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @forelse($transactions as $trx)
+                                                <tr>
+                                                    <td>
+                                                        <strong>{{ $trx->trx }}</strong>
+                                                    </td>
+                
+                                                    <td>
+                                                        {{ showDateTime($trx->created_at) }}<br>{{ diffForHumans($trx->created_at)
+                                                        }}
+                                                    </td>
+                
+                                                    <td class="budget">
                                                         <span
-                                                            class="text--small badge fw-normal badge--warning">@lang('Pending')</span>
-                                                    @elseif($item->status == 1)
-                                                        <span
-                                                            class="text--small badge fw-normal badge--primary">@lang('Processing')</span>
-                                                    @elseif($item->status == 2)
-                                                        <span
-                                                            class="text--small badge fw-normal badge--success">@lang('Completed')</span>
-                                                    @elseif($item->status == 3)
-                                                        <span
-                                                            class="text--small badge fw-normal badge--danger">@lang('Cancelled')</span>
-                                                    @else
-                                                        <span
-                                                            class="text--small badge fw-normal badge--dark">@lang('Refunded')</span>
-                                                    @endif
-                                                </td>
-                                            </tr>
-                                            @empty
-                                            <tr>
-                                                <td class="text-muted text-center" colspan="100%">{{ __($emptyMessage)
-                                                    }}
-                                                </td>
-                                            </tr>
-                                            @endforelse
-
-                                        </tbody>
-                                    </table>
+                                                            class="fw-bold @if ($trx->trx_type == '+') text-success @else text-danger @endif">
+                                                            {{ $trx->trx_type }} {{ showAmount($trx->amount) }}
+                                                            {{ $general->cur_text }}
+                                                        </span>
+                                                    </td>
+                
+                                                    <td class="budget">
+                                                        {{ showAmount($trx->post_balance) }} {{ __($general->cur_text) }}
+                                                    </td>
+                
+                                                    <td class="break_line">{{ __($trx->details) }}</td>
+                                                </tr>
+                                                @empty
+                                                <tr>
+                                                    <td class="text-muted text-center" colspan="100%">{{ __($emptyMessage) }}
+                                                    </td>
+                                                </tr>
+                                                @endforelse
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
-
-
-
-
+                                @if ($transactions->hasPages())
+                                <div class="card-footer">
+                                    {{ $transactions->links() }}
+                                </div>
+                                @endif
                             </div>
                         </div>
                     </div>

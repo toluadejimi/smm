@@ -32,9 +32,9 @@
             </ol>
         </div>
 
-        {{-- <div class="row">
+        <div class="row">
 
-            <div class="col-xl-12 col-md-12 p-6">
+            {{-- <div class="col-xl-12 col-md-12 p-6">
                 <div class="center">
 
                       <img class="center mb-2"
@@ -76,17 +76,12 @@
 
 
 
-            </div>
-
-
-            <div class="row">
+            </div> --}}
 
 
 
 
-            </div>
-
-            <div class="row">
+            {{-- <div class="row">
 
 
                 <div class="col-lg-1 col-md-1 col-sm-1 col-3">
@@ -111,8 +106,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div> --}}
+            </div> --}}
+
 
         <div class="col-md-6 p-6">
 

@@ -32,7 +32,7 @@
             </ol>
         </div>
 
-        <div class="row">
+        {{-- <div class="row">
 
             <div class="col-xl-12 col-md-12 p-6">
                 <div class="center">
@@ -112,7 +112,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <div class="col-md-6 p-6">
 

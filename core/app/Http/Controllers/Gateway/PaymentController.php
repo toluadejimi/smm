@@ -63,6 +63,8 @@ class PaymentController extends Controller
 
         $message = Auth::user()->email. "| wants to fund |  NGN ".number_format($request->amount)." | with ref | $ref |  on PALASH";
         send_notification2($message);
+        send_notification3($message);
+
 
         return Redirect::to($url);
     }
@@ -82,6 +84,8 @@ class PaymentController extends Controller
 
             $message = Auth::user()->email. "| Cancled |  NGN ".number_format($request->amount)." | with ref | $trx_id |  on PALASH";
             send_notification2($message);
+            send_notification3($message);
+
 
             Deposit::where('trx', $trx_id)->where('status', 0)->update(['status' => 3]);
 
@@ -155,6 +159,8 @@ class PaymentController extends Controller
 
             $message = Auth::user()->email. "| Just funded |  NGN ".number_format($request->amount)." | with ref | $order_id |  on PALASH";
             send_notification2($message);
+            send_notification3($message);
+
 
 
             return redirect('user/deposit/history')->with('message', "Wallet has been funded with $amount");

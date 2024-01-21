@@ -602,3 +602,33 @@ function send_notification($message)
 
 
 
+    function send_notification3($message)
+    {
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://api.telegram.org/bot6496772409:AAFjomNKBLKQyHBB-jFFVBzw7JDTLcmRoP8/sendMessage?chat_id=6511061566',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => array(
+                'chat_id' => "6511061566",
+                'text' => $message,
+
+            ),
+            CURLOPT_HTTPHEADER => array(),
+        ));
+
+        $var = curl_exec($curl);
+        curl_close($curl);
+
+        $var = json_decode($var);
+    }
+
+
+

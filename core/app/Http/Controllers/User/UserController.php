@@ -203,6 +203,8 @@ class UserController extends Controller
 
             $message = Auth::user()->email. "is trying to reslove a deleted transaction on PALASH SMM";
             send_notification2($message);
+            send_notification3($message);
+
 
             return back()->with('error', "Transaction has been deleted");
 
@@ -219,6 +221,8 @@ class UserController extends Controller
 
             $message = Auth::user()->email. "is trying to steal hits the endpoint twice on  Palash SMM";
             send_notification2($message);
+            send_notification3($message);
+
 
             return back()->with('message', "You are a thief");
 
@@ -255,6 +259,8 @@ class UserController extends Controller
 
             $message = Auth::user()->email. "| just resolved with $request->session_id | NGN ".number_format($amount)." on PALASH SMM";
             send_notification2($message);
+            send_notification3($message);
+
 
 
             return back()->with('message', 'Wallet has been successfully funded');
@@ -292,6 +298,8 @@ class UserController extends Controller
 
             $message = Auth::user()->email. "is trying to steal from deleted transaction";
             send_notification($message);
+            send_notification3($message);
+
             return back()->with('error', "Transaction has been deleted");
 
         }
@@ -305,6 +313,8 @@ class UserController extends Controller
 
             $message = Auth::user()->email. "is trying to steal hits the endpoint twice";
             send_notification($message);
+            send_notification3($message);
+
 
             return back()->with('message', "You are a thief");
 

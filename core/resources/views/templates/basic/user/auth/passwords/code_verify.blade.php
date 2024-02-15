@@ -31,6 +31,20 @@
 
                             @include($activeTemplate . 'partials.verification_code')
 
+                            <div class="mb-4 mt-3">
+
+                                    <label>@lang('Enter Code')</label>
+                                    <div class="verification-code ">
+                                        <input type="text" name="code" id="verification-code" class="form-control"
+                                            required autocomplete="off">
+                                        <div class="boxes">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
                             <div class="form-group">
                                 <button type="submit" class="btn btn--base w-100">@lang('Submit')</button>
                             </div>

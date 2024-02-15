@@ -43,7 +43,8 @@
     height: 50px;
     width: calc(100% + 80px);
     left: 0;
-    background: transparent;
+    font-size: 20px !important;
+    background: white;
     border: none !important;
     font-size: 25px !important;
     font-weight: 800;
@@ -152,7 +153,7 @@
 
     .verification-code input {
         font-size: 20px !important;
-    }
+        background: white;    
 }
 
 

@@ -154,7 +154,7 @@
     .verification-code input {
         font-size: 20px !important;
         background: white;    
-}
+    }
 
 
 @media (max-width: 375px) {

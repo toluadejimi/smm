@@ -211,7 +211,7 @@ var themeOptionArr = {
   }
 
   function setThemeOptionOnPage() {
-    if (getCookie("version") != "") {
+    if (getCookie("version") != "light") {
       jQuery.each(themeOptionArr, function (optionKey, optionValue) {
         var optionData = getCookie(optionKey);
         themeOptionArr[optionKey] =
@@ -225,18 +225,4 @@ var themeOptionArr = {
     }
   }
 
-  jQuery(document).on("click", ".dlab_theme_demo", function () {
-    setTimeout(() => {
-      var allAttrs = getElementAttrs(document.querySelector("body"));
-      allAttrs.forEach(handleSetThemeOption);
-    }, 1500);
-
-    var demoTheme = jQuery(this).data("theme");
-    themeChange(demoTheme, "ltr");
-  });
-
-  jQuery(document).on("click", ".dlab_theme_demo_rtl", function () {
-    var demoTheme = jQuery(this).data("theme");
-    themeChange(demoTheme, "rtl");
-  });
-});
+})(jQuery);

@@ -10745,8 +10745,8 @@ label {
 .dz-theme-mode #icon-light {
   display: none; }
 
-.dz-theme-mode.active #icon-light {
-  display: inline-block; }
+.dz-theme-mode #icon-light {
+  display: none; }
 
 .dz-theme-mode.active #icon-dark {
   display: none; }

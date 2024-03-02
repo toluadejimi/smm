@@ -239,5 +239,4 @@ var themeOptionArr = {
     var demoTheme = jQuery(this).data("theme");
     themeChange(demoTheme, "rtl");
   });
-
-
+});

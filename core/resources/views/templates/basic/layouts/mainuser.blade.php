@@ -993,7 +993,7 @@ Footer end
 
 <script src="{{url('')}}/assets/public/assets/js/custom.min.js"></script>
 <script src="{{url('')}}/assets/public/assets/js/dlabnav-init.js"></script>
-{{--<script src="{{url('')}}/assets/public/assets/js/demo.js"></script>--}}
+<script src="{{url('')}}/assets/public/assets/js/demo.js"></script>
 
 
 </body>

@@ -240,19 +240,4 @@ var themeOptionArr = {
     themeChange(demoTheme, "rtl");
   });
 
-  jQuery(window).on("load", function () {
-    //direction = (direction != undefined)?direction:'ltr';
-    setTimeout(() => {
-      var allAttrs = getElementAttrs(document.querySelector("body"));
-      allAttrs.forEach(handleSetThemeOption);
-    }, 1500);
-    if (theme != undefined) {
-      themeChange(theme);
-    } else if (getCookie("version") == "") {
-      themeChange(0);
-    }
 
-    /* Set Theme On Page From Cookie */
-    setThemeOptionOnPage();
-  });
-})(jQuery);

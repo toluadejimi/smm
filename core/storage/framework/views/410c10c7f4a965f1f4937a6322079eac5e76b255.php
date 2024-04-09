@@ -111,72 +111,65 @@
                             </div>
 
 
-                            <div class="card-body">
+                            <div class="card b-radius--10">
+                                <div class="card-body p-0">
+                                    <div class="table-responsive--sm table-responsive">
+                                        <table class="table--light style--two table">
+                                            <thead>
+                                                <tr>
+                                                    <th><?php echo app('translator')->get('Trx'); ?></th>
+                                                    <th><?php echo app('translator')->get('Transacted'); ?></th>
+                                                    <th><?php echo app('translator')->get('Amount'); ?></th>
+                                                    <th><?php echo app('translator')->get('Post Balance'); ?></th>
+                                                    <th><?php echo app('translator')->get('Detail'); ?></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php $__empty_1 = true; $__currentLoopData = $transactions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $trx): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                                                <tr>
+                                                    <td>
+                                                        <strong><?php echo e($trx->trx); ?></strong>
+                                                    </td>
+                
+                                                    <td>
+                                                        <?php echo e(showDateTime($trx->created_at)); ?><br><?php echo e(diffForHumans($trx->created_at)); ?>
 
-                                <div class="table-responsive">
-                                    <table class="table table-responsive-md">
-                                        <thead>
-                                            <tr>
-                                                <th>Order ID</th>
-                                                <th>Category</th>
-                                                <th>Service	Link</th>
-                                                <th>Quantity</th>
-                                                <th>Start Counter</th>
-                                                <th>Remains</th>
-                                                <th>Date</th>
-                                                <th>Status</th>
+                                                    </td>
+                
+                                                    <td class="budget">
+                                                        <span
+                                                            class="fw-bold <?php if($trx->trx_type == '+'): ?> text-success <?php else: ?> text-danger <?php endif; ?>">
+                                                            <?php echo e($trx->trx_type); ?> <?php echo e(showAmount($trx->amount)); ?>
 
+                                                            <?php echo e($general->cur_text); ?>
 
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php $__empty_1 = true; $__currentLoopData = $pending; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                                            <tr>
-                                                <td><?php echo e($item->id); ?></td>
-                                                <td class="break_line"><?php echo e(__($item->category->name ) ?? "service"); ?></td>
-                                                <td class="break_line">
-                                                    <?php echo e(__($item->service->name ?? "service" )); ?></td>
-                                                <td class="break_line"><a
-                                                        href="<?php echo e(empty(parse_url($item->link, PHP_URL_SCHEME)) ? 'https://' : null); ?><?php echo e($item->link); ?>"
-                                                        target="_blank"><?php echo e($item->link); ?></a></td>
-                                                <td><?php echo e($item->quantity ?? "0"); ?></td>
-                                                <td><?php echo e($item->start_counter ?? "0"); ?></td>
-                                                <td><?php echo e($item->remain ?? "0"); ?></td>
-                                                <td><?php echo e(showDateTime($item->created_at) ?? "date"); ?></td>
-                                                <td>
-                                                    <?php if($item->status == 0): ?>
-                                                        <span
-                                                            class="text--small badge fw-normal badge--warning"><?php echo app('translator')->get('Pending'); ?></span>
-                                                    <?php elseif($item->status == 1): ?>
-                                                        <span
-                                                            class="text--small badge fw-normal badge--primary"><?php echo app('translator')->get('Processing'); ?></span>
-                                                    <?php elseif($item->status == 2): ?>
-                                                        <span
-                                                            class="text--small badge fw-normal badge--success"><?php echo app('translator')->get('Completed'); ?></span>
-                                                    <?php elseif($item->status == 3): ?>
-                                                        <span
-                                                            class="text--small badge fw-normal badge--danger"><?php echo app('translator')->get('Cancelled'); ?></span>
-                                                    <?php else: ?>
-                                                        <span
-                                                            class="text--small badge fw-normal badge--dark"><?php echo app('translator')->get('Refunded'); ?></span>
-                                                    <?php endif; ?>
-                                                </td>
-                                            </tr>
-                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                                            <tr>
-                                                <td class="text-muted text-center" colspan="100%"><?php echo e(__($emptyMessage)); ?>
+                                                        </span>
+                                                    </td>
+                
+                                                    <td class="budget">
+                                                        <?php echo e(showAmount($trx->post_balance)); ?> <?php echo e(__($general->cur_text)); ?>
 
-                                                </td>
-                                            </tr>
-                                            <?php endif; ?>
+                                                    </td>
+                
+                                                    <td class="break_line"><?php echo e(__($trx->details)); ?></td>
+                                                </tr>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                                <tr>
+                                                    <td class="text-muted text-center" colspan="100%"><?php echo e(__($emptyMessage)); ?>
 
-                                        </tbody>
-                                    </table>
+                                                    </td>
+                                                </tr>
+                                                <?php endif; ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
+                                <?php if($transactions->hasPages()): ?>
+                                <div class="card-footer">
+                                    <?php echo e($transactions->links()); ?>
 
-
-
-
+                                </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>

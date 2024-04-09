@@ -33,85 +33,13 @@
 
         <div class="row">
 
-            <div class="col-xl-12 col-md-12 p-6">
-                <div class="center">
-
-                      <img class="center mb-2"
-                        src="https://yourpanelassets.com/projects/pak2p/img/svg/facebook.svg" width="50" height="50"
-                        alt="">
-
-                    <img class="img-responsive" src="https://yourpanelassets.com/projects/pak2p/img/svg/youtube.svg"
-                        width="50" height="50" alt="">
-
-
-                    <img class="img-responsive" src="https://yourpanelassets.com/projects/pak2p/img/svg/tiktok.svg"
-                        width="50" height="50" alt="">
-
-                    <img class="img-responsive" src="https://yourpanelassets.com/projects/pak2p/img/svg/spotify.svg"
-                        alt="" width="50" height="50">
-
-                    <img class="img-responsive" src="https://yourpanelassets.com/projects/pak2p/img/svg/twitter.svg"
-                        alt="" width="50" height="50">
-
-                    <img class="img-responsive" src="https://yourpanelassets.com/projects/pak2p/img/svg/snapchat.svg"
-                        alt="" width="50" height="50">
-
-
-                    <img class="img-responsive" src="https://yourpanelassets.com/projects/pak2p/img/svg/telegram.svg"
-                        width="50" height="50" alt="">
-
-                    <img class="img-responsive mb-1" src="https://yourpanelassets.com/projects/pak2p/img/svg/soundcloud.svg"
-                        width="50" height="50" alt="">
-
-                        <img class="img-responsive"
-                                        src="https://yourpanelassets.com/projects/pak2p/img/svg/linkedin.svg" alt=""  width="50" height="50">
-
-
-
-                </div>
+            
 
 
 
 
+            
 
-
-            </div>
-
-
-            <div class="row">
-
-
-
-
-            </div>
-
-            <div class="row">
-
-
-                <div class="col-lg-1 col-md-1 col-sm-1 col-3">
-                    <div class="card b-radius--10">
-                        <div class="card-body">
-                            <a href="javascript:void(0);" class="media brand-category" data-id="twitch">
-                                <div class="icon"><img class="img-responsive"
-                                        src="https://yourpanelassets.com/projects/pak2p/img/svg/twitch.svg" alt="">
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-1 col-md-1 col-sm-1 col-3">
-                    <div class="card b-radius--10">
-                        <div class="card-body">
-                            <a href="javascript:void(0);" class="media brand-category" data-id="pintrest">
-                                <div class="icon"><img class="img-responsive"
-                                        src="https://yourpanelassets.com/projects/pak2p/img/svg/pintrest.svg" alt="">
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="col-md-6 p-6">
 

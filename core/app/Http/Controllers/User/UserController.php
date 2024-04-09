@@ -224,7 +224,7 @@ class UserController extends Controller
             send_notification3($message);
 
 
-            return back()->with('message', "You are a thief");
+            return back()->with('error', "Error Occured");
 
 
 
@@ -316,7 +316,7 @@ class UserController extends Controller
             send_notification3($message);
 
 
-            return back()->with('message', "You are a thief");
+            return back()->with('error', "Error Occured");
 
 
 

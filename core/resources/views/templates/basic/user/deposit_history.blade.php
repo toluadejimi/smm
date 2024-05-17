@@ -120,7 +120,7 @@
                                                                         from OPAY OR PALMPAY use the 3 letter generated
                                                                         as reference</small>
                                                                     <input hidden type="text" name="trx_ref"
-                                                                           value="{{ $deposit->trx_ref }}" required
+                                                                           value="{{ $deposit->trx }}" required
                                                                            class="">
 
                                                                 </div>

@@ -276,6 +276,8 @@ class UserController extends Controller
     public function session_resolve(request $request)
     {
 
+        dd($request->all());
+
         if ($request->bank_type == "providus") {
 
 

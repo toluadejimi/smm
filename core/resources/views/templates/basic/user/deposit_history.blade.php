@@ -1,75 +1,65 @@
 @extends($activeTemplate . 'layouts.mainuser')
 @section('content')
 
+    <div class="content-body default-height">
+        <div class="container-fluid">
+
+            <div class="row page-titles">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="user/dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Funding History</a></li>
+                </ol>
+            </div>
 
 
-<div class="content-body default-height">
-    <div class="container-fluid">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-xl-8 col-md-12 col-sm-12 my-3">
+                            <x-search-form placeholder="Search by Trx"/>
+                        </div>
 
-        <div class="row page-titles">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="user/dashboard">Dashboard</a></li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Funding History</a></li>
-            </ol>
-        </div>
+                        <div class="col-xl-4 col-md-12 col-sm-12 my-3">
+                            <a href="{{ route('user.deposit.index') }}" class="btn btn-primary btn-block">
+                                <i class="las la-plus"></i>
+                                @lang('Deposit Now')
+                            </a>
+                        </div>
 
-
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-xl-8 col-md-12 col-sm-12 my-3">
-                        <x-search-form placeholder="Search by Trx" />
                     </div>
-
-                    <div class="col-xl-4 col-md-12 col-sm-12 my-3">
-                        <a href="{{ route('user.deposit.index') }}" class="btn btn-primary btn-block">
-                            <i class="las la-plus"></i>
-                            @lang('Deposit Now')
-                        </a>
-                    </div>
-
                 </div>
             </div>
-        </div>
 
 
+            <div class="row">
+                <div class="col-md-12">
 
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    @if (session()->has('message'))
+                        <div class="alert alert-success">
+                            {{ session()->get('message') }}
+                        </div>
+                    @endif
+                    @if (session()->has('error'))
+                        <div class="alert alert-danger">
+                            {{ session()->get('error') }}
+                        </div>
+                    @endif
 
+                    <div class="card b-dadius--10">
+                        <div class="card-body p-0">
 
-
-
-
-
-
-        <div class="row">
-            <div class="col-md-12">
-
-                @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                @endif
-                @if (session()->has('message'))
-                <div class="alert alert-success">
-                    {{ session()->get('message') }}
-                </div>
-                @endif
-                @if (session()->has('error'))
-                <div class="alert alert-danger">
-                    {{ session()->get('error') }}
-                </div>
-                @endif
-
-                <div class="card b-dadius--10">
-                    <div class="card-body p-0">
-
-                        <div class="table-responsive--sm table-responsive">
-                            <table class="table table--light style--two">
-                                <thead>
+                            <div class="table-responsive--sm table-responsive">
+                                <table class="table table--light style--two">
+                                    <thead>
                                     <tr>
                                         <th>@lang('Gateway | Transaction')</th>
                                         <th class="text-center">@lang('Initiated')</th>
@@ -78,165 +68,170 @@
                                         <th class="text-center">@lang('Action')</th>
 
                                     </tr>
-                                </thead>
-                                <tbody>
+                                    </thead>
+                                    <tbody>
                                     @forelse(@$deposits as $deposit)
-                                    <tr>
+                                        <tr>
 
 
-                                        <div class="modal fade" id="exampleModal{{ $deposit->id }}" tabindex=""
-                                            aria-labelledby="exampleModalLabel" data-backdrop="false"
-                                            aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Resolve Deposit
-                                                        </h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                    </div>
+                                            <div class="modal fade" id="exampleModal{{ $deposit->id }}" tabindex=""
+                                                 aria-labelledby="exampleModalLabel" data-backdrop="false"
+                                                 aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Resolve
+                                                                Deposit
+                                                            </h5>
+                                                            <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal"
+                                                                    aria-label="Close"></button>
+                                                        </div>
 
 
-                                                    <div class="modal-body">
+                                                        <div class="modal-body">
 
 
-                                                        <p>Resolve pending transactions by using your bank session ID /
-                                                            Refrence
-                                                            No on your transaction recepit</p>
+                                                            <p>Resolve pending transactions by using your bank session
+                                                                ID /
+                                                                Refrence
+                                                                No on your transaction recepit</p>
 
-                                                        <form action="/user/session-resolve" method="POST">
-                                                            @csrf
+                                                            <form action="/user/session-resolve" method="POST">
+                                                                @csrf
 
+                                                                <h4 class="my-3">{{ $deposit->trx }}</h4>
 
-                                                            <h4 class="my-3">{{ $deposit->trx }}</h4>
+                                                                <label class="my-3">Select Bank</label>
+                                                                <select class="form-control" required name="bank_type">
+                                                                    <option value="">Select option</option>
+                                                                    <option value="opay">OPAY</option>
+                                                                    <option value="palmpay">PALMPAY</option>
+                                                                    <option value="providus">PROVIDUS</option>
+                                                                </select>
 
-                                                            <label class="my-3">Select Bank</label>
-                                                            <select class="form-control" required name="bank_type">
-                                                                <option value="">Select option</option>
-                                                                <option value="opay">OPAY</option>
-                                                                <option value="palmpay">PALMPAY</option>
-                                                                <option value="providus">PROVIDUS</option>
-                                                            </select>
+                                                                <label class="my-3">Enter Session ID or
+                                                                    Reference</label>
+                                                                <div>
+                                                                    <input type="text" name="session_id" required
+                                                                           class="form-control p-2 text-dark mb-3"
+                                                                           placeholder="Enter session ID or Reference">
+                                                                    <small class="text-danger my-2">If transaction is
+                                                                        from OPAY OR PALMPAY use the 3 letter generated
+                                                                        as reference</small>
+                                                                    <input hidden type="text" name="trx_ref"
+                                                                           value="{{ $deposit->trx_ref }}" required
+                                                                           class="">
 
-                                                            <label class="my-3">Enter Session ID or Reference</label>
-                                                            <div>
-                                                                <input type="text" name="session_id" required
-                                                                       class="form-control p-2 text-dark mb-3" placeholder="Enter session ID or Reference">
-                                                                <small class="text-danger my-2">If transaction is from OPAY OR PALMPAY use the 3 letter generated as reference</small>
-                                                                <input hidden type="text" name="trx_ref"
-                                                                       value="{{ $deposit->trx_ref }}" required class="">
+                                                                </div>
 
                                                             </div>
 
 
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-success">Verify</button>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                            data-bs-dismiss="modal">Close
+                                                                    </button>
+                                                                    <button type="submit" class="btn btn-success">
+                                                                        Verify
+                                                                    </button>
+                                                                </div>
+
+                                                            </form>
+
+                                                        </div>
                                                     </div>
-
-                                                    </form>
-
                                                 </div>
-                                            </div>
-                                        </div>
 
 
-
-
-
-
-                                        <td>
+                                                <td>
                                             <span class="fw-bold"> <span class="text-primary">{{
                                                     __($deposit->gateway?->name)
                                                     }}</span>
                                             </span>
-                                            <br>
-                                            <small> {{ $deposit->trx }} </small>
-                                        </td>
+                                                    <br>
+                                                    <small> {{ $deposit->trx }} </small>
+                                                </td>
 
-                                        <td class="text-center">
-                                            {{ showDateTime($deposit->created_at) }}<br>{{
+                                                <td class="text-center">
+                                                    {{ showDateTime($deposit->created_at) }}<br>{{
                                             diffForHumans($deposit->created_at)
                                             }}
-                                        </td>
-                                        <td class="text-center">
-                                            {{ __($general->cur_sym) }}{{ showAmount($deposit->amount) }} + <span
-                                                class="text--danger" title="@lang('charge')">{{
+                                                </td>
+                                                <td class="text-center">
+                                                    {{ __($general->cur_sym) }}{{ showAmount($deposit->amount) }} +
+                                                    <span
+                                                        class="text--danger" title="@lang('charge')">{{
                                                 showAmount($deposit->charge) }}
                                             </span>
-                                            <br>
-                                            <strong title="@lang('Amount with charge')">
-                                                {{ showAmount($deposit->amount + $deposit->charge) }}
-                                                {{ __($general->cur_text) }}
-                                            </strong>
-                                        </td>
+                                                    <br>
+                                                    <strong title="@lang('Amount with charge')">
+                                                        {{ showAmount($deposit->amount + $deposit->charge) }}
+                                                        {{ __($general->cur_text) }}
+                                                    </strong>
+                                                </td>
 
-                                        <td class="text-center">
-                                            @php echo $deposit->statusBadge @endphp
-                                        </td>
-                                        @php
-                                        $details = $deposit->detail != null ? json_encode($deposit->detail) : null;
-                                        @endphp
+                                                <td class="text-center">
+                                                    @php echo $deposit->statusBadge @endphp
+                                                </td>
+                                                @php
+                                                    $details = $deposit->detail != null ? json_encode($deposit->detail) : null;
+                                                @endphp
 
-                                        @if($deposit->status == 2)
-                                        <td>
-                                            <a href="#" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal{{ $deposit->id }}"
-                                                class="btn btn-warning">
-                                                <i class="las la-coin"></i>
-                                                @lang('Resolve Deposit')
-                                            </a>
-                                        </td>
-
-
-
-                                        @elseif($deposit->status == 1)
-                                        <td>
-                                            <a href="#" class="btn btn-success btn-sm">
-                                                <i class="las la-bank"></i>
-                                                @lang('Transaction Completed')
-                                            </a>
-                                        </td>
-
-                                        @elseif($deposit->status == 5)
-                                        <td>
-                                            <a href="#" class="btn btn-success btn-sm">
-                                                <i class="las la-bank"></i>
-                                                @lang('Reslove Completed')
-                                            </a>
-                                        </td>
-                                        @endif
+                                                @if($deposit->status == 2)
+                                                    <td>
+                                                        <a href="#" data-bs-toggle="modal"
+                                                           data-bs-target="#exampleModal{{ $deposit->id }}"
+                                                           class="btn btn-warning">
+                                                            <i class="las la-coin"></i>
+                                                            @lang('Resolve Deposit')
+                                                        </a>
+                                                    </td>
 
 
 
+                                                @elseif($deposit->status == 1)
+                                                    <td>
+                                                        <a href="#" class="btn btn-success btn-sm">
+                                                            <i class="las la-bank"></i>
+                                                            @lang('Transaction Completed')
+                                                        </a>
+                                                    </td>
 
-                                    </tr>
+                                                @elseif($deposit->status == 5)
+                                                    <td>
+                                                        <a href="#" class="btn btn-success btn-sm">
+                                                            <i class="las la-bank"></i>
+                                                            @lang('Reslove Completed')
+                                                        </a>
+                                                    </td>
+                                            @endif
+
+
+                                        </tr>
                                     @empty
-                                    <tr>
-                                        <td colspan="100%" class="text-center">{{ __($emptyMessage) }}</td>
-                                    </tr>
+                                        <tr>
+                                            <td colspan="100%" class="text-center">{{ __($emptyMessage) }}</td>
+                                        </tr>
                                     @endforelse
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
+                        @if ($deposits->hasPages())
+                            <div class="card-footer">
+                                {{ $deposits->links() }}
+                            </div>
+                        @endif
                     </div>
-                    @if ($deposits->hasPages())
-                    <div class="card-footer">
-                        {{ $deposits->links() }}
-                    </div>
-                    @endif
                 </div>
             </div>
+
+            {{-- APPROVE MODAL --}}
+
+
         </div>
-
-        {{-- APPROVE MODAL --}}
-
-
-
-
     </div>
-</div>
 @endsection
 
 
@@ -248,10 +243,10 @@
 
 
 @push('script')
-<script>
-    (function($) {
+    <script>
+        (function ($) {
             "use strict";
-            $('.detailBtn').on('click', function() {
+            $('.detailBtn').on('click', function () {
                 var modal = $('#detailModal');
 
                 var userData = $(this).data('info');
@@ -284,5 +279,5 @@
                 modal.modal('show');
             });
         })(jQuery);
-</script>
+    </script>
 @endpush

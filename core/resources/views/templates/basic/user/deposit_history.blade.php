@@ -107,26 +107,28 @@
                                                         <form action="/user/session-resolve" method="POST">
                                                             @csrf
 
-                                                            <label class="">Transaction ID</label>
 
-                                                            <div>
-                                                                {{ $deposit->trx }}
+                                                            <h4 class="my-3">{{ $deposit->trx }}</h4>
 
-                                                            </div>
+                                                            <label class="my-3">Select Bank</label>
+                                                            <select class="form-control" required name="bank_type">
+                                                                <option value="">Select option</option>
+                                                                <option value="opay">OPAY</option>
+                                                                <option value="palmpay">PALMPAY</option>
+                                                                <option value="providus">PROVIDUS</option>
+                                                            </select>
 
-
-                                                            <label class="my-3">Enter Session ID</label>
+                                                            <label class="my-3">Enter Session ID or Reference</label>
                                                             <div>
                                                                 <input type="text" name="session_id" required
-                                                                    class="form-control" placeholder="Enter session ID">
-
-                                                                <input type="text" hidden name="order_id"
-                                                                    value="{{ $deposit->trx }}">
+                                                                       class="form-control p-2 text-dark mb-3" placeholder="Enter session ID or Reference">
+                                                                <small class="text-danger my-2">If transaction is from OPAY OR PALMPAY use the 3 letter generated as reference</small>
+                                                                <input hidden type="text" name="trx_ref"
+                                                                       value="{{ $deposit->trx_ref }}" required class="">
 
                                                             </div>
 
 
-                                                    </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
                                                             data-bs-dismiss="modal">Close</button>

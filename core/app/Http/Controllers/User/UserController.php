@@ -410,8 +410,6 @@ class UserController extends Controller
                 $message = $resolve[0]['message'];
 
 
-                dd($resolve);
-
                 if ($status == true) {
                     User::where('id', Auth::id())->increment('balance', $amount);
                     Deposit::where('trx', $request->order_id)->update(['status' => 1]);

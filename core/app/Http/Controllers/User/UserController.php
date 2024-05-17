@@ -322,6 +322,7 @@ class UserController extends Controller
             }
 
 
+
             if ($status == true) {
                 User::where('id', Auth::id())->increment('balance', $amount);
                 Deposit::where('trx', $request->order_id)->update(['status' => 1]);
@@ -363,17 +364,11 @@ class UserController extends Controller
             $ref = $request->order_id;
             $session_id = $request->session_id;
 
-            $resolve = session_resolve_others($ref, $session_id);
-
-            $status = $resolve[0]['status'];
-            $amount = $resolve[0]['amount'];
-            $message = $resolve[0]['message'];
 
 
 
             $trx = Deposit::where('trx', $request->order_id)->first()->status ?? null;
 
-            dd($request->all(), $trx);
 
             if ($trx == null) {
 
@@ -389,6 +384,7 @@ class UserController extends Controller
             $chk = Deposit::where('trx', $request->order_id)->first()->status ?? null;
 
 
+
             if ($chk == 1 || $chk == 4) {
 
 
@@ -402,37 +398,58 @@ class UserController extends Controller
 
             }
 
-
-            if ($status == true) {
-                User::where('id', Auth::id())->increment('balance', $amount);
-                Deposit::where('trx', $request->order_id)->update(['status' => 1]);
-
-                $ref = "PLA-" . random_int(000, 999) . date('ymdhis');
-
-                $data = new Deposit();
-                $data->user_id = Auth::id();
-                $data->method_code = 102;
-                $data->method_currency = "NGN";
-                $data->amount = $request->amount;
-                $data->charge = 0;
-                $data->rate = 0;
-                $data->final_amo = $request->amount;
-                $data->btc_amo = 0;
-                $data->btc_wallet = "";
-                $data->trx = $request->order_id;
-                $data->status = 5;
+            if($chk == 2){
 
 
-                $message = Auth::user()->email . "| just resolved with $request->session_id | NGN " . number_format($amount) . " on PALASH";
-                send_notification($message);
 
-                return back()->with('message', "Transaction successfully Resolved, NGN $amount added to ur wallet");
+
+                $resolve = session_resolve_others($ref, $session_id);
+
+                $status = $resolve[0]['status'];
+                $amount = $resolve[0]['amount'];
+                $message = $resolve[0]['message'];
+
+
+                dd($resolve);
+
+                if ($status == true) {
+                    User::where('id', Auth::id())->increment('balance', $amount);
+                    Deposit::where('trx', $request->order_id)->update(['status' => 1]);
+
+                    $ref = "PLA-" . random_int(000, 999) . date('ymdhis');
+
+                    $data = new Deposit();
+                    $data->user_id = Auth::id();
+                    $data->method_code = 102;
+                    $data->method_currency = "NGN";
+                    $data->amount = $request->amount;
+                    $data->charge = 0;
+                    $data->rate = 0;
+                    $data->final_amo = $request->amount;
+                    $data->btc_amo = 0;
+                    $data->btc_wallet = "";
+                    $data->trx = $request->order_id;
+                    $data->status = 5;
+
+
+                    $message = Auth::user()->email . "| just resolved with $request->session_id | NGN " . number_format($amount) . " on PALASH";
+                    send_notification($message);
+
+                    return back()->with('message', "Transaction successfully Resolved, NGN $amount added to ur wallet");
+                }
+
+
+                if ($status == false) {
+                    return back()->with('error', "$message");
+                }
+
+
             }
 
 
-            if ($status == false) {
-                return back()->with('error', "$message");
-            }
+
+
+
 
         }
 

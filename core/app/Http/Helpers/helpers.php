@@ -541,7 +541,7 @@ function session_resolve($ref, $session_id){
 }
 
 
-function session_resolve_others($session_id, $ref){
+function session_resolve_others($ref, $session_id){
 
     $curl = curl_init();
 
@@ -549,6 +549,7 @@ function session_resolve_others($session_id, $ref){
         'session_id' => "$session_id",
         'ref' => "$ref"
     );
+
 
 
     curl_setopt_array($curl, array(
@@ -567,10 +568,13 @@ function session_resolve_others($session_id, $ref){
     curl_close($curl);
     $var = json_decode($var);
 
+
     $message = $var->message ?? null;
     $status = $var->status ?? null;
 
     $amount = $var->amount ?? null;
+
+
 
     return array([
         'status' => $status,

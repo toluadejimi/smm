@@ -119,7 +119,7 @@
                                                                     <small class="text-danger my-2">If transaction is
                                                                         from OPAY OR PALMPAY use the 3 letter generated
                                                                         as reference</small>
-                                                                    <input hidden type="text" name="trx_ref"
+                                                                    <input hidden type="text" name="order_id"
                                                                            value="{{ $deposit->trx }}" required
                                                                            class="">
 

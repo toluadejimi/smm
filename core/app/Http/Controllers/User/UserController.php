@@ -369,9 +369,11 @@ class UserController extends Controller
             $amount = $resolve[0]['amount'];
             $message = $resolve[0]['message'];
 
-            dd($request->all());
+
 
             $trx = Deposit::where('trx', $request->order_id)->first()->status ?? null;
+
+            dd($request->all(), $trx);
 
             if ($trx == null) {
 

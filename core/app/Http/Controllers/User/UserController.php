@@ -174,6 +174,18 @@ class UserController extends Controller
         return view($this->activeTemplate . 'user.services.services', compact('pageTitle', 'categories', 'whatsapp_link'));
     }
 
+
+    public function services2()
+    {
+        $pageTitle = 'Services';
+        $categories = Category::active()->whereHas('services', function ($services) {
+            return $services->active();
+        })->orderBy('name')->get();
+
+        $whatsapp_link = GeneralSetting::where('id', 1)->first()->whatsapp_link;
+        return view($this->activeTemplate . 'user.services.servicess', compact('pageTitle', 'categories', 'whatsapp_link'));
+    }
+
     public function serviceCategory($id)
     {
         $category = Category::active()->findOrFail($id);

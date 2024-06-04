@@ -13,6 +13,9 @@
     <meta name="keywords" content="palash, smm, social media, boost">
 
 
+
+
+
     <meta name="description"
           content="Elevate your administrative efficiency and enhance productivity with the Fillow SaaS Admin Dashboard Template. Designed to streamline your tasks, this powerful tool provides a user-friendly interface, robust features, and customizable options, making it the ideal choice for managing your data and operations with ease.">
 
@@ -46,7 +49,32 @@
     <link href="{{url('')}}/assets/public/assets/css/style.css" rel="stylesheet" type="text/css"/>
 
 
+    <style>
+        .float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+        }
+
+        .my-float {
+            margin-top: 16px;
+        }
+    </style>
+
+
 </head>
+
+
+
 
 <body>
 
@@ -67,6 +95,9 @@
         <div></div>
     </div>
 </div>
+
+
+
 <!--*******************
     Preloader end
 ********************-->
@@ -76,10 +107,13 @@
 ***********************************-->
 <div id="main-wrapper">
 
+
     <!--**********************************
 Nav header start
 ***********************************-->
+
     <div class="nav-header">
+
         <a href="/" class="brand-logo">
 
 
@@ -121,6 +155,9 @@ Nav header start
             </div>
         </div>
     </div>
+
+
+
     <!--**********************************
 Nav header end
 ***********************************-->
@@ -801,7 +838,7 @@ Header start
 
 
                         <li class="nav-item d-flex align-items-center">
-                            <a href="https://streamable.com/9lv2o4" class="btn btn-warning">
+                            <a href="https://youtube.com/shorts/Zn_dALbDhSI?feature=share" class="btn btn-warning">
                                 <i class="las la-cloud"></i>
                                 @lang('How to deposit')
                             </a>
@@ -841,12 +878,7 @@ Header start
             </nav>
         </div>
     </div>
-    <!--**********************************
-Header end
-***********************************-->
-    <!--**********************************
-Sidebar start
-***********************************-->
+
     <div class="dlabnav">
         <div class="dlabnav-scroll">
             <ul class="metismenu" id="menu">
@@ -963,7 +995,14 @@ Sidebar start
                 <a href="https://bplux.store">Designed by Teetech</a>
             </div>
         </div>
+
+
     </div>
+
+
+
+
+
     @yield('content')
 
     <!--**********************************
@@ -975,8 +1014,8 @@ Sidebar start
         </div>
     </div>
     <!--**********************************
-Footer end
-***********************************-->
+    Footer end
+    ***********************************-->
 
 </div>
 <script src="{{url('')}}/assets/public/assets/vendor/global/global.min.js"></script>
@@ -994,6 +1033,11 @@ Footer end
 <script src="{{url('')}}/assets/public/assets/js/custom.min.js"></script>
 <script src="{{url('')}}/assets/public/assets/js/dlabnav-init.js"></script>
 <script src="{{url('')}}/assets/public/assets/js/demo.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<a href="https://chat.whatsapp.com/GJ9vHqLU3bQ0Doi2qlwrvH" class="float" target="_blank">
+    <i class="fa fa-whatsapp my-float"></i>
+</a>
 
 
 </body>

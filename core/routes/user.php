@@ -66,7 +66,9 @@ Route::middleware('auth')->name('user.')->group(function () {
 
                 Route::get('attachment-download/{fil_hash}', 'attachmentDownload')->name('attachment.download');
                 //Service
-                Route::get('service', 'services')->name('services');
+                Route::get('service', 'services2')->name('services');
+                Route::get('test', 'services2')->name('test');
+
                 Route::get('order', 'order')->name('order');
                 Route::get('service/category/{id}', 'serviceCategory')->name('service.category');
             });

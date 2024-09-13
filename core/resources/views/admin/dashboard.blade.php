@@ -1,7 +1,285 @@
 @extends('admin.layouts.app')
 @section('panel')
 
+    <div>
+        <div class="row gy-4">
+            <div class="col-xxl-3 col-sm-6">
+                <div class="card bg--primary has-link box--shadow2 overflow-hidden">
+                    <a class="item-link" href="{{ route('admin.users.all') }}"></a>
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-4">
+                                <i class="las la-users f-size--56"></i>
+                            </div>
+                            <div class="col-8 text-end">
+                                <span class="text--small text-white">@lang('Total Users ALL')</span>
+                                <h2 class="text-white">{{ $widget['total_users'] }}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- dashboard-w1 end -->
+            <div class="col-xxl-3 col-sm-6">
+                <div class="card bg--success has-link box--shadow2">
+                    <a class="item-link" href="{{ route('admin.users.active') }}"></a>
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-4">
+                                <i class="las la-user-check f-size--56"></i>
+                            </div>
+                            <div class="col-8 text-end">
+                                <span class="text--small text-white">@lang('Active Users')</span>
+                                <h2 class="text-white">{{ $widget['verified_users'] }}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- dashboard-w1 end -->
+            <div class="col-xxl-3 col-sm-6">
+                <div class="card bg--danger has-link box--shadow2">
+                    <a class="item-link" href="{{ route('admin.users.email.unverified') }}"></a>
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-4">
+                                <i class="lar la-envelope f-size--56"></i>
+                            </div>
+                            <div class="col-8 text-end">
+                                <span class="text--small text-white">@lang('Email Unverified Users')</span>
+                                <h2 class="text-white">{{ $widget['email_unverified_users'] }}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- dashboard-w1 end -->
+            <div class="col-xxl-3 col-sm-6">
+                <div class="card bg--red has-link box--shadow2">
+                    <a class="item-link" href="{{ route('admin.users.mobile.unverified') }}"></a>
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-4">
+                                <i class="las la-comment-slash f-size--56"></i>
+                            </div>
+                            <div class="col-8 text-end">
+                                <span class="text--small text-white">@lang('Mobile Unverified Users')</span>
+                                <h2 class="text-white">{{ $widget['mobile_unverified_users'] }}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- dashboard-w1 end -->
+        </div><!-- row end-->
 
+        <div class="row gy-4 mt-2">
+            <div class="col-xxl-3 col-sm-6">
+                <div class="widget-two box--shadow2 b-radius--5 bg--white">
+                    <i class="fas fa-hand-holding-usd overlay-icon text--success"></i>
+                    <div class="widget-two__icon b-radius--5 bg--success">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <div class="widget-two__content">
+                        <h3>{{ $general->cur_sym }}{{ showAmount($deposit['total_deposit_amount']) }}</h3>
+                        <p>@lang('Total Deposited')</p>
+                    </div>
+                    <a class="widget-two__btn border--primary btn-outline--primary border--success btn-outline--success border border" href="{{ route('admin.deposit.list') }}">@lang('View All')</a>
+                </div>
+            </div><!-- dashboard-w1 end -->
+            <div class="col-xxl-3 col-sm-6">
+                <div class="widget-two box--shadow2 b-radius--5 bg--white">
+                    <i class="fas fa-spinner overlay-icon text--warning"></i>
+                    <div class="widget-two__icon b-radius--5 bg--warning">
+                        <i class="fas fa-spinner"></i>
+                    </div>
+                    <div class="widget-two__content">
+                        <h3>{{ $deposit['total_deposit_pending'] }}</h3>
+                        <p>@lang('Pending Deposits')</p>
+                    </div>
+                    <a class="widget-two__btn border--primary btn-outline--primary border--warning btn-outline--warning border border" href="{{ route('admin.deposit.pending') }}">@lang('View All')</a>
+                </div>
+            </div><!-- dashboard-w1 end -->
+            <div class="col-xxl-3 col-sm-6">
+                <div class="widget-two box--shadow2 b-radius--5 bg--white">
+                    <i class="fas fa-ban overlay-icon text--danger"></i>
+                    <div class="widget-two__icon b-radius--5 bg--danger">
+                        <i class="fas fa-ban"></i>
+                    </div>
+                    <div class="widget-two__content">
+                        <h3>{{ $deposit['total_deposit_rejected'] }}</h3>
+                        <p>@lang('Rejected Deposits')</p>
+                    </div>
+                    <a class="widget-two__btn border--primary btn-outline--primary border--danger btn-outline--danger border border" href="{{ route('admin.deposit.rejected') }}">@lang('View All')</a>
+                </div>
+            </div><!-- dashboard-w1 end -->
+            <div class="col-xxl-3 col-sm-6">
+                <div class="widget-two box--shadow2 b-radius--5 bg--white">
+                    <i class="fas fa-percentage overlay-icon text--primary"></i>
+                    <div class="widget-two__icon b-radius--5 bg--primary">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <div class="widget-two__content">
+                        <h3>{{ $general->cur_sym }}{{ showAmount($deposit['total_deposit_charge']) }}</h3>
+                        <p>@lang('Deposited Charge')</p>
+                    </div>
+                    <a class="widget-two__btn border--primary btn-outline--primary border--primary btn-outline--primary border border" href="{{ route('admin.deposit.list') }}">@lang('View All')</a>
+                </div>
+            </div><!-- dashboard-w1 end -->
+        </div><!-- row end-->
+
+        <div class="row gy-4 mt-2">
+            <div class="col-xxl-4 col-sm-6">
+                <div class="widget-two box--shadow2 b-radius--5 bg--white">
+                    <i class="las la-shopping-cart overlay-icon text--primary"></i>
+                    <div class="widget-two__icon b-radius--5 bg--primary">
+                        <i class="las la-shopping-cart"></i>
+                    </div>
+                    <div class="widget-two__content">
+                        <h3>{{ $widget['total_order'] }}</h3>
+                        <p>@lang('Total Order')</p>
+                    </div>
+                    <a class="widget-two__btn border--primary btn-outline--primary border" href="{{ route('admin.orders.index') }}">@lang('View All')</a>
+                </div>
+            </div><!-- dashboard-w1 end -->
+            <div class="col-xxl-4 col-sm-6">
+                <div class="widget-two box--shadow2 b-radius--5 bg--white">
+                    <i class="las la-spinner overlay-icon text--warning"></i>
+                    <div class="widget-two__icon b-radius--5 bg--warning">
+                        <i class="las la-spinner"></i>
+                    </div>
+                    <div class="widget-two__content">
+                        <h3>{{ $widget['pending_order'] }}</h3>
+                        <p>@lang('Pending Order')</p>
+                    </div>
+                    <a class="widget-two__btn border--warning btn-outline--warning border" href="{{ route('admin.orders.pending') }}">@lang('View All')</a>
+                </div>
+            </div><!-- dashboard-w1 end -->
+            <div class="col-xxl-4 col-sm-6">
+                <div class="widget-two box--shadow2 b-radius--5 bg--white">
+                    <i class="la la-refresh overlay-icon text--info"></i>
+                    <div class="widget-two__icon b-radius--5 bg--info">
+                        <i class="la la-refresh"></i>
+                    </div>
+                    <div class="widget-two__content">
+                        <h3>{{ $widget['processing_order'] }}</h3>
+                        <p>@lang('Processing Order')</p>
+                    </div>
+                    <a class="widget-two__btn border--info btn-outline--info border" href="{{ route('admin.orders.processing') }}">@lang('View All')</a>
+                </div>
+            </div><!-- dashboard-w1 end -->
+
+        </div><!-- row end-->
+
+        <div class="row gy-4 mt-2">
+            <div class="col-xxl-4 col-sm-6">
+                <div class="widget-two box--shadow2 b-radius--5 bg--white">
+                    <i class="las la-check-circle overlay-icon text--success"></i>
+                    <div class="widget-two__icon b-radius--5 bg--success">
+                        <i class="las la-check-circle"></i>
+                    </div>
+                    <div class="widget-two__content">
+                        <h3>{{ $widget['completed_order'] }}</h3>
+                        <p>@lang('Completed Order')</p>
+                    </div>
+                    <a class="widget-two__btn border--success btn-outline--success border" href="{{ route('admin.orders.completed') }}">@lang('View All')</a>
+                </div>
+            </div><!-- dashboard-w1 end -->
+            <div class="col-xxl-4 col-sm-6">
+                <div class="widget-two box--shadow2 b-radius--5 bg--white">
+                    <i class="las la-times-circle overlay-icon text--danger"></i>
+                    <div class="widget-two__icon b-radius--5 bg--danger">
+                        <i class="las la-times-circle"></i>
+                    </div>
+                    <div class="widget-two__content">
+                        <h3>{{ $widget['cancelled_order'] }}</h3>
+                        <p>@lang('Cancelled Order')</p>
+                    </div>
+                    <a class="widget-two__btn border--danger btn-outline--danger border" href="{{ route('admin.orders.cancelled') }}">@lang('View All')</a>
+                </div>
+            </div><!-- dashboard-w1 end -->
+            <div class="col-xxl-4 col-sm-6">
+                <div class="widget-two box--shadow2 b-radius--5 bg--white">
+                    <i class="la la-fast-backward overlay-icon text-secondary"></i>
+                    <div class="widget-two__icon b-radius--5 bg--secondary">
+                        <i class="la la-fast-backward"></i>
+                    </div>
+                    <div class="widget-two__content">
+                        <h3>{{ $widget['refunded_order'] }}</h3>
+                        <p>@lang('Refunded Order')</p>
+                    </div>
+                    <a class="widget-two__btn border--secondary btn-outline--secondary border" href="{{ route('admin.orders.refunded') }}">@lang('View All')</a>
+                </div>
+            </div><!-- dashboard-w1 end -->
+        </div>
+        <div class="row mb-none-30 mt-30">
+            <div class="col-xl-6 mb-30">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@lang('Monthly Deposit') (@lang('Last 12 Month'))</h5>
+                        <div id="apex-bar-chart"> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 mb-30">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@lang('Transactions Report') (@lang('Last 30 Days'))</h5>
+                        <div id="apex-line"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-none-30 mt-5">
+            <div class="col-xl-4 col-lg-6 mb-30">
+                <div class="card overflow-hidden">
+                    <div class="card-body">
+                        <h5 class="card-title">@lang('Login By Browser') (@lang('Last 30 days'))</h5>
+                        <canvas id="userBrowserChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 mb-30">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@lang('Login By OS') (@lang('Last 30 days'))</h5>
+                        <canvas id="userOsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 mb-30">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@lang('Login By Country') (@lang('Last 30 days'))</h5>
+                        <canvas id="userCountryChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- <div class="modal fade" id="cronModal" role="dialog" aria-hidden="true" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">@lang('Cron Job Setting Instruction')</h5>
+                        <button class="close" data-bs-dismiss="modal" type="button" aria-label="Close">
+                            <i class="las la-times"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h3 class="text--danger text-center">@lang('Please Set Cron Job Now')</h3>
+                        <p class="lead">
+                            @lang('To automate the api order placement, we need to set the cron job and make sure the cron job is running properly. Set the Cron time as minimum as possible. Once per 5-15 minutes is ideal while once every minute is the best option.') </p>
+                        <label class="font-weight-bold">@lang('Cron Command')</label>
+
+                        <div class="input-group">
+                            <input class="form-control" id="referralURL" name="text" type="text" value="curl -s {{ route('cron') }}" readonly>
+                            <span class="input-group-text copytext btn btn--primary copyBoard pt-2" id="copyBoard">
+                                @lang('Copy')
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> --}}
+
+    </div>
 
 
 @endsection

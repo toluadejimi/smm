@@ -208,6 +208,7 @@ Route::middleware(['admin'])->group(function () {
         Route::get('add', 'add')->name('add');
         Route::get('edit/{id}', 'edit')->name('edit');
         Route::post('store', 'store')->name('store');
+        Route::post('update', 'store')->name('update');
         Route::post('service/store', 'apiServicesStore')->name('api.store');
         Route::post('add', 'addService')->name('add');
         Route::post('status/{id}', 'status')->name('status');

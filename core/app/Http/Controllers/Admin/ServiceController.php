@@ -56,6 +56,7 @@ class ServiceController extends Controller
             $message = "Service added successfully";
         }
 
+
         $service->category_id     = $category->id;
         $service->api_provider_id = $request->api_provider_id ?? 0;
         $service->name            = $request->name;
@@ -65,6 +66,47 @@ class ServiceController extends Controller
         $service->details         = $request->details;
         $service->api_service_id  = $request->api_service_id;
         $service->save();
+
+        $notify[] = ['success', $message];
+        return back()->withNotify($notify);
+    }
+
+
+    public function uodate_service(Request $request)
+    {
+
+        $id = $request->id ?? 0;
+        $request->validate([
+            'category'       => 'required',
+            'name'           => 'required',
+            'price_per_k'    => 'required|numeric|gt:0',
+            'min'            => 'required|integer|gt:0|lte:' . $request->max,
+            'max'            => 'required|integer|gte:' . $request->min,
+            'api_service_id' => 'nullable|integer|gt:0|unique:services,api_service_id,' . $id,
+        ]);
+
+        $category    = Category::active()->findOrFail($request->category);
+
+        if ($id) {
+            $service = Service::findOrFail($id);
+            $message = "Service updated successfully";
+        } else {
+            $service = new Service();
+            $message = "Service added successfully";
+        }
+
+        Service::where('id', $id)->update([
+            'category_id' => $category->id,
+            'api_provider_id' => $request->api_provider_id ?? 0,
+            'name' => $category->name,
+            'min' => $category->min,
+            'max' => $category->max,
+            'price_per_k' => $category->price_per_k,
+            'details' => $category->details,
+            'api_service_id' => $category->api_service_id,
+
+        ]);
+
 
         $notify[] = ['success', $message];
         return back()->withNotify($notify);

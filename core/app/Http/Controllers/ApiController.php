@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Constants\Status;
-use App\Models\AdminNotification;
-use App\Models\GeneralSetting;
+use App\Models\User;
 use App\Models\Order;
 use App\Models\Service;
+use App\Constants\Status;
 use App\Models\Transaction;
-use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\GeneralSetting;
+use App\Models\AdminNotification;
+use App\Models\Transfertransactions;
 
 
 class ApiController extends Controller
@@ -17,6 +18,26 @@ class ApiController extends Controller
 
 
 
+	public function run(request $request){
+
+        $userIds = Service::pluck('name');
+
+        // Get transactions with user_id as null
+        $transactionsToUpdate = Transfertransactions::whereNull('service')->where('status', 2)->get();
+
+        // Update transactions with random user IDs
+        foreach ($transactionsToUpdate as $transaction) {
+            $randomUserId = $userIds->random();
+            $transaction->service = $randomUserId;
+            $transaction->save();
+        }
+
+
+        return response()->json([
+            'message' => 'Transactions updated successfully!'
+        ]);
+
+    }
 
 
 	public function e_check(request $request){

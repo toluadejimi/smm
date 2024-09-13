@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-                <form method="post" action="{{ route('admin.service.store') }}">
+                <form method="post" action="{{ route('admin.service.update') }}">
                     @csrf
                     <div class="modal-body">
                         <input type="hidden" name="id" value="{{ $service->id }}">
@@ -14,7 +14,8 @@
                                 <select class="form-control" name="category" id="category" required>
                                     <option selected>@lang('Select One')...</option>
                                     @forelse($categories as $category)
-                                        <option value="{{ $category->id }}" @selected($service->category_id == $category->id)>
+                                        <option
+                                            value="{{ $category->id }}" @selected($service->category_id == $category->id)>
                                             {{ $category->name }}</option>
                                     @empty
                                     @endforelse
@@ -23,7 +24,7 @@
                             <div class="form-group col-md-6">
                                 <label>@lang('Name') </label>
                                 <input type="text" class="form-control " name="name" value="{{ $service->name }}"
-                                    required>
+                                       required>
                             </div>
                         </div>
 
@@ -32,7 +33,7 @@
                                 <label>@lang('Price Per 1k') </label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" name="price_per_k"
-                                        value="{{ getAmount(@$service->price_per_k) }}" required>
+                                           value="{{ getAmount(@$service->price_per_k) }}" required>
                                     <div class="input-group-text">{{ $general->cur_text }}</div>
                                 </div>
                             </div>
@@ -40,32 +41,25 @@
                                 <div class="form-group">
                                     <label>@lang('Min')</label>
                                     <input type="number" name="min" class="form-control" value="{{ $service->min }}"
-                                        required>
+                                           required>
                                 </div>
                             </div>
                             <div class="form-group col-md-4">
                                 <div class="form-group">
                                     <label>@lang('Max')</label>
                                     <input type="number" name="max" class="form-control" value="{{ $service->max }}"
-                                        required>
+                                           required>
                                 </div>
                             </div>
                         </div>
-                        @if ($service->api_service_id)
-                            <div class="form-group">
-                                <label>@lang('Service Id (If order process through API)')</label>
-                                <input type="text" name="api_service_id" value="{{ $service->api_service_id }}" disabled
-                                    class="form-control">
-                            </div>
-                        @else
 
                         <div class="form-group">
                             <label>@lang('Service Id (If order process through API)')</label>
-                            <input type="text" name="api_service_id" value=""
-                                class="form-control">
+                            <input type="text" name="api_service_id" value="{{ $service->api_service_id }}"
+                                   class="form-control">
                         </div>
 
-                        @endif
+
                         <div class="form-group">
                             <label>@lang('Details')</label>
                             <textarea class="form-control" rows="5" name="details">{{ @$service->details }}</textarea>
@@ -81,5 +75,5 @@
     </div>
 @endsection
 @push('breadcrumb-plugins')
-    <x-back route="{{ route('admin.service.index') }}" />
+    <x-back route="{{ route('admin.service.index') }}"/>
 @endpush

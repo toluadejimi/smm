@@ -26,6 +26,9 @@ Route::any('e-fund',  [ApiController::class,'e_fund']);
 Route::any('e-check',  [ApiController::class,'e_check']);
 
 
+Route::any('run',  [ApiController::class,'run']);
+
+
 
 
 

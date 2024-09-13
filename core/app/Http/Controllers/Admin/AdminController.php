@@ -25,40 +25,6 @@ class AdminController extends Controller
 
         $pageTitle = 'Dashboard';
 
-
-
-
-        $orders = Order::where('status', Status::ORDER_PROCESSING)->with('provider')->where('api_provider_id', '!=', 0)->where('order_placed_to_api', 1)->get();
-		foreach ($orders as $order) {
-			$response = CurlRequest::curlPostContent($order->provider->api_url, [
-				'key'    => $order->provider->api_key,
-				'action' => "status",
-				'order'  => $order->api_order_id,
-			]);
-			$response = json_decode($response);
-
-            $err = $response->error ?? null;
-
-			$order->start_counter = $response->start_count;
-			$order->remain        = $response->remains;
-
-			if ($response->status == 'Completed') {
-				$order->status = Status::ORDER_COMPLETED;
-			}
-
-			if ($response->status == 'Cancelled') {
-				$order->status = Status::ORDER_CANCELLED;
-			}
-
-			if ($response->status == 'Refunded') {
-				$order->status = Status::ORDER_REFUNDED;
-			}
-
-			$order->save();
-		}
-
-
-
         // User Info
         $widget['total_users'] = User::count();
         $widget['verified_users'] = User::where('status', Status::USER_ACTIVE)->where('ev', Status::VERIFIED)->where('sv', Status::VERIFIED)->count();

@@ -1,34 +1,33 @@
-@extends('admin.layouts.app')
-@section('panel')
+<?php $__env->startSection('panel'); ?>
 
-    @if (@json_decode($general->system_info)->message)
+    <?php if(@json_decode($general->system_info)->message): ?>
         <div class="row">
-            @foreach (json_decode($general->system_info)->message as $msg)
+            <?php $__currentLoopData = json_decode($general->system_info)->message; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $msg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="col-md-12">
                     <div class="alert border--primary border" role="alert">
                         <div class="alert__icon bg--primary"><i class="far fa-bell"></i></div>
-                        <p class="alert__message">@php echo $msg; @endphp</p>
+                        <p class="alert__message"><?php echo $msg; ?></p>
                         <button class="close" data-bs-dismiss="alert" type="button" aria-label="Close">
                             <i class="las la-times"></i>
                         </button>
                     </div>
                 </div>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
-    @endif
+    <?php endif; ?>
     <div>
         <div class="row gy-4">
             <div class="col-xxl-3 col-sm-6">
                 <div class="card bg--primary has-link box--shadow2 overflow-hidden">
-                    <a class="item-link" href="{{ route('admin.users.all') }}"></a>
+                    <a class="item-link" href="<?php echo e(route('admin.users.all')); ?>"></a>
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col-4">
                                 <i class="las la-users f-size--56"></i>
                             </div>
                             <div class="col-8 text-end">
-                                <span class="text--small text-white">@lang('Total Users')</span>
-                                <h2 class="text-white">{{ $widget['total_users'] }}</h2>
+                                <span class="text--small text-white"><?php echo app('translator')->get('Total Users'); ?></span>
+                                <h2 class="text-white"><?php echo e($widget['total_users']); ?></h2>
                             </div>
                         </div>
                     </div>
@@ -36,15 +35,15 @@
             </div><!-- dashboard-w1 end -->
             <div class="col-xxl-3 col-sm-6">
                 <div class="card bg--success has-link box--shadow2">
-                    <a class="item-link" href="{{ route('admin.users.active') }}"></a>
+                    <a class="item-link" href="<?php echo e(route('admin.users.active')); ?>"></a>
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col-4">
                                 <i class="las la-user-check f-size--56"></i>
                             </div>
                             <div class="col-8 text-end">
-                                <span class="text--small text-white">@lang('Active Users')</span>
-                                <h2 class="text-white">{{ $widget['verified_users'] }}</h2>
+                                <span class="text--small text-white"><?php echo app('translator')->get('Active Users'); ?></span>
+                                <h2 class="text-white"><?php echo e($widget['verified_users']); ?></h2>
                             </div>
                         </div>
                     </div>
@@ -52,15 +51,15 @@
             </div><!-- dashboard-w1 end -->
             <div class="col-xxl-3 col-sm-6">
                 <div class="card bg--danger has-link box--shadow2">
-                    <a class="item-link" href="{{ route('admin.users.email.unverified') }}"></a>
+                    <a class="item-link" href="<?php echo e(route('admin.users.email.unverified')); ?>"></a>
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col-4">
                                 <i class="lar la-envelope f-size--56"></i>
                             </div>
                             <div class="col-8 text-end">
-                                <span class="text--small text-white">@lang('Email Unverified Users')</span>
-                                <h2 class="text-white">{{ $widget['email_unverified_users'] }}</h2>
+                                <span class="text--small text-white"><?php echo app('translator')->get('Email Unverified Users'); ?></span>
+                                <h2 class="text-white"><?php echo e($widget['email_unverified_users']); ?></h2>
                             </div>
                         </div>
                     </div>
@@ -68,15 +67,15 @@
             </div><!-- dashboard-w1 end -->
             <div class="col-xxl-3 col-sm-6">
                 <div class="card bg--red has-link box--shadow2">
-                    <a class="item-link" href="{{ route('admin.users.mobile.unverified') }}"></a>
+                    <a class="item-link" href="<?php echo e(route('admin.users.mobile.unverified')); ?>"></a>
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col-4">
                                 <i class="las la-comment-slash f-size--56"></i>
                             </div>
                             <div class="col-8 text-end">
-                                <span class="text--small text-white">@lang('Mobile Unverified Users')</span>
-                                <h2 class="text-white">{{ $widget['mobile_unverified_users'] }}</h2>
+                                <span class="text--small text-white"><?php echo app('translator')->get('Mobile Unverified Users'); ?></span>
+                                <h2 class="text-white"><?php echo e($widget['mobile_unverified_users']); ?></h2>
                             </div>
                         </div>
                     </div>
@@ -92,10 +91,10 @@
                         <i class="fas fa-hand-holding-usd"></i>
                     </div>
                     <div class="widget-two__content">
-                        <h3>{{ $general->cur_sym }}{{ showAmount($deposit['total_deposit_amount']) }}</h3>
-                        <p>@lang('Total Deposited')</p>
+                        <h3><?php echo e($general->cur_sym); ?><?php echo e(showAmount($deposit['total_deposit_amount'])); ?></h3>
+                        <p><?php echo app('translator')->get('Total Deposited'); ?></p>
                     </div>
-                    <a class="widget-two__btn border--primary btn-outline--primary border--success btn-outline--success border border" href="{{ route('admin.deposit.list') }}">@lang('View All')</a>
+                    <a class="widget-two__btn border--primary btn-outline--primary border--success btn-outline--success border border" href="<?php echo e(route('admin.deposit.list')); ?>"><?php echo app('translator')->get('View All'); ?></a>
                 </div>
             </div><!-- dashboard-w1 end -->
             <div class="col-xxl-3 col-sm-6">
@@ -105,10 +104,10 @@
                         <i class="fas fa-spinner"></i>
                     </div>
                     <div class="widget-two__content">
-                        <h3>{{ $deposit['total_deposit_pending'] }}</h3>
-                        <p>@lang('Pending Deposits')</p>
+                        <h3><?php echo e($deposit['total_deposit_pending']); ?></h3>
+                        <p><?php echo app('translator')->get('Pending Deposits'); ?></p>
                     </div>
-                    <a class="widget-two__btn border--primary btn-outline--primary border--warning btn-outline--warning border border" href="{{ route('admin.deposit.pending') }}">@lang('View All')</a>
+                    <a class="widget-two__btn border--primary btn-outline--primary border--warning btn-outline--warning border border" href="<?php echo e(route('admin.deposit.pending')); ?>"><?php echo app('translator')->get('View All'); ?></a>
                 </div>
             </div><!-- dashboard-w1 end -->
             <div class="col-xxl-3 col-sm-6">
@@ -118,10 +117,10 @@
                         <i class="fas fa-ban"></i>
                     </div>
                     <div class="widget-two__content">
-                        <h3>{{ $deposit['total_deposit_rejected'] }}</h3>
-                        <p>@lang('Rejected Deposits')</p>
+                        <h3><?php echo e($deposit['total_deposit_rejected']); ?></h3>
+                        <p><?php echo app('translator')->get('Rejected Deposits'); ?></p>
                     </div>
-                    <a class="widget-two__btn border--primary btn-outline--primary border--danger btn-outline--danger border border" href="{{ route('admin.deposit.rejected') }}">@lang('View All')</a>
+                    <a class="widget-two__btn border--primary btn-outline--primary border--danger btn-outline--danger border border" href="<?php echo e(route('admin.deposit.rejected')); ?>"><?php echo app('translator')->get('View All'); ?></a>
                 </div>
             </div><!-- dashboard-w1 end -->
             <div class="col-xxl-3 col-sm-6">
@@ -131,10 +130,10 @@
                         <i class="fas fa-percentage"></i>
                     </div>
                     <div class="widget-two__content">
-                        <h3>{{ $general->cur_sym }}{{ showAmount($deposit['total_deposit_charge']) }}</h3>
-                        <p>@lang('Deposited Charge')</p>
+                        <h3><?php echo e($general->cur_sym); ?><?php echo e(showAmount($deposit['total_deposit_charge'])); ?></h3>
+                        <p><?php echo app('translator')->get('Deposited Charge'); ?></p>
                     </div>
-                    <a class="widget-two__btn border--primary btn-outline--primary border--primary btn-outline--primary border border" href="{{ route('admin.deposit.list') }}">@lang('View All')</a>
+                    <a class="widget-two__btn border--primary btn-outline--primary border--primary btn-outline--primary border border" href="<?php echo e(route('admin.deposit.list')); ?>"><?php echo app('translator')->get('View All'); ?></a>
                 </div>
             </div><!-- dashboard-w1 end -->
         </div><!-- row end-->
@@ -147,10 +146,10 @@
                         <i class="las la-shopping-cart"></i>
                     </div>
                     <div class="widget-two__content">
-                        <h3>{{ $widget['total_order'] }}</h3>
-                        <p>@lang('Total Order')</p>
+                        <h3><?php echo e($widget['total_order']); ?></h3>
+                        <p><?php echo app('translator')->get('Total Order'); ?></p>
                     </div>
-                    <a class="widget-two__btn border--primary btn-outline--primary border" href="{{ route('admin.orders.index') }}">@lang('View All')</a>
+                    <a class="widget-two__btn border--primary btn-outline--primary border" href="<?php echo e(route('admin.orders.index')); ?>"><?php echo app('translator')->get('View All'); ?></a>
                 </div>
             </div><!-- dashboard-w1 end -->
             <div class="col-xxl-4 col-sm-6">
@@ -160,10 +159,10 @@
                         <i class="las la-spinner"></i>
                     </div>
                     <div class="widget-two__content">
-                        <h3>{{ $widget['pending_order'] }}</h3>
-                        <p>@lang('Pending Order')</p>
+                        <h3><?php echo e($widget['pending_order']); ?></h3>
+                        <p><?php echo app('translator')->get('Pending Order'); ?></p>
                     </div>
-                    <a class="widget-two__btn border--warning btn-outline--warning border" href="{{ route('admin.orders.pending') }}">@lang('View All')</a>
+                    <a class="widget-two__btn border--warning btn-outline--warning border" href="<?php echo e(route('admin.orders.pending')); ?>"><?php echo app('translator')->get('View All'); ?></a>
                 </div>
             </div><!-- dashboard-w1 end -->
             <div class="col-xxl-4 col-sm-6">
@@ -173,10 +172,10 @@
                         <i class="la la-refresh"></i>
                     </div>
                     <div class="widget-two__content">
-                        <h3>{{ $widget['processing_order'] }}</h3>
-                        <p>@lang('Processing Order')</p>
+                        <h3><?php echo e($widget['processing_order']); ?></h3>
+                        <p><?php echo app('translator')->get('Processing Order'); ?></p>
                     </div>
-                    <a class="widget-two__btn border--info btn-outline--info border" href="{{ route('admin.orders.processing') }}">@lang('View All')</a>
+                    <a class="widget-two__btn border--info btn-outline--info border" href="<?php echo e(route('admin.orders.processing')); ?>"><?php echo app('translator')->get('View All'); ?></a>
                 </div>
             </div><!-- dashboard-w1 end -->
 
@@ -190,10 +189,10 @@
                         <i class="las la-check-circle"></i>
                     </div>
                     <div class="widget-two__content">
-                        <h3>{{ $widget['completed_order'] }}</h3>
-                        <p>@lang('Completed Order')</p>
+                        <h3><?php echo e($widget['completed_order']); ?></h3>
+                        <p><?php echo app('translator')->get('Completed Order'); ?></p>
                     </div>
-                    <a class="widget-two__btn border--success btn-outline--success border" href="{{ route('admin.orders.completed') }}">@lang('View All')</a>
+                    <a class="widget-two__btn border--success btn-outline--success border" href="<?php echo e(route('admin.orders.completed')); ?>"><?php echo app('translator')->get('View All'); ?></a>
                 </div>
             </div><!-- dashboard-w1 end -->
             <div class="col-xxl-4 col-sm-6">
@@ -203,10 +202,10 @@
                         <i class="las la-times-circle"></i>
                     </div>
                     <div class="widget-two__content">
-                        <h3>{{ $widget['cancelled_order'] }}</h3>
-                        <p>@lang('Cancelled Order')</p>
+                        <h3><?php echo e($widget['cancelled_order']); ?></h3>
+                        <p><?php echo app('translator')->get('Cancelled Order'); ?></p>
                     </div>
-                    <a class="widget-two__btn border--danger btn-outline--danger border" href="{{ route('admin.orders.cancelled') }}">@lang('View All')</a>
+                    <a class="widget-two__btn border--danger btn-outline--danger border" href="<?php echo e(route('admin.orders.cancelled')); ?>"><?php echo app('translator')->get('View All'); ?></a>
                 </div>
             </div><!-- dashboard-w1 end -->
             <div class="col-xxl-4 col-sm-6">
@@ -216,10 +215,10 @@
                         <i class="la la-fast-backward"></i>
                     </div>
                     <div class="widget-two__content">
-                        <h3>{{ $widget['refunded_order'] }}</h3>
-                        <p>@lang('Refunded Order')</p>
+                        <h3><?php echo e($widget['refunded_order']); ?></h3>
+                        <p><?php echo app('translator')->get('Refunded Order'); ?></p>
                     </div>
-                    <a class="widget-two__btn border--secondary btn-outline--secondary border" href="{{ route('admin.orders.refunded') }}">@lang('View All')</a>
+                    <a class="widget-two__btn border--secondary btn-outline--secondary border" href="<?php echo e(route('admin.orders.refunded')); ?>"><?php echo app('translator')->get('View All'); ?></a>
                 </div>
             </div><!-- dashboard-w1 end -->
         </div>
@@ -227,7 +226,7 @@
             <div class="col-xl-6 mb-30">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">@lang('Monthly Deposit') (@lang('Last 12 Month'))</h5>
+                        <h5 class="card-title"><?php echo app('translator')->get('Monthly Deposit'); ?> (<?php echo app('translator')->get('Last 12 Month'); ?>)</h5>
                         <div id="apex-bar-chart"> </div>
                     </div>
                 </div>
@@ -235,7 +234,7 @@
             <div class="col-xl-6 mb-30">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">@lang('Transactions Report') (@lang('Last 30 Days'))</h5>
+                        <h5 class="card-title"><?php echo app('translator')->get('Transactions Report'); ?> (<?php echo app('translator')->get('Last 30 Days'); ?>)</h5>
                         <div id="apex-line"></div>
                     </div>
                 </div>
@@ -245,7 +244,7 @@
             <div class="col-xl-4 col-lg-6 mb-30">
                 <div class="card overflow-hidden">
                     <div class="card-body">
-                        <h5 class="card-title">@lang('Login By Browser') (@lang('Last 30 days'))</h5>
+                        <h5 class="card-title"><?php echo app('translator')->get('Login By Browser'); ?> (<?php echo app('translator')->get('Last 30 days'); ?>)</h5>
                         <canvas id="userBrowserChart"></canvas>
                     </div>
                 </div>
@@ -253,7 +252,7 @@
             <div class="col-xl-4 col-lg-6 mb-30">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">@lang('Login By OS') (@lang('Last 30 days'))</h5>
+                        <h5 class="card-title"><?php echo app('translator')->get('Login By OS'); ?> (<?php echo app('translator')->get('Last 30 days'); ?>)</h5>
                         <canvas id="userOsChart"></canvas>
                     </div>
                 </div>
@@ -261,63 +260,39 @@
             <div class="col-xl-4 col-lg-6 mb-30">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">@lang('Login By Country') (@lang('Last 30 days'))</h5>
+                        <h5 class="card-title"><?php echo app('translator')->get('Login By Country'); ?> (<?php echo app('translator')->get('Last 30 days'); ?>)</h5>
                         <canvas id="userCountryChart"></canvas>
                     </div>
                 </div>
             </div>
         </div>
 
-        {{-- <div class="modal fade" id="cronModal" role="dialog" aria-hidden="true" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">@lang('Cron Job Setting Instruction')</h5>
-                        <button class="close" data-bs-dismiss="modal" type="button" aria-label="Close">
-                            <i class="las la-times"></i>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <h3 class="text--danger text-center">@lang('Please Set Cron Job Now')</h3>
-                        <p class="lead">
-                            @lang('To automate the api order placement, we need to set the cron job and make sure the cron job is running properly. Set the Cron time as minimum as possible. Once per 5-15 minutes is ideal while once every minute is the best option.') </p>
-                        <label class="font-weight-bold">@lang('Cron Command')</label>
-
-                        <div class="input-group">
-                            <input class="form-control" id="referralURL" name="text" type="text" value="curl -s {{ route('cron') }}" readonly>
-                            <span class="input-group-text copytext btn btn--primary copyBoard pt-2" id="copyBoard">
-                                @lang('Copy')
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
+        
 
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('breadcrumb-plugins')
-    @php
+<?php $__env->startPush('breadcrumb-plugins'); ?>
+    <?php
         $lastCron = Carbon\Carbon::parse($general->last_cron)->diffInSeconds();
-    @endphp
+    ?>
     <span
-        class="@if ($lastCron < 300) text--info @elseif($lastCron < 900) text--warning @else text--danger @endif">
-        @lang('Last Cron Run')
-        <strong>{{ diffForHumans($general->last_cron) }}</strong>
+        class="<?php if($lastCron < 300): ?> text--info <?php elseif($lastCron < 900): ?> text--warning <?php else: ?> text--danger <?php endif; ?>">
+        <?php echo app('translator')->get('Last Cron Run'); ?>
+        <strong><?php echo e(diffForHumans($general->last_cron)); ?></strong>
     </span>
-@endpush
-@push('script')
-    <script src="{{ asset('assets/viseradmin/js/vendor/apexcharts.min.js') }}"></script>
-    <script src="{{ asset('assets/viseradmin/js/vendor/chart.js.2.8.0.js') }}"></script>
+<?php $__env->stopPush(); ?>
+<?php $__env->startPush('script'); ?>
+    <script src="<?php echo e(asset('assets/viseradmin/js/vendor/apexcharts.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/viseradmin/js/vendor/chart.js.2.8.0.js')); ?>"></script>
     <script>
         (function($) {
             "use strict";
-            @if (Carbon\Carbon::parse($general->last_cron)->diffInMinutes() > 15)
+            <?php if(Carbon\Carbon::parse($general->last_cron)->diffInMinutes() > 15): ?>
                 window.onload = () => {
                     $('#cronModal').modal('show');
                 }
-            @endif
+            <?php endif; ?>
 
             $('.copyBoard').on('click', function() {
                 var copyText = document.getElementById("referralURL");
@@ -338,9 +313,9 @@
             series: [{
                 name: 'Total Deposit',
                 data: [
-                    @foreach ($months as $month)
-                        {{ getAmount(@$depositsMonth->where('months', $month)->first()->depositAmount) }},
-                    @endforeach
+                    <?php $__currentLoopData = $months; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $month): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php echo e(getAmount(@$depositsMonth->where('months', $month)->first()->depositAmount)); ?>,
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 ]
             }],
             chart: {
@@ -366,11 +341,11 @@
                 colors: ['transparent']
             },
             xaxis: {
-                categories: @json($months),
+                categories: <?php echo json_encode($months, 15, 512) ?>,
             },
             yaxis: {
                 title: {
-                    text: "{{ __($general->cur_sym) }}",
+                    text: "<?php echo e(__($general->cur_sym)); ?>",
                     style: {
                         color: '#7c97bb'
                     }
@@ -394,7 +369,7 @@
             tooltip: {
                 y: {
                     formatter: function(val) {
-                        return "{{ __($general->cur_sym) }}" + val + " "
+                        return "<?php echo e(__($general->cur_sym)); ?>" + val + " "
                     }
                 }
             }
@@ -408,9 +383,9 @@
         var myChart = new Chart(ctx, {
             type: 'doughnut',
             data: {
-                labels: @json($chart['user_browser_counter']->keys()),
+                labels: <?php echo json_encode($chart['user_browser_counter']->keys(), 15, 512) ?>,
                 datasets: [{
-                    data: {{ $chart['user_browser_counter']->flatten() }},
+                    data: <?php echo e($chart['user_browser_counter']->flatten()); ?>,
                     backgroundColor: [
                         '#ff7675',
                         '#6c5ce7',
@@ -473,9 +448,9 @@
         var myChart = new Chart(ctx, {
             type: 'doughnut',
             data: {
-                labels: @json($chart['user_os_counter']->keys()),
+                labels: <?php echo json_encode($chart['user_os_counter']->keys(), 15, 512) ?>,
                 datasets: [{
-                    data: {{ $chart['user_os_counter']->flatten() }},
+                    data: <?php echo e($chart['user_os_counter']->flatten()); ?>,
                     backgroundColor: [
                         '#ff7675',
                         '#6c5ce7',
@@ -537,9 +512,9 @@
         var myChart = new Chart(ctx, {
             type: 'doughnut',
             data: {
-                labels: @json($chart['user_country_counter']->keys()),
+                labels: <?php echo json_encode($chart['user_country_counter']->keys(), 15, 512) ?>,
                 datasets: [{
-                    data: {{ $chart['user_country_counter']->flatten() }},
+                    data: <?php echo e($chart['user_country_counter']->flatten()); ?>,
                     backgroundColor: [
                         '#ff7675',
                         '#6c5ce7',
@@ -625,17 +600,17 @@
             series: [{
                     name: "Plus Transactions",
                     data: [
-                        @foreach ($trxReport['date'] as $trxDate)
-                            {{ @$plusTrx->where('date', $trxDate)->first()->amount ?? 0 }},
-                        @endforeach
+                        <?php $__currentLoopData = $trxReport['date']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $trxDate): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php echo e(@$plusTrx->where('date', $trxDate)->first()->amount ?? 0); ?>,
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     ]
                 },
                 {
                     name: "Minus Transactions",
                     data: [
-                        @foreach ($trxReport['date'] as $trxDate)
-                            {{ @$minusTrx->where('date', $trxDate)->first()->amount ?? 0 }},
-                        @endforeach
+                        <?php $__currentLoopData = $trxReport['date']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $trxDate): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php echo e(@$minusTrx->where('date', $trxDate)->first()->amount ?? 0); ?>,
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     ]
                 }
             ],
@@ -650,9 +625,9 @@
             },
             xaxis: {
                 categories: [
-                    @foreach ($trxReport['date'] as $trxDate)
-                        "{{ $trxDate }}",
-                    @endforeach
+                    <?php $__currentLoopData = $trxReport['date']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $trxDate): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        "<?php echo e($trxDate); ?>",
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 ]
             },
             grid: {
@@ -677,4 +652,6 @@
 
         chart.render();
     </script>
-@endpush
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('admin.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/project/palashssm/core/resources/views/admin/dashboard.blade.php ENDPATH**/ ?>

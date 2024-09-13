@@ -1,20 +1,6 @@
 @extends('admin.layouts.app')
 @section('panel')
-    @if (@json_decode($general->system_info)->message)
-        <div class="row">
-            @foreach (json_decode($general->system_info)->message as $msg)
-                <div class="col-md-12">
-                    <div class="alert border--primary border" role="alert">
-                        <div class="alert__icon bg--primary"><i class="far fa-bell"></i></div>
-                        <p class="alert__message">@php echo $msg; @endphp</p>
-                        <button class="close" data-bs-dismiss="alert" type="button" aria-label="Close">
-                            <i class="las la-times"></i>
-                        </button>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    @endif
+
     <div>
         <div class="row gy-4">
             <div class="col-xxl-3 col-sm-6">

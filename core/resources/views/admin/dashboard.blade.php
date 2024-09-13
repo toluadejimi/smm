@@ -1,7 +1,5 @@
 @extends('admin.layouts.app')
-
 @section('panel')
-
     @if (@json_decode($general->system_info)->message)
         <div class="row">
             @foreach (json_decode($general->system_info)->message as $msg)

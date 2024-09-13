@@ -12,7 +12,7 @@
                                 <i class="las la-users f-size--56"></i>
                             </div>
                             <div class="col-8 text-end">
-                                <span class="text--small text-white">@lang('Total Users')</span>
+                                <span class="text--small text-white">@lang('Total Users ALL')</span>
                                 <h2 class="text-white">{{ $widget['total_users'] }}</h2>
                             </div>
                         </div>

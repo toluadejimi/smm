@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" type="image/png" href="{{ getImage(getFilePath('logoIcon') . '/favicon.png') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://dashboard.palashsmm.com/assets/global/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url('')}}/assets/global/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url('')}}/assets/viseradmin/css/vendor/bootstrap-toggle.min.css">
     <link rel="stylesheet" href="{{ url('') }}/assets/global/css/all.min.css">
     <link rel="stylesheet" href="{{ url('') }}/assets/global/css/line-awesome.min.css">

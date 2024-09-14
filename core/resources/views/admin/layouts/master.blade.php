@@ -9,16 +9,16 @@
 
     <link rel="shortcut icon" type="image/png" href="{{ getImage(getFilePath('logoIcon') . '/favicon.png') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('assets/global/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/viseradmin/css/vendor/bootstrap-toggle.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/global/css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/global/css/line-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url('')}}/assets/global/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url('')}}/assets/viseradmin/css/vendor/bootstrap-toggle.min.css">
+    <link rel="stylesheet" href="{{ url('') }}/assets/global/css/all.min.css">
+    <link rel="stylesheet" href="{{ url('') }}/assets/global/css/line-awesome.min.css">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     @stack('style-lib')
 
-    <link rel="stylesheet" href="{{ asset('assets/viseradmin/css/vendor/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/viseradmin/css/app.css') }}">
+    <link rel="stylesheet" href="{{ url('') }}/assets/viseradmin/css/vendor/select2.min.css">
+    <link rel="stylesheet" href="{{ url('') }}/assets/viseradmin/css/app.css">
 
 
     @stack('style')
@@ -26,19 +26,19 @@
 
 <body>
     @yield('content')
-    <script src="{{ asset('assets/global/js/jquery-3.6.0.min.js') }}"></script>
-    <script src="{{ asset('assets/global/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/viseradmin/js/vendor/bootstrap-toggle.min.js') }}"></script>
-    <script src="{{ asset('assets/viseradmin/js/vendor/jquery.slimscroll.min.js') }}"></script>
+    <script src="{{ url('') }}/assets/global/js/jquery-3.6.0.min.js"></script>
+    <script src="{{ url('') }}/assets/global/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url('') }}/assets/viseradmin/js/vendor/bootstrap-toggle.min.js"></script>
+    <script src="{{ url('s') }}/assets/viseradmin/js/vendor/jquery.slimscroll.min.j"></script>
 
 
     @include('partials.notify')
     @stack('script-lib')
 
-    <script src="{{ asset('assets/viseradmin/js/nicEdit.js') }}"></script>
+    <script src="{{ url('') }}/assets/viseradmin/js/nicEdit.js">
 
-    <script src="{{ asset('assets/viseradmin/js/vendor/select2.min.js') }}"></script>
-    <script src="{{ asset('assets/viseradmin/js/app.js') }}"></script>
+    <script src="{{ url('') }}/assets/viseradmin/js/vendor/select2.min.js"></script>
+    <script src="{{ url('') }}/assets/viseradmin/js/app.js"></script>
 
     {{-- LOAD NIC EDIT --}}
     <script>

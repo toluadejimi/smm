@@ -103,13 +103,13 @@
                               action="{{ route('user.login') }}">
                             @csrf
 
-
                             <div class="form-group mb-4">
                                 <label class="form-label" for="username">Username or Email</label>
                                 <input type="text" class="form-control" placeholder="Enter username" id="username"
                                        value="{{ old('username') }}" name="username"
                                        placeholder="@lang('Username or Email')" required>
                             </div>
+
                             <div class="mb-sm-4 mb-3 position-relative">
                                 <label class="form-label" for="dlab-password">Password</label>
                                 <input type="password" id="dlab-password" class="form-control" name="password"

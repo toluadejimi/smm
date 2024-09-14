@@ -11,6 +11,7 @@ use App\Models\Page;
 use App\Models\SupportTicket;
 use App\Models\User;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use App\Constants\Status;
 
@@ -73,8 +74,8 @@ class AppServiceProvider extends ServiceProvider
             ]);
         });
 
-        if ($general->force_ssl) {
-            \URL::forceScheme('http');
+        if (config('app.env') !== 'local') {
+            URL::forceScheme('https');
         }
 
         Paginator::useBootstrapFour();

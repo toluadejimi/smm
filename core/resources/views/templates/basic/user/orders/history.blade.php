@@ -37,7 +37,7 @@
                             <tbody>
                                 @forelse ($orders as $item)
                                     <tr>
-                                        <td>{{ $item->id }}</td>
+                                        <td>{{ $item->api_order_id }}</td>
                                         <td class="break_line">{{ __($item->category->name ) ?? "service" }}</td>
                                         <td class="break_line">
                                             {{ __($item->service->name ?? "service" )  }}</td>
@@ -50,20 +50,22 @@
                                         <td>{{ showDateTime($item->created_at) ?? "date" }}</td>
                                         <td>
                                             @if ($item->status == 0)
-                                                <span
-                                                    class="text--small badge fw-normal badge--warning">@lang('Pending')</span>
+                                                <span class="text--small badge fw-normal badge-warning">@lang('Pending')</span>
                                             @elseif($item->status == 1)
                                                 <span
-                                                    class="text--small badge fw-normal badge--primary">@lang('Processing')</span>
+                                                    class="text--small badge fw-normal badge-warning">@lang('Processing')</span>
                                             @elseif($item->status == 2)
                                                 <span
-                                                    class="text--small badge fw-normal badge--success">@lang('Completed')</span>
+                                                    class="text--small badge fw-normal badge-success">@lang('Completed')</span>
                                             @elseif($item->status == 3)
                                                 <span
-                                                    class="text--small badge fw-normal badge--danger">@lang('Cancelled')</span>
+                                                    class="text--small badge fw-normal badge-danger">@lang('Cancelled')</span>
+                                            @elseif($item->status == 5)
+                                                <span
+                                                    class="text--small badge fw-normal badge-primary">@lang('Partial')</span>
                                             @else
                                                 <span
-                                                    class="text--small badge fw-normal badge--dark">@lang('Refunded')</span>
+                                                    class="text--small badge fw-normal badge-dark">@lang('Refunded')</span>
                                             @endif
                                         </td>
                                     </tr>

@@ -6,6 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Console\\Commands\\UpdateOrder' => $baseDir . '/app/Console/Commands/UpdateOrder.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Constants\\FileInfo' => $baseDir . '/app/Constants/FileInfo.php',
     'App\\Constants\\Status' => $baseDir . '/app/Constants/Status.php',

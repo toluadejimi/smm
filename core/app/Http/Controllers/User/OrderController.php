@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Constants\Status;
 use App\Http\Controllers\Controller;
+use App\Jobs\UpdateOrderStatus;
 use App\Lib\CurlRequest;
 use App\Models\AdminNotification;
 use App\Models\ApiProvider;
@@ -11,11 +12,12 @@ use App\Models\Order;
 use App\Models\Service;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
 	public function order(Request $request)
-    
+
 	{
 
 
@@ -41,8 +43,6 @@ class OrderController extends Controller
 			return to_route('user.deposit.index')->withNotify($notify);
 		}
 
-     
-
 
 		$user->balance -= $price;
 		$user->save();
@@ -60,7 +60,7 @@ class OrderController extends Controller
 		$transaction->save();
 
 
-     
+
 
         $url = ApiProvider::where('id', 1)->first()->api_url;
         $api_key = ApiProvider::where('id', 1)->first()->api_key;
@@ -78,7 +78,7 @@ class OrderController extends Controller
         $err = $response->error ?? null;
 
 
-        
+
 
         if($res > 0){
         //Make order
@@ -96,16 +96,11 @@ class OrderController extends Controller
         $order->status          = 1;
         $order->order_placed_to_api  = 1;
 		$order->api_order       = 1;
-		$order->save();
+        $order->save();
         }else{
                 $notify[] = ["error", "$err"];
                 return back()->withNotify($notify);
         }
-
-
-
-
-
 
 
 
@@ -131,9 +126,21 @@ class OrderController extends Controller
 	public function history()
 	{
 		$pageTitle = 'Order History';
-		$orders    = $this->orderData();
-		return view($this->activeTemplate . 'user.orders.history', compact('pageTitle', 'orders'));
-	}
+        $provider = ApiProvider::where('id', 1)->first();
+		//$orders    = $this->orderData();
+        $orderss = Order::where('status', Status::ORDER_PROCESSING)
+            ->where('user_id', Auth::user()->id)
+            ->get();
+
+        foreach ($orderss as $order) {
+            UpdateOrderStatus::dispatch($order);
+        }
+        $orders = $this->orderData();
+
+        return view($this->activeTemplate . 'user.orders.history', compact('pageTitle', 'orders'));
+
+
+    }
 
 	public function pending()
 	{

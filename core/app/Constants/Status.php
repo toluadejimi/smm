@@ -37,6 +37,8 @@ class Status
 	const ORDER_CANCELLED  = 3;
 	const ORDER_REFUNDED   = 4;
 
-	const API_ORDER_PLACE = 1;
+    const ORDER_PARTIAL   = 5;
+
+    const API_ORDER_PLACE = 1;
 	const API_ORDER_NOT_PLACE = 0;
 }
